@@ -1,4 +1,4 @@
-Create Table customers(
+Create Table Customer(
     subscriptionType VARCHAR(20) Not Null,
     customerType     VARCHAR(12) Not Null,
     phone            VARCHAR(11) Not Null,
@@ -25,7 +25,7 @@ Create Table employeeCustomer(
     discountAvailable   VARCHAR(3) Not Null,
     );
 /*
-    Discount percent is a 3-digit num, but if 
+    Discount percent is a 3-digit num, but if
     Available is "no" then percent can be null
 */
 Create Table premier(
