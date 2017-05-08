@@ -1,4 +1,4 @@
-Create Table customers(
+CREATE TABLE Customers(
     subscriptionType VARCHAR(20) Not Null,
     customerType     VARCHAR(12) Not Null,
     phone            VARCHAR(11) Not Null,
@@ -6,63 +6,78 @@ Create Table customers(
     startDate        VARCHAR(10) Not Null,
     -- address stuff goes here
     );
-Create Table corporation(
+
+CREATE TABLE Corporations(
     corpName    Not Null,
     corpType    Not Null,
     );
-Create Table individual(
+
+CREATE TABLE Individuals(
     iFirstName          Not Null,
     iLastName           Not Null,
     iDOB    VARCHAR(10) Not Null,
     );
-Create Table steady(
+
+CREATE TABLE SteadyCustomers(
     loyaltyPoints                   Not Null,
     upgradeSubscription VARCHAR(10) Not Null,
     );
+
 --add a varchar for loyalty? either of these null?
-Create Table employeeCustomer(
+
+CREATE TABLE EmployeeCustomers(
     discountPercent     VARCHAR(3),
     discountAvailable   VARCHAR(3) Not Null,
     );
 /*
-    Discount percent is a 3-digit num, but if 
+    Discount percent is a 3-digit num, but if
     Available is "no" then percent can be null
 */
-Create Table premier(
+
+CREATE TABLE PremierCustomers(
     paymentPerMonth     VARCHAR(3)  Not Null,
     fiveYearEstimate                Not Null,
     paymentDueDate      VARCHAR(10) Not Null,
     );
-Create Table referral(
+
+    /*Look at the relation scheme and try to change this one
+CREATE TABLE Referrals(
     referralDate VARCHAR(10) Not Null,
     rewardType               Not Null,
     pFirstName               Not Null,
     pLastName                Not Null,
     pEmail                   Not Null,
     ); -- names can be many characters so no var char
-Create Table prospectiveMember(
+
+
+CREATE TABLE ProspectiveMembers(
     deadProspect    VARCHAR(3)  Not Null,
     );
 /*
     dead prospect clarification, is it yes or no, or 1 - 3?
 */
-Create Table prospectAlert(
-    pDate       VARCHAR(10) Not Null,
+
+CREATE TABLE ProspectAlerts(
+    aDate       VARCHAR(10) Not Null,
     contactType VARCHAR(5)  Not Null,
     );
-Create Table profit(
+
+CREATE TABLE Profits(
     incomeEarned    VARCHAR(6)  Not Null,
     ); --maybe something costs 6 figures? haha
-Create Table invoice(
+
+CREATE TABLE Invoices(
     total VARCHAR(5)    Not Null,
     );
-Create Table maintenanceVisit(
+
+CREATE TABLE MaintenanceVisits(
     visitDate       VARCHAR(10) Not Null,
     currentMile     VARCHAR(7)  Not Null,
     milePerYear     VARCHAR(7)  Not Null,
     packageSelect   VARCHAR(10) Not Null,
     );
-Create Table customerVehicle(
+
+CREATE TABLE CustomerVehicles(
     make                VARCHAR(10) Not Null,
     model               VARCHAR(10) Not Null,
     vYear               VARCHAR(4)  Not Null,
@@ -76,12 +91,14 @@ Create Table customerVehicle(
     scheduleFriendly,
     lastVisitDate       VARCHAR(10),
     );
-Create Table customerAlert(
+
+CREATE TABLE  customerAlerts(
     aTime                   Not Null,
     aDate       VARCHAR(10) Not Null,
-    alert_Type  VARCHAR(5)  Not Null,
+    alertType  VARCHAR(5)  Not Null,
     );
-Create Table employee(
+
+CREATE TABLE Employees (
     eFirstName  Not Null,
     eLastName   Not Null,
     jobTitle    VARCHAR(10) Not Null,
@@ -89,16 +106,19 @@ Create Table employee(
     eDOB        VARCHAR(10) Not Null,
     streetName              Not Null,
     );
-Create Table zipLocation(
-    zipcode VARCHAR(7)  Not Null,
+
+CREATE TABLE ZipLocations         (
+    zipCode VARCHAR(7)  Not Null,
     city                Not Null,
     enumeratedStates,
     );
-Create Table technician(
+
+CREATE TABLE Technicians (
     tLanguage,
     workStation Not Null,
     );
-Create Table maintenancePackage(
+
+CREATE TABLE MaintenancePackages (
     packageName Not Null,
     );
 Create Table maintenanceItem(
