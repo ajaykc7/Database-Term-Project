@@ -6,6 +6,7 @@ CREATE TABLE Customers(
     startDate        VARCHAR(10) Not Null,
     -- address stuff goes here
     );
+    //This is a test.
 
 CREATE TABLE Corporations(
     corpName    Not Null,
