@@ -11,7 +11,7 @@ CREATE TABLE Corporations(
     corpName    Not Null,
     corpType    Not Null,
     );
-
+--ajay likes men.
 CREATE TABLE Individuals(
     iFirstName          Not Null,
     iLastName           Not Null,
