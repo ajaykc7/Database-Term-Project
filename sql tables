@@ -4,14 +4,30 @@ CREATE TABLE Customers(
     phone            VARCHAR(11) Not Null,
     email            VARCHAR(30) Not Null,
     startDate        VARCHAR(10) Not Null,
-    -- address stuff goes here
+    customerID       int         Not Null,
+    Constraint Customers_pk
+    Primary Key (customerID);
     );
-
+Create Table Address(
+    addressType             Not Null,
+    streetName  VARCHAR(30) Not Null,
+    customerID  int         Not Null,
+    zipCode     int         Not Null,
+    Constraint Address_pk, 
+    Primary Key (customerID, addressType, streetName, zipCode);
+    Constraint Address_fk_c
+    Foreign Key (customerID);
+    Constraint Address_fk_adT
+    Foreign Key (addressType);
+    Constraint Address_fk_z
+    Foreign Key (zipCode);
+    
+    );
 CREATE TABLE Corporations(
     corpName    Not Null,
     corpType    Not Null,
     );
---ajay likes men.
+
 CREATE TABLE Individuals(
     iFirstName          Not Null,
     iLastName           Not Null,
@@ -40,16 +56,17 @@ CREATE TABLE PremierCustomers(
     paymentDueDate      VARCHAR(10) Not Null,
     );
 
-    /*Look at the relation scheme and try to change this one
 CREATE TABLE Referrals(
     referralDate VARCHAR(10) Not Null,
-    rewardType               Not Null,
+    referralType               Not Null,
     pFirstName               Not Null,
     pLastName                Not Null,
-    pEmail                   Not Null,
     ); -- names can be many characters so no var char
-
-
+Create Table ContactType(
+    contactType     Not Null,
+    cPhone      VARCHAR(10),
+    cEmail,
+    );
 CREATE TABLE ProspectiveMembers(
     deadProspect    VARCHAR(3)  Not Null,
     );
@@ -121,7 +138,7 @@ CREATE TABLE Technicians (
 CREATE TABLE MaintenancePackages (
     packageName Not Null,
     );
-Create Table maintenanceItem(
+Create Table MaintenanceItem(
     itemName    VARCHAR(20) Not Null,
     itemTime    VARCHAR(20) Not Null,
     loyaltyPointPayable Not Null,
@@ -129,14 +146,21 @@ Create Table maintenanceItem(
         skill stuff here
     */
     );
-Create Table visitItem(
-    /* item chosen stuff here */
+Create Table VisitItem(
+    
     );
-Create Table mechanic(
-    /* skill stuff here */
+Create Table Items(
+    itemName    VARCHAR(20) Not Null,
     );
-Create Table apprenticeship(
+Crea
+    );
+Create Table Skill(
+    skillName           Not Null,
+    skillProficiency    Not Null,
+    );
+Create Table Apprenticeship(
     startDate   VARCHAR(10) Not Null,
     active                  Not Null,
     mentoredSkill           Not Null,
     );
+
