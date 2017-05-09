@@ -1,0 +1,21 @@
+/*Data for the table Customers
+INSERT INTO Customers(customerID, subscriptionType,customerType,phone,email,startDate) VALUES
+    (001C,'Steady','Individual','2133234444','steadyCustomer1@gmail.com','2010-01-23'),
+    (002C,'Steady','Corporation','5623232454','steadyCustomer2@gmail.com','2000-05-30'),
+    (003C,'Steady','Individual','7145539088','steadyCustomer3@gmail.com','2016-05-15'),
+    (004C,'Steady','Individual','3276587764','steadyCustomer4@gmail.com','2010-05-23'),
+    (005C,'Steady','Individual','9843801192','steadyCustomer5@gmail.com','2013-02-23'),
+    (006C,'Premier','Corporation','46783920177','premierCustomer1@gmail.com','2010-01-23'),
+    (007C,'Premier','Corporation','5473908975','premierCustomer2@gmail.com','2009-11-23'),
+    (008C,'Premier','Individual','2109467587','premierCustomer3@gmail.com','2009-03-13'),
+    (009C,'Premier','Individual','3894439764','premierCustomer4@gmail.com','2014-05-24'),
+    (010C,'Premier','Individual','8929887355','premierCustomer5@gmail.com','2016-07-28'),
+    (011C,'Employee','Individual','2374890567','employeeCustomer1@gmail.com','2016-05-23'),
+    (012C,'Employee','Individual','5467332876','employeeCustomer2@gmail.com','2016-05-23'),
+    (013C,'Employee','Individual','8761287435','employeeCustomer3@gmail.com','2016-06-26'),
+    (014C,'Employee','Individual','8761245577','employeeCustomer4@gmail.com','2016-07-14'),
+    (015C,'Employee','Individual','8143526477','employeeCustomer5@gmail.com','2017-01-23');
+    
+/*Data for the table PremierCustomers
+INSERT INTO PremierCustomers(customerID,paymentPerMonth,paymentDueDate) VALUES
+    (
