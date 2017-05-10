@@ -7,7 +7,7 @@ CREATE TABLE Customers(
     startDate        date 		 Not Null,
     Constraint Customers_pk Primary Key (customerID)
     );
-	
+
 Create Table Address(
     customerID  int         Not Null,
     addressType             Not Null,
@@ -19,7 +19,7 @@ Create Table Address(
     Constraint Address_ZipLocations_fk Foreign Key (zipCode) References ZipLocations (zipCode)
 
     );
-	
+
 Create Table AddressTypes(
     addressType     Not Null,
     Constraint AddressTypes_pk Primary Key (addressType)
@@ -85,7 +85,7 @@ CREATE TABLE Referrals(
     Constraint Referrals_pk Primary Key (prospectID),
 	Constraint Referrals_Customers_fk Foreign Key (customerID) References Customers (customerID)
     ); -- names can be many characters so no var char
-	
+
 Create Table ContactType(
     prospectID  VARCHAR(4)  Not Null,
     contactType             Not Null,
@@ -93,7 +93,7 @@ Create Table ContactType(
     Constraint ContactType_pk Primary Key (prospectID, contactType),
 	Constraint ContactType_Referrals_fk Foreign Key (prospectID) References Referrals (prospectID)
     );
-	
+
 CREATE TABLE ProspectiveMembers(
     prospectID      VARCHAR(4)  Not Null,
     deadProspect    VARCHAR(3)  Not Null,
@@ -136,7 +136,7 @@ CREATE TABLE MaintenanceVisits(
 	employeeID		VARCHAR(4)	Not Null,
     currentMile     VARCHAR(7)  Not Null,
     milePerYear     VARCHAR(7)  Not Null,
-    packageSelect   VARCHAR(10) Not Null,
+    packageSelect   BOOLEAN Not Null,
     Constraint MaintenanceVisits_pk Primary Key (vehicleID, visitDate),
 	Constraint MaintenanceVisits_CustomerVehicles_fk Foreign Key (vehicleID) References CustomerVehicles (vehicleID)
     );
@@ -173,7 +173,7 @@ CREATE TABLE Employees (
     startDate   VARCHAR(10) Not Null,
     eDOB        VARCHAR(10) Not Null,
 
-    zipCode     VARCHAR(7)  Not Null,  
+    zipCode     VARCHAR(7)  Not Null,
 
     Constraint Employees_pk
     Primary Key (employeeID);
@@ -184,7 +184,7 @@ CREATE TABLE ZipLocations(
     city                Not Null,
     state               Not Null,
     streetName		Not Null,
-    Constraint ZipLocations_pk 
+    Constraint ZipLocations_pk
 
     Primary Key (zipCode);
     );
