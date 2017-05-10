@@ -208,10 +208,10 @@ CREATE TABLE MaintenancePackages(
     Constraint MaintenancePackages_pk
     Primary Key (packageID);
     );
-Create Table MaintenanceItem(
+Create Table MaintenanceItems(
     itemID      VARCHAR(4)  Not Null,
     itemName    VARCHAR(20) Not Null,
-    itemTime    VARCHAR(20) Not Null,
+    itemPrice   DECIMAL(4,2) Not Null,
     loyaltyPointPayable     Not Null,
     requiredSkill           Not Null,
     packageID   VARCHAR(4)  Not Null,
@@ -221,7 +221,7 @@ Create Table MaintenanceItem(
         skill stuff here
     */
     );
-Create Table VisitItem(
+Create Table VisitItems(
     employeeID  VARCHAR(4) Not Null,
     vehicleID   VARCHAR(4) Not Null,
     visitDate   date       Not Null,
