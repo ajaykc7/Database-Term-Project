@@ -1,0 +1,35 @@
+Create Table customers(
+    subscriptionType VARCHAR(20) Not Null,
+    customerType     VARCHAR(12) Not Null,
+    phone            VARCHAR(11) Not Null,
+    email            VARCHAR(30) Not Null,
+    startDate        VARCHAR(10) Not Null,
+    -- address stuff goes here
+    );
+Create Table corporation(
+    corpName    Not Null,
+    corpType    Not Null,
+    );
+Create Table individual(
+    iFirstName          Not Null,
+    iLastName           Not Null,
+    iDOB    VARCHAR(10) Not Null,
+    );
+Create Table steady(
+    loyaltyPoints                   Not Null,
+    upgradeSubscription VARCHAR(10) Not Null,
+    );
+--add a varchar for loyalty? either of these null?
+Create Table employeeCustomer(
+    discountPercent     VARCHAR(3),
+    discountAvailable   VARCHAR(3) Not Null,
+    );
+/*
+    Discount percent is a 3-digit num, but if 
+    Available is "no" then percent can be null
+*/
+Create Table premier(
+    paymentPerMonth     VARCHAR(3)  Not Null,
+    fiveYearEstimate                Not Null,
+    paymentDueDate      VARCHAR(10) Not Null,
+    );
