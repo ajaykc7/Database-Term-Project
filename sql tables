@@ -148,9 +148,6 @@ CREATE TABLE CustomerVehicles(
     model               VARCHAR(10) Not Null,
     year                date        Not Null,
     maintenanceInterval VARCHAR(8)  Not Null,
-    licenseNumber       VARCHAR(10) Not Null,
-    --not sure max char's allowed for custom license plates
-    -- and too lazy to google it
     milePerYear         VARCHAR(7)  Not Null,
     currentMile         VARCHAR(7)  Not Null,
     accident            VARCHAR(15) Not Null,
