@@ -1,20 +1,20 @@
 --/*Data for the table Customers*/
 INSERT INTO Customers(customerID, subscriptionType,customerType,phone,email,startDate) VALUES
-    (001C,'Steady','Individual','2133234444','steadyCustomer1@gmail.com','2010-01-23'),
-    (002C,'Steady','Corporation','5623232454','steadyCustomer2@gmail.com','2000-05-30'),
-    (003C,'Steady','Individual','7145539088','steadyCustomer3@gmail.com','2016-05-15'),
-    (004C,'Steady','Individual','3276587764','steadyCustomer4@gmail.com','2010-05-23'),
-    (005C,'Steady','Individual','9843801192','steadyCustomer5@gmail.com','2013-02-23'),
-    (006C,'Premier','Corporation','46783920177','premierCustomer1@gmail.com','2010-01-23'),
-    (007C,'Premier','Corporation','5473908975','premierCustomer2@gmail.com','2009-11-23'),
-    (008C,'Premier','Individual','2109467587','premierCustomer3@gmail.com','2009-03-13'),
-    (009C,'Premier','Individual','3894439764','premierCustomer4@gmail.com','2014-05-24'),
-    (010C,'Premier','Individual','8929887355','premierCustomer5@gmail.com','2016-07-28'),
-    (011C,'Employee','Individual','2374890567','employeeCustomer1@gmail.com','2016-05-23'),
-    (012C,'Employee','Individual','5467332876','employeeCustomer2@gmail.com','2016-05-23'),
-    (013C,'Employee','Individual','8761287435','employeeCustomer3@gmail.com','2016-06-26'),
-    (014C,'Employee','Individual','8761245577','employeeCustomer4@gmail.com','2016-07-14'),
-    (015C,'Employee','Individual','8143526477','employeeCustomer5@gmail.com','2017-01-23');
+    ('001C','Steady','Individual','2133234444','steadyCustomer1@gmail.com','2010-01-23'),
+    ('002C','Steady','Corporation','5623232454','steadyCustomer2@gmail.com','2000-05-30'),
+    ('003C','Steady','Individual','7145539088','steadyCustomer3@gmail.com','2016-05-15'),
+    ('004C','Steady','Individual','3276587764','steadyCustomer4@gmail.com','2010-05-23'),
+    ('005C','Steady','Individual','9843801192','steadyCustomer5@gmail.com','2013-02-23'),
+    ('006C','Premier','Corporation','46783920177','premierCustomer1@gmail.com','2010-01-23'),
+    ('007C','Premier','Corporation','5473908975','premierCustomer2@gmail.com','2009-11-23'),
+    ('008C','Premier','Individual','2109467587','premierCustomer3@gmail.com','2009-03-13'),
+    ('009C','Premier','Individual','3894439764','premierCustomer4@gmail.com','2014-05-24'),
+    ('010C','Premier','Individual','8929887355','premierCustomer5@gmail.com','2016-07-28'),
+    ('011C','Employee','Individual','2374890567','employeeCustomer1@gmail.com','2016-05-23'),
+    ('012C','Employee','Individual','5467332876','employeeCustomer2@gmail.com','2016-05-23'),
+    ('013C','Employee','Individual','8761287435','employeeCustomer3@gmail.com','2016-06-26'),
+    ('014C','Employee','Individual','8761245577','employeeCustomer4@gmail.com','2016-07-14'),
+    ('015C','Employee','Individual','8143526477','employeeCustomer5@gmail.com','2017-01-23');
 
 --/*Data for the table PremierCustomers*/
 INSERT INTO PremierCustomers(customerID,paymentPerMonth,paymentDueDate) VALUES
@@ -22,95 +22,116 @@ INSERT INTO PremierCustomers(customerID,paymentPerMonth,paymentDueDate) VALUES
 
 --/*Data for the table steadyCustomers*/
 INSERT INTO SteadyCustomers(customerID,loyaltyPoints,upgradeSubscription) VALUES
-    (001C,100,100.50),
-    (002C,0,150.00),
-    (003C,450,200.00),
-    (004C,300,450.50),
-    (005C,50,500.00);
+    ('001C',100,100.50),
+    ('002C',0,150.00),
+    ('003C',450,200.00),
+    ('004C',300,450.50),
+    ('005C',50,500.00);
 
 --/*Data for the table EmployeeCustomers*/
 INSERT INTO EmployeeCustomers(customerID, discountPercent,discountAvailable) VALUES
-    (011C,10,'YES'),
-    (012C,20,'YES'),
-    (013C,5,'NO'),
-    (014C,15,'NO'),
-    (015C,15,'YES');
+    ('011C',10,'YES'),
+    ('012C',20,'YES'),
+    ('013C',5,'NO'),
+    ('014C',15,'NO'),
+    ('015C',15,'YES');
+
+--/*Data for the table Corporations*/
+INSERT INTO Corporations(customerID, corpName, corpType) VALUES
+    ('006C','Lex Luthor Corporations','Joint Division'),
+    ('007C','Brothers Private Co.','NPO');
+
+--/*Data for the table Individuals*/
+INSERT INTO Individuals(customerID,iFirstName,iLastName,DOB) VALUES
+    ('001C','Carolyn','Chandler','1998-01-23'),
+    ('002C','Jordan','Welch','1994-11-23'),
+    ('003C','Cassandra','Ward','1978-05-23'),
+    ('004C','Calvin','Park','1950-03-15'),
+    ('005C','Carrie','Olsen','1979-04-17'),
+    ('008C','Estelle','Cain','1987-12-30'),
+    ('009C','Jaime','Rivera','1996-10-13'),
+    ('010C','Angel','Beck','1998-01-11'),
+    ('011C','Jack','Black','1990-02-12'),
+    ('012C','Dan','Bark','1989-03-25'),
+    ('013C','Paul','Thawn','1988-10-13'),
+    ('014C','Linda','Jackson','1965-12-20'),
+    ('015C','Oliver','Queen','1977-09-22');
 
 --/*Data for the table Referrals */
 INSERT INTO Referrals(customerID,prospectID,pFirstName,pLastName,referralDate,rewardType) VALUES
-    (001C,001P,'Harry','Potter','2010-4-12','Oil Change'),
-    (008C,002P,'Mark','Twain','2014-6-12','$50 off'),
-    (011C,003P,'Bruce','Wayne','2010-8-12','Oil Change');
+    ('001C','001P','Harry','Potter','2010-4-12','Oil Change'),
+    ('008C','002P','Mark','Twain','2014-6-12','$50 off'),
+    ('011C','003P','Bruce','Wayne','2010-8-12','Oil Change');
 
 --/*Data for the table ContactTypes */
 INSERT INTO ContactTypes(prospectID,contactType,contact) VALUES
-  (001P,'Email','harrypotter@gmail.com'),
-  (001P,'Phone','7148987415'),
-  (003P,'Email','brucewayne@gmail.com'),
-  (003P,'Phone','7895626666'),
-  (002P,'Phone','2134567894');
+  ('001P','Email','harrypotter@gmail.com'),
+  ('001P','Phone','7148987415'),
+  ('003P','Email','brucewayne@gmail.com'),
+  ('003P','Phone','7895626666'),
+  ('002P','Phone','2134567894');
 
 --/*Data for the table ProspectiveMember */
 INSERT INTO ProspectiveMember(prospectID,deadProspect) VALUES
-    (001P,'NO'),
-    (002P,'YES'),
-    (003P,'NO');
+    ('001P','NO'),
+    ('002P','YES'),
+    ('003P','NO');
 
 --/*Data for the table ProspectAlert */
 INSERT INTO ProspectAlert(prospectID,aDate,contactType) VALUES
-    (001P,2010-4-15),
-    (001P,2010-4-30),
-    (002P,2014-6-15),
-    (002P,2014-6-30),
-    (002P,2014-7-15),
-    (003P,2010-8-15);
+    ('001P',2010-4-15),
+    ('001P',2010-4-30),
+    ('002P',2014-6-15),
+    ('002P',2014-6-30),
+    ('002P',2014-7-15),
+    ('003P',2010-8-15);
 
 --/*Data for the table Addresses */
-INSERT INTO Addresses(customerID,addressType,streetName,zipCode) VALUES
-    (001P, 'Mailing Address','Laurel Street','90815'),
-    (002P, 'Mailing Address','Oxford Road','07424'),
-    (003P, 'Mailing Address','Lexington Court','32765'),
-    (004P, 'Mailing Address','Homestead Drive','52001'),
-    (005P, 'Mailing Address','Linden Street','46123'),
-    (006P, 'Mailing Address','Highland Avenue','21030'),
-    (007P, 'Mailing Address','Victoria Court','13760'),
-    (008P, 'Mailing Address','Summit Street','30518'),
-    (009P, 'Mailing Address','Forest Avenue','02026'),
-    (010P, 'Mailing Address','Bank Street','30096'),
-    (011P, 'Mailing Address','Country Lane','60435'),
-    (012P, 'Mailing Address','Cambridge Drive','60462'),
-    (013P, 'Mailing Address','Laurel Street','90815'),
-    (014P, 'Mailing Address','York Street','01887'),
-    (015P, 'Mailing Address','Lake Avenue','11710'),
-    (006P, 'Billing Address','Route 6','38632'),
-    (006P, 'Pickup Address','Valley View Road','35007'),
-    (006P, 'Delivery Address','Valley Road','70806'),
-    (007P, 'Billing Address','Maple Street','70605'),
-    (007P, 'Pickup Address','Monroe Drive','11691'),
-    (007P, 'Delivery Address','1st Drive','29577');
+INSERT INTO Addresses(customerID,addressType,zipCode) VALUES
+    ('001P', 'Mailing Address','90815'),
+    ('002P', 'Mailing Address','07424'),
+    ('003P', 'Mailing Address','32765'),
+    ('004P', 'Mailing Address','52001'),
+    ('005P', 'Mailing Address','46123'),
+    ('006P', 'Mailing Address','21030'),
+    ('007P', 'Mailing Address','13760'),
+    ('008P', 'Mailing Address','30518'),
+    ('009P', 'Mailing Address','02026'),
+    ('010P', 'Mailing Address','30096'),
+    ('011P', 'Mailing Address','60435'),
+    ('012P', 'Mailing Address','60462'),
+    ('013P', 'Mailing Address','90815'),
+    ('014P', 'Mailing Address','01887'),
+    ('015P', 'Mailing Address','11710'),
+    ('006P', 'Billing Address','38632'),
+    ('006P', 'Pickup Address','35007'),
+    ('006P', 'Delivery Address','70806'),
+    ('007P', 'Billing Address','70605'),
+    ('007P', 'Pickup Address','11691'),
+    ('007P', 'Delivery Address','29577');
 
 --/*Data for the table ZipLocations */
-INSERT INTO ZipLocations(zipCode,city,state) VALUES
-    ('90815','Long Beach','California'),
-    ('07424','Little Falls','New Jersey'),
-    ('32765','Oviedo','Florida'),
-    ('52001','Dubuque','Iowa'),
-    ('46123','Avon','Indiana'),
-    ('21030','Cockeysvilla','Maryland'),
-    ('13760','Endicott','New York'),
-    ('30518','Buford','Georgia'),
-    ('02026','Dedham','Massachusetts'),
-    ('30096','Duluth','Georgia'),
-    ('60435','Joliet','Illinois'),
-    ('60462','Orland Park','Illinois'),
-    ('01887','Wilmington','Massachusetts'),
-    ('11710','Bellmore','New York'),
-    ('38632','Hernando','Mississipi'),
-    ('35007','Alabaster','Alabama'),
-    ('70806','Baton Rouge','Louisiana'),
-    ('70605','Lake Charles','LA'),
-    ('11691','Far Rockaway','New York'),
-    ('29577','Myrtle Beach','South Carolina'),
+INSERT INTO ZipLocations(zipCode,streetName,city,state) VALUES
+    ('90815','Laurel Street','Long Beach','California'),
+    ('07424','Oxford Road','Little Falls','New Jersey'),
+    ('32765','Lexington Court','Oviedo','Florida'),
+    ('52001','Lexington Court','Dubuque','Iowa'),
+    ('46123','Linden Street','Avon','Indiana'),
+    ('21030','Highland Avenue','Cockeysvilla','Maryland'),
+    ('13760','Victoria Court','Endicott','New York'),
+    ('30518','Summit Street','Buford','Georgia'),
+    ('02026','Forest Avenue','Dedham','Massachusetts'),
+    ('30096','Bank Street','Duluth','Georgia'),
+    ('60435','Country Lane','Joliet','Illinois'),
+    ('60462','Cambridge Drive','Orland Park','Illinois'),
+    ('01887','York Street','Wilmington','Massachusetts'),
+    ('11710','Lake Avenue','Bellmore','New York'),
+    ('38632','Route 6','Hernando','Mississipi'),
+    ('35007','Valley View Road','Alabaster','Alabama'),
+    ('70806','Valley Road','Baton Rouge','Louisiana'),
+    ('70605','Maple Street','Lake Charles','LA'),
+    ('11691','Monroe Drive','Far Rockaway','New York'),
+    ('29577','1st Drive','Myrtle Beach','South Carolina'),
 
 
 --/*Data for the table AddressType */
@@ -171,4 +192,22 @@ INSERT INTO States(state) VALUES
   ('Wisconsin'),
   ('Wyoming');
 
---/*Data for the table Zi
+--/*Data for the table CustomerVehicles
+INSERT INTO CustomerVehicle(customerID, vinNumber, make, model, vYear, maintenanceInterval, milePerYear, currentMile, accident, scheduleFriendly, lastVisitDate) VALUES
+  ('001C','4SAM123','Ford','Mustang',2010,7500,16000,75247,'YES','NO',2016-01-10),
+  ('002C','6LIK274','Honda','Civic',2009,5000,10000,121222,'YES','YES',2016-08-05),
+  ('003C','1032247','Lexus','LX',2017,1500,5000,5001,'NO','YES',2017-03-10),
+  ('004C','5AOJ230','Honda','Accord',2012,2000,20000,45000,'NO','NO',2016-10-12),
+  ('005C','5BBM299','Chevrolet','Camaro',2010,5000,14000,200554,'YES','NO',2016-08-20),
+  ('006C','6TRJ244','Ford','Fiesta',2009,5000,5000,121001,'NO','YES',2016-07-21),
+  ('006C','6YMX832','Honda','Accord',2004,1200,7500,125888,'NO','YES',2017-05-10),
+  ('007C','2AAA000','Toyota','Highlander',2013,5000,10000,74586,'YES','YES',2016-08-07),
+  ('007C','6MBV006','Toyota','Tahoe',2014,80000,10000,25689,'YES','NO',2016-11-11),
+  ('008C','7TCE006','Volkswagen','Beetle',2000,1500,4500,200145,'YES','YES',2016-12-12),
+  ('009C','2FQZ303','Honda','Civic',2000,4500,10000,147555,'NO','YES',2016-10-10),
+  ('010C','3GDG552','Hyundai','Accent',2009,5000,12000,87418,'NO','NO',2016-07-15),
+  ('011C','SP27091','Ford','Fiesta',2004,3000,18000,85230,'YES','YES',2016-08-30),
+  ('012C','2WAQ233','Scion','XD',2001,2000,20000,100100,'NO','YES',2016-02-08),
+  ('013C','CAHIKER','Subaru','Legacy',2017,1000,4500,2000,'YES','YES',2016-10-22),
+  ('014C','AAHHYES','Ford','Mustang',2011,7500,6000,66895,'YES','YES',2016-11-24),
+  ('015C','7NES326','Honda','Pilot',2012,7000,16000,68955,'NO','YES',2016-11-24);
