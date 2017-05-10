@@ -7,19 +7,17 @@ CREATE TABLE Customers(
     startDate        date 		 Not Null,
     Constraint Customers_pk Primary Key (customerID)
     );
-
+	
 Create Table Address(
     customerID  int         Not Null,
     addressType             Not Null,
     zipCode     int         Not Null,
-
     Constraint Address_pk Primary Key (customerID, addressType, streetName, zipCode),
     Constraint Address_Customers_fk Foreign Key (customerID) References Customers (customerID),
     Constraint Address_AddressType_fk Foreign Key (addressType) References AddressTypes (addressType),
     Constraint Address_ZipLocations_fk Foreign Key (zipCode) References ZipLocations (zipCode)
-
     );
-
+	
 Create Table AddressTypes(
     addressType     Not Null,
     Constraint AddressTypes_pk Primary Key (addressType)
@@ -43,17 +41,15 @@ CREATE TABLE Individuals(
 
 CREATE TABLE SteadyCustomers(
     customerID          VARCHAR(4)  Not Null,
-
     loyaltyPoints                   Not Null,
     upgradeSubscription VARCHAR(10) Not Null,
     Constraint SteadyCustomers_pk Primary Key (customerID),
 	Constraint SteadyCustomers_Customers_fk Foreign Key (customerID) References Customers (customerID)
-
     );
 
 CREATE TABLE EmployeeCustomers(
     customerID          VARCHAR(4) Not Null,
-    discountPercent     INT NOT NULL,
+    discountPercent     VARCHAR(3),
     discountAvailable   VARCHAR(3) Not Null,
     Constraint EmployeeCustomers_pk Primary Key (customerID),
 	Constraint EmployeeCustomers_Customers_fk Foreign Key (customerID) References Customers (customerID)
@@ -76,16 +72,14 @@ CREATE TABLE PremierCustomers(
 CREATE TABLE Referrals(
     customerID   VARCHAR(4)  Not Null,
     prospectID   VARCHAR(4)  Not Null,
-
 	pFirstName               Not Null,
     pLastName                Not Null,
     referralDate VARCHAR(10) Not Null,
-
     rewardType               Not Null,
     Constraint Referrals_pk Primary Key (prospectID),
 	Constraint Referrals_Customers_fk Foreign Key (customerID) References Customers (customerID)
     ); -- names can be many characters so no var char
-
+	
 Create Table ContactType(
     prospectID  VARCHAR(4)  Not Null,
     contactType             Not Null,
@@ -93,7 +87,7 @@ Create Table ContactType(
     Constraint ContactType_pk Primary Key (prospectID, contactType),
 	Constraint ContactType_Referrals_fk Foreign Key (prospectID) References Referrals (prospectID)
     );
-
+	
 CREATE TABLE ProspectiveMembers(
     prospectID      VARCHAR(4)  Not Null,
     deadProspect    VARCHAR(3)  Not Null,
@@ -122,7 +116,7 @@ CREATE TABLE Profits(
 CREATE TABLE Invoices(
     invoiceID   VARCHAR(4)  Not Null,
     customerID  VARCHAR(4)  Not Null,
-    vehicleID   VARCHAR(4)  Not Null,
+    vehicleID   VARCHAR(7)  Not Null,
     visitDate   date        Not Null,
     total       VARCHAR(5)  Not Null,
     Constraint Invoices_pk Primary Key (invoiceID),
@@ -131,38 +125,42 @@ CREATE TABLE Invoices(
     );
 
 CREATE TABLE MaintenanceVisits(
-    vehicleID       VARCHAR(4)  Not Null,
+    vehicleID       VARCHAR(7)  Not Null,
     visitDate       date        Not Null,
 	employeeID		VARCHAR(4)	Not Null,
     currentMile     VARCHAR(7)  Not Null,
     milePerYear     VARCHAR(7)  Not Null,
-    packageSelect   BOOLEAN Not Null,
+    packageSelect   VARCHAR(10) Not Null,
     Constraint MaintenanceVisits_pk Primary Key (vehicleID, visitDate),
 	Constraint MaintenanceVisits_CustomerVehicles_fk Foreign Key (vehicleID) References CustomerVehicles (vehicleID)
     );
 
 CREATE TABLE CustomerVehicles(
     customerID          VARCHAR(4)  Not Null,
-    vehicleID           VARCHAR(4)  Not Null,
+    vehicleID           VARCHAR(7)  Not Null,
     make                VARCHAR(10) Not Null,
     model               VARCHAR(10) Not Null,
     year                date        Not Null,
     maintenanceInterval VARCHAR(8)  Not Null,
+    --licenseNumber       VARCHAR(10) Not Null,--------------
+    --not sure max char's allowed for custom license plates--
+    -- and too lazy to google it-----------------------------
     milePerYear         VARCHAR(7)  Not Null,
     currentMile         VARCHAR(7)  Not Null,
     accident            VARCHAR(15) Not Null,
     scheduleFriendly,
     lastVisitDate       VARCHAR(10),
-    Constraint CustomerVehicles_pk
-    Primary Key (vehicleID);
+    Constraint CustomerVehicles_pk Primary Key (vehicleID),
+	Constraint CustomerVehicles_Customers_fk Foreign Key (customerID) References Customers (customerID)
     );
 
 CREATE TABLE  CustomerAlerts(
-    vehicleID   VARCHAR(4) Not Null,
-    appointment	datetime   Not Null, --Format: yyyy-mm-ddThh:mm:ss
+    vehicleID   VARCHAR(7) Not Null,
+    aDate        date       Not Null,
+    aTime        time       Not Null,
     alertType   VARCHAR(5) Not Null,
-    Constraint CustomerAlerts_pk
-    Primary Key (vehicleID, aDate);
+    Constraint CustomerAlerts_pk Primary Key (vehicleID, aDate),
+	Constraint CustomerAlerts_CustomerVehicles_fk Foreign Key (vehicleID) References CustomerVehicles (vehicleID)
     );
 
 CREATE TABLE Employees (
@@ -172,94 +170,103 @@ CREATE TABLE Employees (
     jobTitle    VARCHAR(10) Not Null,
     startDate   VARCHAR(10) Not Null,
     eDOB        VARCHAR(10) Not Null,
-
-    zipCode     VARCHAR(7)  Not Null,
-
-    Constraint Employees_pk
-    Primary Key (employeeID);
+    zipCode     VARCHAR(7)  Not Null,  
+    Constraint Employees_pk Primary Key (employeeID),
+	Constraint Employees_ZipLocations_fk Foreign Key (zipCode) References ZipLocations (zipCode)
     );
 
 CREATE TABLE ZipLocations(
     zipCode VARCHAR(7)  Not Null,
     city                Not Null,
     state               Not Null,
-    streetName		Not Null,
-    Constraint ZipLocations_pk
-
-    Primary Key (zipCode);
+	streetName			Not Null,
+    Constraint ZipLocations_pk Primary Key (zipCode),
+	Constraint ZipLocations_States_fk Foreign Key (state) References States (state)
     );
+	
 Create Table States(
     state   Not Null,
-    Constraint States_pk
-    Primary Key (state);
+    Constraint States_pk Primary Key (state)
     );
+	
 Create Table Technicians(
     employeeID  VARCHAR(4) Not Null,
-    tLanguage,
-    workStation Not Null,
-    Constraint Technicians_pk
-    Primary Key (employeeID);
+    language	VARCHAR(20),
+    workStation 		   Not Null,
+    Constraint Technicians_pk Primary Key (employeeID),
+	Constraint Technicians_Employees_fk Foreign Key (employeeID) References Employees (employeeID)
     );
 
 CREATE TABLE MaintenancePackages(
     packageID   VARCHAR(4) Not Null,
     packageName            Not Null,
-    vehicleID   VARCHAR(4) Not Null,
-    Constraint MaintenancePackages_pk
-    Primary Key (packageID);
+    vehicleID   VARCHAR(7) Not Null,
+    Constraint MaintenancePackages_pk Primary Key (packageID),
+	Constraint MaintenancePackages_CustomerVehicles_fk Foreign Key (vehicleID) References CustomerVehicles (vehicleID)
     );
-Create Table MaintenanceItems(
+	
+Create Table MaintenanceItem(
     itemID      VARCHAR(4)  Not Null,
     itemName    VARCHAR(20) Not Null,
-    itemPrice   DECIMAL(4,2) Not Null,
+    itemTime    VARCHAR(20) Not Null,
     loyaltyPointPayable     Not Null,
     requiredSkill           Not Null,
     packageID   VARCHAR(4)  Not Null,
-    Constraint MaintenanceItem_pk
-    Primary Key (itemID);
-    /*
-        skill stuff here
-    */
+    Constraint MaintenanceItem_pk Primary Key (itemID),
+	Constraint MaintenanceItem_MaintenancePackages_fk Foreign Key (packageID) References MaintenancePackages (packageID)
     );
-Create Table VisitItems(
+	
+Create Table VisitItem(
     employeeID  VARCHAR(4) Not Null,
-    vehicleID   VARCHAR(4) Not Null,
+    vehicleID   VARCHAR(7) Not Null,
     visitDate   date       Not Null,
     itemID      VARCHAR(4) Not Null,
-    Constraint VisitItem_pk
-    Primary Key (employeeID, vehicleID, visitDate, itemID);
+    Constraint VisitItem_pk Primary Key (employeeID, vehicleID, visitDate, itemID),
+	Constraint VisitItem_Mechanics_fk Foreign Key (employeeID) References Mechanic (employeeID),
+	Constraint VisitItem_MaintenanceVisit_fk Foreign Key (vehicleID, visitDate) References MaintenanceVisits (vehicleID, visitDate),
+	Constraint VisitItem_MaintenanceItem_fk Foreign Key (itemID) References MaintenanceItem (itemID)
     );
 /*
 Create Table Items(
-
+    
     itemName    VARCHAR(20) Not Null,
     );
 */
-Crea
+
+Create Table Mechanic(
+	employeeID	VARCHAR(4) Not Null,
+	Constraint Mechanic_pk Primary Key (employeeID),
+	Constraint Mechanic_Employees_fk Foreign Key (employeeID) References Employees (employeeID)
     );
+	
 Create Table Skills(
-    employeeID  VARCHAR(4) Not Null,
-    skillName              Not Null,
-    skillProficiency       Not Null,
-    Constraint Skills_pk
-    Primary Key (employeeID, skillName);
+    employeeID  VARCHAR(4)  Not Null,
+    skillName   VARCHAR(20) Not Null,
+    skillProficiency        Not Null,
+    Constraint Skills_pk Primary Key (employeeID, skillName),
+	Constraint Skills_SkillNames_fk Foreign Key (skillName) References SkillNames (skillName),
+	Constraint Skills_SkillProficiencies_fk Foreign Key (skillProficiency) References SkillProficiencies (skillProficiency)
     );
+	
 Create Table SkillProficiencies(
     skillProficiency    Not Null,
-    Constraint SkillProficiencies_pk
-    Primary Key (skillProficiency);
+    Constraint SkillProficiencies_pk Primary Key (skillProficiency)
     );
+	
 Create Table SkillNames(
     skillName   Not Null,
-    Constraint SkillNames_pk
-    Primary Key (skillName);
+    Constraint SkillNames_pk Primary Key (skillName)
     );
+	
 Create Table Apprenticeship(
     mentorID    VARCHAR(4)  Not Null,
     menteeID    VARCHAR(4)  Not Null,
-    startDate   VARCHAR(10) Not Null,
+    startDate   date		Not Null,
     active                  Not Null,
     mentoredSkill           Not Null,
-    Constraint Apprenticeship_pk
-    Primary Key (mentorID, menteeID, startDate);
+    Constraint Apprenticeship_pk Primary Key (mentorID, menteeID, startDate),
+	--Constraint Apprenticeship_Mechanic_fk Foreign Key (mentorID) References Mechanic (mentorID),
+	--Constraint Apprenticeship_Mechanic_fk Foreign Key (menteeID) References Mechanic (menteeID)
+	/* This shit wack, yo! */
     );
+
