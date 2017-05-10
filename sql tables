@@ -15,35 +15,53 @@ Create Table Address(
     zipCode     int         Not Null,
     Constraint Address_pk, 
     Primary Key (customerID, addressType, streetName, zipCode);
-    Constraint Address_fk_c
+    Constraint Address_Customers_fk
     Foreign Key (customerID);
-    Constraint Address_fk_adT
+    Constraint Address_AddressType_fk
     Foreign Key (addressType);
-    Constraint Address_fk_z
+    Constraint Address_ZipLocations_fk
     Foreign Key (zipCode);
-    
     );
-CREATE TABLE Corporations(
-    corpName    Not Null,
-    corpType    Not Null,
+Create Table AddressTypes(
+    addressType     Not Null,
+    Constraint AddressTypes_pk
+    Primary Key (addressType);
+    );
+Create Table Corporations(
+    corpName        Not Null,
+    corpType        Not Null,
+    customerID int  Not Null,
+    Constraint Corporations_pk
+    Primary Key (customerID);
+    Constraint  Corporations_Customers_fk
+    Foreign Key (customerID);
     );
 
 CREATE TABLE Individuals(
-    iFirstName          Not Null,
-    iLastName           Not Null,
-    iDOB    VARCHAR(10) Not Null,
+    customerID  VARCHAR(4)  Not Null,
+    iFirstName              Not Null,
+    iLastName               Not Null,
+    iDOB    VARCHAR(10)     Not Null,
+    Constraint Individuals_pk
+    Primary Key (customerID);
     );
 
 CREATE TABLE SteadyCustomers(
+    customerID          VARCHAR(4)  Not Null,
     loyaltyPoints                   Not Null,
     upgradeSubscription VARCHAR(10) Not Null,
+    Constraint SteadyCustomers_pk
+    Primary Key (customerID);
     );
 
 --add a varchar for loyalty? either of these null?
 
 CREATE TABLE EmployeeCustomers(
+    customerID          VARCHAR(4) Not Null,
     discountPercent     VARCHAR(3),
     discountAvailable   VARCHAR(3) Not Null,
+    Constraint EmployeeCustomers_pk
+    Primary Key (customerID);
     );
 /*
     Discount percent is a 3-digit num, but if
@@ -51,53 +69,82 @@ CREATE TABLE EmployeeCustomers(
 */
 
 CREATE TABLE PremierCustomers(
+    customerID          VARCHAR(3)  Not Null,
     paymentPerMonth     VARCHAR(3)  Not Null,
     fiveYearEstimate                Not Null,
     paymentDueDate      VARCHAR(10) Not Null,
+    Constraint PremierCustomers_pk
+    Primary Key (customerID);
     );
 
 CREATE TABLE Referrals(
+    customerID   VARCHAR(4)  Not Null,
+    prospectID   VARCHAR(4)  Not Null,
     referralDate VARCHAR(10) Not Null,
-    referralType               Not Null,
+    rewardType               Not Null,
     pFirstName               Not Null,
     pLastName                Not Null,
+    Constraint Referrals_pk
+    Primary Key (prospectID);
     ); -- names can be many characters so no var char
 Create Table ContactType(
-    contactType     Not Null,
-    cPhone      VARCHAR(10),
-    cEmail,
+    prospectID  VARCHAR(4)  Not Null,
+    contactType             Not Null,
+    contact,
+    Constraint ContactType_pk
+    Primary Key (prospectID, contactType);
     );
 CREATE TABLE ProspectiveMembers(
+    prospectID      VARCHAR(4)  Not Null,
     deadProspect    VARCHAR(3)  Not Null,
+    Constraint ProspectiveMembers_pk
+    Primary Key (prospectID);
     );
 /*
     dead prospect clarification, is it yes or no, or 1 - 3?
 */
 
 CREATE TABLE ProspectAlerts(
-    aDate       VARCHAR(10) Not Null,
+    prospectID  VARCHAR(4)  Not Null,
+    date       VARCHAR(10) Not Null,
     contactType VARCHAR(5)  Not Null,
+    Constraint ProspectAlerts_pk
+    Primary Key (prospectID, date);
     );
 
 CREATE TABLE Profits(
+    customerID      VARCHAR(4)  Not Null,
     incomeEarned    VARCHAR(6)  Not Null,
+    Constraint Profits_pk
+    Primary Key (customerID);
     ); --maybe something costs 6 figures? haha
 
 CREATE TABLE Invoices(
-    total VARCHAR(5)    Not Null,
+    invoiceID   VARCHAR(4)  Not Null,
+    customerID  VARCHAR(4)  Not Null,
+    vehicleID   VARCHAR(4)  Not Null,
+    visitDate   date        Not Null,
+    total       VARCHAR(5)  Not Null,
+    Constraint Invoices_pk
+    Primary Key (invoiceID);
     );
 
 CREATE TABLE MaintenanceVisits(
-    visitDate       VARCHAR(10) Not Null,
+    vehicleID       VARCHAR(4)  Not Null,
+    visitDate       date        Not Null,
     currentMile     VARCHAR(7)  Not Null,
     milePerYear     VARCHAR(7)  Not Null,
     packageSelect   VARCHAR(10) Not Null,
+    Constraint MaintenanceVisits_pk
+    Primary Key (vehicleID, visitDate);
     );
 
 CREATE TABLE CustomerVehicles(
+    customerID          VARCHAR(4)  Not Null,
+    vehicleID           VARCHAR(4)  Not Null,
     make                VARCHAR(10) Not Null,
     model               VARCHAR(10) Not Null,
-    vYear               VARCHAR(4)  Not Null,
+    year                date        Not Null,
     maintenanceInterval VARCHAR(8)  Not Null,
     licenseNumber       VARCHAR(10) Not Null,
     --not sure max char's allowed for custom license plates
@@ -107,60 +154,112 @@ CREATE TABLE CustomerVehicles(
     accident            VARCHAR(15) Not Null,
     scheduleFriendly,
     lastVisitDate       VARCHAR(10),
+    Constraint CustomerVehicles_pk
+    Primary Key (vehicleID);
     );
 
-CREATE TABLE  customerAlerts(
-    aTime                   Not Null,
-    aDate       VARCHAR(10) Not Null,
-    alertType  VARCHAR(5)  Not Null,
+CREATE TABLE  CustomerAlerts(
+    vehicleID   VARCHAR(4) Not Null,
+    aDate        date       Not Null,
+    aTime        time       Not Null,
+    alertType   VARCHAR(5) Not Null,
+    Constraint CustomerAlerts_pk
+    Primary Key (vehicleID, aDate);
     );
 
 CREATE TABLE Employees (
+    employeeID  VARCHAR(4)  Not Null,
     eFirstName  Not Null,
     eLastName   Not Null,
     jobTitle    VARCHAR(10) Not Null,
     startDate   VARCHAR(10) Not Null,
     eDOB        VARCHAR(10) Not Null,
     streetName              Not Null,
+    zipCode     VARCHAR(7)  Not Null,  
+    Constraint Employees_pk
+    Primary Key (employeeID);
     );
 
-CREATE TABLE ZipLocations         (
+CREATE TABLE ZipLocations(
     zipCode VARCHAR(7)  Not Null,
     city                Not Null,
-    enumeratedStates,
+    state               Not Null,
+    Constraint ZipLocations_pk 
+    Primary Key (zipCode);
     );
-
-CREATE TABLE Technicians (
+Create Table States(
+    state   Not Null,
+    Constraint States_pk
+    Primary Key (state);
+    );
+Create Table Technicians(
+    employeeID  VARCHAR(4) Not Null,
     tLanguage,
     workStation Not Null,
+    Constraint Technicians_pk
+    Primary Key (employeeID);
     );
 
-CREATE TABLE MaintenancePackages (
-    packageName Not Null,
+CREATE TABLE MaintenancePackages(
+    packageID   VARCHAR(4) Not Null,
+    packageName            Not Null,
+    vehicleID   VARCHAR(4) Not Null,
+    Constraint MaintenancePackages_pk
+    Primary Key (packageID);
     );
 Create Table MaintenanceItem(
+    itemID      VARCHAR(4)  Not Null,
     itemName    VARCHAR(20) Not Null,
     itemTime    VARCHAR(20) Not Null,
-    loyaltyPointPayable Not Null,
+    loyaltyPointPayable     Not Null,
+    requiredSkill           Not Null,
+    packageID   VARCHAR(4)  Not Null,
+    Constraint MaintenanceItem_pk
+    Primary Key (itemID);
     /*
         skill stuff here
     */
     );
 Create Table VisitItem(
-    
+    employeeID  VARCHAR(4) Not Null,
+    vehicleID   VARCHAR(4) Not Null,
+    visitDate   date       Not Null,
+    itemID      VARCHAR(4) Not Null,
+    Constraint VisitItem_pk
+    Primary Key (employeeID, vehicleID, visitDate, itemID);
     );
+/*
 Create Table Items(
+    
     itemName    VARCHAR(20) Not Null,
     );
+*/
 Crea
     );
-Create Table Skill(
-    skillName           Not Null,
+Create Table Skills(
+    employeeID  VARCHAR(4) Not Null,
+    skillName              Not Null,
+    skillProficiency       Not Null,
+    Constraint Skills_pk
+    Primary Key (employeeID, skillName);
+    );
+Create Table SkillProficiencies(
     skillProficiency    Not Null,
+    Constraint SkillProficiencies_pk
+    Primary Key (skillProficiency);
+    );
+Create Table SkillNames(
+    skillName   Not Null,
+    Constraint SkillNames_pk
+    Primary Key (skillName);
     );
 Create Table Apprenticeship(
+    mentorID    VARCHAR(4)  Not Null,
+    menteeID    VARCHAR(4)  Not Null,
     startDate   VARCHAR(10) Not Null,
     active                  Not Null,
     mentoredSkill           Not Null,
+    Constraint Apprenticeship_pk
+    Primary Key (mentorID, menteeID, startDate);
     );
 
