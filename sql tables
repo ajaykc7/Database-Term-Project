@@ -159,8 +159,7 @@ CREATE TABLE CustomerVehicles(
 
 CREATE TABLE  CustomerAlerts(
     vehicleID   VARCHAR(4) Not Null,
-    aDate        date       Not Null,
-    aTime        time       Not Null,
+    appointment	datetime   Not Null, --Format: yyyy-mm-ddThh:mm:ss
     alertType   VARCHAR(5) Not Null,
     Constraint CustomerAlerts_pk
     Primary Key (vehicleID, aDate);
@@ -184,8 +183,7 @@ CREATE TABLE ZipLocations(
     zipCode VARCHAR(7)  Not Null,
     city                Not Null,
     state               Not Null,
-
-	streetName			Not Null,
+    streetName		Not Null,
     Constraint ZipLocations_pk 
 
     Primary Key (zipCode);
