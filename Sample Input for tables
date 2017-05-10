@@ -1,20 +1,20 @@
 --/*Data for the table Customers*/
 INSERT INTO Customers(customerID, subscriptionType,customerType,phone,email,startDate) VALUES
-    ('001C','Steady','Individual','2133234444','steadyCustomer1@gmail.com','2010-01-23'),
-    ('002C','Steady','Corporation','5623232454','steadyCustomer2@gmail.com','2000-05-30'),
-    ('003C','Steady','Individual','7145539088','steadyCustomer3@gmail.com','2016-05-15'),
-    ('004C','Steady','Individual','3276587764','steadyCustomer4@gmail.com','2010-05-23'),
-    ('005C','Steady','Individual','9843801192','steadyCustomer5@gmail.com','2013-02-23'),
-    ('006C','Premier','Corporation','46783920177','premierCustomer1@gmail.com','2010-01-23'),
-    ('007C','Premier','Corporation','5473908975','premierCustomer2@gmail.com','2009-11-23'),
-    ('008C','Premier','Individual','2109467587','premierCustomer3@gmail.com','2009-03-13'),
-    ('009C','Premier','Individual','3894439764','premierCustomer4@gmail.com','2014-05-24'),
-    ('010C','Premier','Individual','8929887355','premierCustomer5@gmail.com','2016-07-28'),
-    ('011C','Employee','Individual','2374890567','employeeCustomer1@gmail.com','2016-05-23'),
-    ('012C','Employee','Individual','5467332876','employeeCustomer2@gmail.com','2016-05-23'),
-    ('013C','Employee','Individual','8761287435','employeeCustomer3@gmail.com','2016-06-26'),
-    ('014C','Employee','Individual','8761245577','employeeCustomer4@gmail.com','2016-07-14'),
-    ('015C','Employee','Individual','8143526477','employeeCustomer5@gmail.com','2017-01-23');
+    ('001C','Steady','Individual','2133234444','steadyCustomer1@gmail.com',2010-01-23),
+    ('002C','Steady','Corporation','5623232454','steadyCustomer2@gmail.com',2000-05-30),
+    ('003C','Steady','Individual','7145539088','steadyCustomer3@gmail.com',2016-05-15),
+    ('004C','Steady','Individual','3276587764','steadyCustomer4@gmail.com',2010-05-23),
+    ('005C','Steady','Individual','9843801192','steadyCustomer5@gmail.com',2013-02-23),
+    ('006C','Premier','Corporation','46783920177','premierCustomer1@gmail.com',2010-01-23),
+    ('007C','Premier','Corporation','5473908975','premierCustomer2@gmail.com',2009-11-23),
+    ('008C','Premier','Individual','2109467587','premierCustomer3@gmail.com',2009-03-13),
+    ('009C','Premier','Individual','3894439764','premierCustomer4@gmail.com',2014-05-24),
+    ('010C','Premier','Individual','8929887355','premierCustomer5@gmail.com',2016-07-28),
+    ('011C','Employee','Individual','2374890567','employeeCustomer1@gmail.com',2016-05-23),
+    ('012C','Employee','Individual','5467332876','employeeCustomer2@gmail.com',2016-05-23),
+    ('013C','Employee','Individual','8761287435','employeeCustomer3@gmail.com',2016-06-26),
+    ('014C','Employee','Individual','8761245577','employeeCustomer4@gmail.com',2016-07-14),
+    ('015C','Employee','Individual','8143526477','employeeCustomer5@gmail.com',2017-01-23);
 
 --/*Data for the table PremierCustomers*/
 INSERT INTO PremierCustomers(customerID,paymentPerMonth,paymentDueDate) VALUES
@@ -43,25 +43,25 @@ INSERT INTO Corporations(customerID, corpName, corpType) VALUES
 
 --/*Data for the table Individuals*/
 INSERT INTO Individuals(customerID,iFirstName,iLastName,DOB) VALUES
-    ('001C','Carolyn','Chandler','1998-01-23'),
-    ('002C','Jordan','Welch','1994-11-23'),
-    ('003C','Cassandra','Ward','1978-05-23'),
-    ('004C','Calvin','Park','1950-03-15'),
-    ('005C','Carrie','Olsen','1979-04-17'),
-    ('008C','Estelle','Cain','1987-12-30'),
-    ('009C','Jaime','Rivera','1996-10-13'),
-    ('010C','Angel','Beck','1998-01-11'),
-    ('011C','Jack','Black','1990-02-12'),
-    ('012C','Dan','Bark','1989-03-25'),
-    ('013C','Paul','Thawn','1988-10-13'),
-    ('014C','Linda','Jackson','1965-12-20'),
-    ('015C','Oliver','Queen','1977-09-22');
+    ('001C','Carolyn','Chandler',1998-01-23),
+    ('002C','Jordan','Welch',1994-11-23),
+    ('003C','Cassandra','Ward',1978-05-23),
+    ('004C','Calvin','Park',1950-03-15),
+    ('005C','Carrie','Olsen',1979-04-17),
+    ('008C','Estelle','Cain',1987-12-30),
+    ('009C','Jaime','Rivera',1996-10-13),
+    ('010C','Angel','Beck',1998-01-11),
+    ('011C','Jack','Black',1990-02-12),
+    ('012C','Dan','Bark',1989-03-25),
+    ('013C','Paul','Thawn',1988-10-13),
+    ('014C','Linda','Jackson',1965-12-20),
+    ('015C','Oliver','Queen',1977-09-22);
 
 --/*Data for the table Referrals */
 INSERT INTO Referrals(customerID,prospectID,pFirstName,pLastName,referralDate,rewardType) VALUES
-    ('001C','001P','Harry','Potter','2010-4-12','Oil Change'),
-    ('008C','002P','Mark','Twain','2014-6-12','$50 off'),
-    ('011C','003P','Bruce','Wayne','2010-8-12','Oil Change');
+    ('001C','001P','Harry','Potter',2010-4-12,'Oil Change'),
+    ('008C','002P','Mark','Twain',2014-6-12,'$50 off'),
+    ('011C','003P','Bruce','Wayne',2010-8-12,'Oil Change');
 
 --/*Data for the table ContactTypes */
 INSERT INTO ContactTypes(prospectID,contactType,contact) VALUES
