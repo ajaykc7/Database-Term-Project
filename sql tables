@@ -12,10 +12,12 @@ Create Table Address(
     customerID  int         Not Null,
     addressType             Not Null,
     zipCode     int         Not Null,
+
     Constraint Address_pk Primary Key (customerID, addressType, streetName, zipCode),
     Constraint Address_Customers_fk Foreign Key (customerID) References Customers (customerID),
     Constraint Address_AddressType_fk Foreign Key (addressType) References AddressTypes (addressType),
     Constraint Address_ZipLocations_fk Foreign Key (zipCode) References ZipLocations (zipCode)
+
     );
 	
 Create Table AddressTypes(
@@ -41,15 +43,17 @@ CREATE TABLE Individuals(
 
 CREATE TABLE SteadyCustomers(
     customerID          VARCHAR(4)  Not Null,
+
     loyaltyPoints                   Not Null,
     upgradeSubscription VARCHAR(10) Not Null,
     Constraint SteadyCustomers_pk Primary Key (customerID),
 	Constraint SteadyCustomers_Customers_fk Foreign Key (customerID) References Customers (customerID)
+
     );
 
 CREATE TABLE EmployeeCustomers(
     customerID          VARCHAR(4) Not Null,
-    discountPercent     VARCHAR(3),
+    discountPercent     INT NOT NULL,
     discountAvailable   VARCHAR(3) Not Null,
     Constraint EmployeeCustomers_pk Primary Key (customerID),
 	Constraint EmployeeCustomers_Customers_fk Foreign Key (customerID) References Customers (customerID)
@@ -72,9 +76,11 @@ CREATE TABLE PremierCustomers(
 CREATE TABLE Referrals(
     customerID   VARCHAR(4)  Not Null,
     prospectID   VARCHAR(4)  Not Null,
+
 	pFirstName               Not Null,
     pLastName                Not Null,
     referralDate VARCHAR(10) Not Null,
+
     rewardType               Not Null,
     Constraint Referrals_pk Primary Key (prospectID),
 	Constraint Referrals_Customers_fk Foreign Key (customerID) References Customers (customerID)
@@ -170,7 +176,9 @@ CREATE TABLE Employees (
     jobTitle    VARCHAR(10) Not Null,
     startDate   VARCHAR(10) Not Null,
     eDOB        VARCHAR(10) Not Null,
+
     zipCode     VARCHAR(7)  Not Null,  
+
     Constraint Employees_pk
     Primary Key (employeeID);
     );
@@ -179,8 +187,10 @@ CREATE TABLE ZipLocations(
     zipCode VARCHAR(7)  Not Null,
     city                Not Null,
     state               Not Null,
+
 	streetName			Not Null,
     Constraint ZipLocations_pk 
+
     Primary Key (zipCode);
     );
 Create Table States(
@@ -226,7 +236,7 @@ Create Table VisitItem(
     );
 /*
 Create Table Items(
-    
+
     itemName    VARCHAR(20) Not Null,
     );
 */
@@ -258,4 +268,3 @@ Create Table Apprenticeship(
     Constraint Apprenticeship_pk
     Primary Key (mentorID, menteeID, startDate);
     );
-
