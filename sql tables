@@ -8,7 +8,7 @@ CREATE TABLE Customers(
     CONSTRAINT Customers_pk PRIMARY KEY (customerID)
     );
 
-Create Table Addresses(
+Create Table Address(
     customerID  int         NOT NULL,
     addressType             NOT NULL,
     zipCode     int         NOT NULL,
@@ -80,7 +80,7 @@ CREATE TABLE Referrals(
 	CONSTRAINT Referrals_Customers_fk FOREIGN KEY (customerID) REFERENCES Customers (customerID)
     ); -- names can be many characters so no var char
 
-Create Table ContactTypes(
+Create Table ContactType(
     prospectID  VARCHAR(4)  NOT NULL,
     contactType             NOT NULL,
     contact,
@@ -142,6 +142,9 @@ CREATE TABLE CustomerVehicles(
     model               VARCHAR(10) NOT NULL,
     year                date        NOT NULL,
     maintenanceInterval VARCHAR(8)  NOT NULL,
+    --licenseNumber       VARCHAR(10) NOT NULL,--------------
+    --not sure max char's allowed for custom license plates--
+    -- and too lazy to google it-----------------------------
     milePerYear         VARCHAR(7)  NOT NULL,
     currentMile         VARCHAR(7)  NOT NULL,
     accident            VARCHAR(15) NOT NULL,
@@ -197,16 +200,15 @@ Create Table Technicians(
 CREATE TABLE MaintenancePackages(
     packageID   VARCHAR(4) NOT NULL,
     packageName            NOT NULL,
-    packagePrice DECIMAL(8,2) NOT NULL,
     vehicleID   VARCHAR(7) NOT NULL,
     CONSTRAINT MaintenancePackages_pk PRIMARY KEY (packageID),
 	CONSTRAINT MaintenancePackages_CustomerVehicles_fk FOREIGN KEY (vehicleID) REFERENCES CustomerVehicles (vehicleID)
     );
 
-Create Table MaintenanceItems(
+Create Table MaintenanceItem(
     itemID      VARCHAR(4)  NOT NULL,
     itemName    VARCHAR(20) NOT NULL,
-    itemPrice   DECIMAL(8,2) NOT NULL,
+    itemTime    VARCHAR(20) NOT NULL,
     loyaltyPointPayable     NOT NULL,
     requiredSkill           NOT NULL,
     packageID   VARCHAR(4)  NOT NULL,
@@ -214,7 +216,7 @@ Create Table MaintenanceItems(
 	CONSTRAINT MaintenanceItem_MaintenancePackages_fk FOREIGN KEY (packageID) REFERENCES MaintenancePackages (packageID)
     );
 
-Create Table VisitItems(
+Create Table VisitItem(
     employeeID  VARCHAR(4) NOT NULL,
     vehicleID   VARCHAR(7) NOT NULL,
     visitDate   date       NOT NULL,
@@ -231,7 +233,7 @@ Create Table Items(
     );
 */
 
-Create Table Mechanics(
+Create Table Mechanic(
 	employeeID	VARCHAR(4) NOT NULL,
 	CONSTRAINT Mechanic_pk PRIMARY KEY (employeeID),
 	CONSTRAINT Mechanic_Employees_fk FOREIGN KEY (employeeID) REFERENCES Employees (employeeID)
@@ -256,7 +258,7 @@ Create Table SkillNames(
     CONSTRAINT SkillNames_pk PRIMARY KEY (skillName)
     );
 
-Create Table Apprenticeships(
+Create Table Apprenticeship(
     mentorID    VARCHAR(4)  NOT NULL,
     menteeID    VARCHAR(4)  NOT NULL,
     startDate   date		NOT NULL,
