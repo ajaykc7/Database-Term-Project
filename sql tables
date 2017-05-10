@@ -13,7 +13,7 @@ Create Table Address(
     streetName  VARCHAR(30) Not Null,
     customerID  int         Not Null,
     zipCode     int         Not Null,
-    Constraint Address_pk, 
+    Constraint Address_pk,
     Primary Key (customerID, addressType, streetName, zipCode);
     Constraint Address_Customers_fk
     Foreign Key (customerID);
@@ -48,8 +48,8 @@ CREATE TABLE Individuals(
 
 CREATE TABLE SteadyCustomers(
     customerID          VARCHAR(4)  Not Null,
-    loyaltyPoints                   Not Null,
-    upgradeSubscription VARCHAR(10) Not Null,
+    loyaltyPoints       INT         Not Null,
+    upgradeSubscription DECIMAL(10,2) Not Null,
     Constraint SteadyCustomers_pk
     Primary Key (customerID);
     );
@@ -58,7 +58,7 @@ CREATE TABLE SteadyCustomers(
 
 CREATE TABLE EmployeeCustomers(
     customerID          VARCHAR(4) Not Null,
-    discountPercent     VARCHAR(3),
+    discountPercent     INT NOT NULL,
     discountAvailable   VARCHAR(3) Not Null,
     Constraint EmployeeCustomers_pk
     Primary Key (customerID);
@@ -80,7 +80,7 @@ CREATE TABLE PremierCustomers(
 CREATE TABLE Referrals(
     customerID   VARCHAR(4)  Not Null,
     prospectID   VARCHAR(4)  Not Null,
-    referralDate VARCHAR(10) Not Null,
+    referralDate DATE Not Null,
     rewardType               Not Null,
     pFirstName               Not Null,
     pLastName                Not Null,
@@ -175,7 +175,7 @@ CREATE TABLE Employees (
     startDate   VARCHAR(10) Not Null,
     eDOB        VARCHAR(10) Not Null,
     streetName              Not Null,
-    zipCode     VARCHAR(7)  Not Null,  
+    zipCode     VARCHAR(7)  Not Null,
     Constraint Employees_pk
     Primary Key (employeeID);
     );
@@ -184,7 +184,7 @@ CREATE TABLE ZipLocations(
     zipCode VARCHAR(7)  Not Null,
     city                Not Null,
     state               Not Null,
-    Constraint ZipLocations_pk 
+    Constraint ZipLocations_pk
     Primary Key (zipCode);
     );
 Create Table States(
@@ -230,7 +230,7 @@ Create Table VisitItem(
     );
 /*
 Create Table Items(
-    
+
     itemName    VARCHAR(20) Not Null,
     );
 */
@@ -262,4 +262,3 @@ Create Table Apprenticeship(
     Constraint Apprenticeship_pk
     Primary Key (mentorID, menteeID, startDate);
     );
-
