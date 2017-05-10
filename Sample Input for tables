@@ -1,4 +1,4 @@
-/*Data for the table Customers
+--/*Data for the table Customers*/
 INSERT INTO Customers(customerID, subscriptionType,customerType,phone,email,startDate) VALUES
     (001C,'Steady','Individual','2133234444','steadyCustomer1@gmail.com','2010-01-23'),
     (002C,'Steady','Corporation','5623232454','steadyCustomer2@gmail.com','2000-05-30'),
@@ -15,7 +15,160 @@ INSERT INTO Customers(customerID, subscriptionType,customerType,phone,email,star
     (013C,'Employee','Individual','8761287435','employeeCustomer3@gmail.com','2016-06-26'),
     (014C,'Employee','Individual','8761245577','employeeCustomer4@gmail.com','2016-07-14'),
     (015C,'Employee','Individual','8143526477','employeeCustomer5@gmail.com','2017-01-23');
-    
-/*Data for the table PremierCustomers
+
+--/*Data for the table PremierCustomers*/
 INSERT INTO PremierCustomers(customerID,paymentPerMonth,paymentDueDate) VALUES
-    (
+    ();
+
+--/*Data for the table steadyCustomers*/
+INSERT INTO SteadyCustomers(customerID,loyaltyPoints,upgradeSubscription) VALUES
+    (001C,100,100.50),
+    (002C,0,150.00),
+    (003C,450,200.00),
+    (004C,300,450.50),
+    (005C,50,500.00);
+
+--/*Data for the table EmployeeCustomers*/
+INSERT INTO EmployeeCustomers(customerID, discountPercent,discountAvailable) VALUES
+    (011C,10,'YES'),
+    (012C,20,'YES'),
+    (013C,5,'NO'),
+    (014C,15,'NO'),
+    (015C,15,'YES');
+
+--/*Data for the table Referrals */
+INSERT INTO Referrals(customerID,prospectID,pFirstName,pLastName,referralDate,rewardType) VALUES
+    (001C,001P,'Harry','Potter','2010-4-12','Oil Change'),
+    (008C,002P,'Mark','Twain','2014-6-12','$50 off'),
+    (011C,003P,'Bruce','Wayne','2010-8-12','Oil Change');
+
+--/*Data for the table ContactTypes */
+INSERT INTO ContactTypes(prospectID,contactType,contact) VALUES
+  (001P,'Email','harrypotter@gmail.com'),
+  (001P,'Phone','7148987415'),
+  (003P,'Email','brucewayne@gmail.com'),
+  (003P,'Phone','7895626666'),
+  (002P,'Phone','2134567894');
+
+--/*Data for the table ProspectiveMember */
+INSERT INTO ProspectiveMember(prospectID,deadProspect) VALUES
+    (001P,'NO'),
+    (002P,'YES'),
+    (003P,'NO');
+
+--/*Data for the table ProspectAlert */
+INSERT INTO ProspectAlert(prospectID,aDate,contactType) VALUES
+    (001P,2010-4-15),
+    (001P,2010-4-30),
+    (002P,2014-6-15),
+    (002P,2014-6-30),
+    (002P,2014-7-15),
+    (003P,2010-8-15);
+
+--/*Data for the table Addresses */
+INSERT INTO Addresses(customerID,addressType,streetName,zipCode) VALUES
+    (001P, 'Mailing Address','Laurel Street','90815'),
+    (002P, 'Mailing Address','Oxford Road','07424'),
+    (003P, 'Mailing Address','Lexington Court','32765'),
+    (004P, 'Mailing Address','Homestead Drive','52001'),
+    (005P, 'Mailing Address','Linden Street','46123'),
+    (006P, 'Mailing Address','Highland Avenue','21030'),
+    (007P, 'Mailing Address','Victoria Court','13760'),
+    (008P, 'Mailing Address','Summit Street','30518'),
+    (009P, 'Mailing Address','Forest Avenue','02026'),
+    (010P, 'Mailing Address','Bank Street','30096'),
+    (011P, 'Mailing Address','Country Lane','60435'),
+    (012P, 'Mailing Address','Cambridge Drive','60462'),
+    (013P, 'Mailing Address','Laurel Street','90815'),
+    (014P, 'Mailing Address','York Street','01887'),
+    (015P, 'Mailing Address','Lake Avenue','11710'),
+    (006P, 'Billing Address','Route 6','38632'),
+    (006P, 'Pickup Address','Valley View Road','35007'),
+    (006P, 'Delivery Address','Valley Road','70806'),
+    (007P, 'Billing Address','Maple Street','70605'),
+    (007P, 'Pickup Address','Monroe Drive','11691'),
+    (007P, 'Delivery Address','1st Drive','29577');
+
+--/*Data for the table ZipLocations */
+INSERT INTO ZipLocations(zipCode,city,state) VALUES
+    ('90815','Long Beach','California'),
+    ('07424','Little Falls','New Jersey'),
+    ('32765','Oviedo','Florida'),
+    ('52001','Dubuque','Iowa'),
+    ('46123','Avon','Indiana'),
+    ('21030','Cockeysvilla','Maryland'),
+    ('13760','Endicott','New York'),
+    ('30518','Buford','Georgia'),
+    ('02026','Dedham','Massachusetts'),
+    ('30096','Duluth','Georgia'),
+    ('60435','Joliet','Illinois'),
+    ('60462','Orland Park','Illinois'),
+    ('01887','Wilmington','Massachusetts'),
+    ('11710','Bellmore','New York'),
+    ('38632','Hernando','Mississipi'),
+    ('35007','Alabaster','Alabama'),
+    ('70806','Baton Rouge','Louisiana'),
+    ('70605','Lake Charles','LA'),
+    ('11691','Far Rockaway','New York'),
+    ('29577','Myrtle Beach','South Carolina'),
+
+
+--/*Data for the table AddressType */
+INSERT INTO AddressType(addressType) VALUES
+  ('Mailing Address'),
+  ('Billing Address'),
+  ('Pickup Address'),
+  ('Delivery Address');
+
+--/*Data for the table States */
+INSERT INTO States(state) VALUES
+  ('Alabama'),
+  ('Alaska'),
+  ('Arizona'),
+  ('Arkansas'),
+  ('California'),
+  ('Colorado'),
+  ('Connecticut'),
+  ('Delaware'),
+  ('Florida'),
+  ('Georgia'),
+  ('Hawaii'),
+  ('Idaho'),
+  ('Indiana'),
+  ('Iowa'),
+  ('Kansas'),
+  ('Kentucky'),
+  ('Louisiana'),
+  ('Maine'),
+  ('Maryland'),
+  ('Massachusetts'),
+  ('Michigan'),
+  ('Minnesota'),
+  ('Mississippi'),
+  ('Missouri'),
+  ('Montana'),
+  ('Nebraska'),
+  ('Nevada'),
+  ('New Hampshire'),
+  ('New Jersey'),
+  ('New Mexico'),
+  ('New York'),
+  ('North Carolina'),
+  ('North Dakota'),
+  ('Ohio'),
+  ('Oklahoma'),
+  ('Pennsylvania'),
+  ('Rhode Island'),
+  ('South Carolina'),
+  ('South Dakota'),
+  ('Tennessee'),
+  ('Texas'),
+  ('Utah'),
+  ('Vermont'),
+  ('Virginia'),
+  ('Washington'),
+  ('West Virginia'),
+  ('Wisconsin'),
+  ('Wyoming');
+
+--/*Data for the table Zi
