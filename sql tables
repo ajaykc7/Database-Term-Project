@@ -200,6 +200,7 @@ Create Table Technicians(
 CREATE TABLE MaintenancePackages(
     packageID   VARCHAR(4) Not Null,
     packageName            Not Null,
+    packagePrice DECIMAL(8,2) NOT NULL,
     vehicleID   VARCHAR(7) Not Null,
     Constraint MaintenancePackages_pk Primary Key (packageID),
 	Constraint MaintenancePackages_CustomerVehicles_fk Foreign Key (vehicleID) References CustomerVehicles (vehicleID)
@@ -208,7 +209,7 @@ CREATE TABLE MaintenancePackages(
 Create Table MaintenanceItem(
     itemID      VARCHAR(4)  Not Null,
     itemName    VARCHAR(20) Not Null,
-    itemTime    VARCHAR(20) Not Null,
+    itemPrice   DECIMAL(7,2) Not Null,
     loyaltyPointPayable     Not Null,
     requiredSkill           Not Null,
     packageID   VARCHAR(4)  Not Null,
