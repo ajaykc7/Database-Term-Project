@@ -167,7 +167,7 @@ INSERT INTO MaintenancePackages(packageID, packageName, packagePrice) VALUES
     ('003P','Package3',550.50),
     ('004P','Package4',250.50),
     ('005P','Package5',420.50);
-    
+
 
 --/*Data for the table CustomerVehicles
 INSERT INTO CustomerVehicles(customerID, vehicleID, make, model, vYear, maintenanceInterval, milePerYear, currentMile, accident, scheduleFriendly, lastVisitDate, carInsurance, packageID) VALUES
@@ -343,7 +343,8 @@ INSERT INTO Skills(employeeID, skillName, skillProficiency) VALUES
     ('009E', 'Communication', '4'),
     ('009E', 'Mathematics', '3'),
     ('010E', 'Tire Maintenance', '5'),
-    ('010E', 'Engine Repair', '1');
+    ('010E', 'Engine Repair', '1'),
+    ('010E','Communcation','5');
 
 
 
