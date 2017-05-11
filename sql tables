@@ -1,58 +1,58 @@
 CREATE TABLE Customers(
-    customerID       VARCHAR(4)         NOT NULL,
+    customerID       VARCHAR(4)  NOT NULL,
     subscriptionType VARCHAR(20) NOT NULL,
     customerType     VARCHAR(12) NOT NULL,
     phone            VARCHAR(11) NOT NULL,
-    email                        NOT NULL,
-    startDate        DATE 		   NOT NULL,
+    email            VARCHAR(30) NOT NULL,
+    startDate        DATE 	 NOT NULL,
     CONSTRAINT Customers_pk PRIMARY KEY (customerID)
+    );
+
+CREATE TABLE AddressTypes(
+    addressType VARCHAR(30)    NOT NULL,
+    CONSTRAINT AddressTypes_pk PRIMARY KEY (addressType)
+    );
+
+CREATE TABLE States(
+    state   VARCHAR(30)  NOT NULL,
+    CONSTRAINT States_pk PRIMARY KEY (state)
+    );
+
+CREATE TABLE ZipLocations(
+    zipCode VARCHAR(7)  NOT NULL,
+    city    VARCHAR(30) NOT NULL,
+    state   VARCHAR(30) NOT NULL,
+    streetName VARCHAR(40) NOT NULL,
+    CONSTRAINT ZipLocations_pk PRIMARY KEY (zipCode),
+    CONSTRAINT ZipLocations_States_fk FOREIGN KEY (state) REFERENCES States (state)
     );
 
 CREATE TABLE Addresses(
     customerID  VARCHAR(4)  NOT NULL,
-    addressType             NOT NULL,
-    streetName              NOT NULL,
-    zipCode     VARCHAR(5)         NOT NULL,
+    addressType VARCHAR(30) NOT NULL,
+    streetName  VARCHAR(40) NOT NULL,
+    zipCode     VARCHAR(7)  NOT NULL,
     CONSTRAINT Address_pk PRIMARY KEY (customerID, addressType, streetName, zipCode),
     CONSTRAINT Address_Customers_fk FOREIGN KEY (customerID) REFERENCES Customers (customerID),
     CONSTRAINT Address_AddressType_fk FOREIGN KEY (addressType) REFERENCES AddressTypes (addressType),
     CONSTRAINT Address_ZipLocations_fk FOREIGN KEY (zipCode) REFERENCES ZipLocations (zipCode)
     );
 
-CREATE TABLE ZipLocations(
-    zipCode VARCHAR(7)  NOT NULL,
-    city                NOT NULL,
-    state               NOT NULL,
-  	streetName			    NOT NULL,
-    CONSTRAINT ZipLocations_pk PRIMARY KEY (zipCode),
-    CONSTRAINT ZipLocations_States_fk FOREIGN KEY (state) REFERENCES States (state)
-    );
-
-CREATE TABLE States(
-    state   NOT NULL,
-    CONSTRAINT States_pk PRIMARY KEY (state)
-    );
-
-CREATE TABLE AddressTypes(
-    addressType     NOT NULL,
-    CONSTRAINT AddressTypes_pk PRIMARY KEY (addressType)
-    );
-
 CREATE TABLE Corporations(
     customerID VARCHAR(4)  NOT NULL,
-    corpName        NOT NULL,
-    corpType        NOT NULL,
+    corpName   VARCHAR(60) NOT NULL,
+    corpType   VARCHAR(40) NOT NULL,
     CONSTRAINT Corporations_pk PRIMARY KEY (customerID),
     CONSTRAINT  Corporations_Customers_fk FOREIGN KEY (customerID) REFERENCES Customers (customerID)
     );
 
 CREATE TABLE Individuals(
     customerID  VARCHAR(4)  NOT NULL,
-    iFirstName              NOT NULL,
-    iLastName               NOT NULL,
-    iDOB    	  DATE        NOT NULL,
+    iFirstName  VARCHAR(40) NOT NULL,
+    iLastName   VARCHAR(40) NOT NULL,
+    iDOB    	DATE        NOT NULL,
     CONSTRAINT Individuals_pk PRIMARY KEY (customerID),
-	  CONSTRAINT Individuals_Customers_fk FOREIGN KEY (customerID) REFERENCES Customers (customerID)
+    CONSTRAINT Individuals_Customers_fk FOREIGN KEY (customerID) REFERENCES Customers (customerID)
     );
 
 CREATE TABLE SteadyCustomers(
@@ -60,7 +60,7 @@ CREATE TABLE SteadyCustomers(
     loyaltyPoints       INT         NOT NULL,
     upgradeSubscription DECIMAL(8,2) NOT NULL,
     CONSTRAINT SteadyCustomers_pk PRIMARY KEY (customerID),
-	  CONSTRAINT SteadyCustomers_Customers_fk FOREIGN KEY (customerID) REFERENCES Customers (customerID)
+    CONSTRAINT SteadyCustomers_Customers_fk FOREIGN KEY (customerID) REFERENCES Customers (customerID)
     );
 
 CREATE TABLE EmployeeCustomers(
@@ -68,12 +68,8 @@ CREATE TABLE EmployeeCustomers(
     discountPercent     VARCHAR(3),
     discountAvailable   VARCHAR(3) NOT NULL,
     CONSTRAINT EmployeeCustomers_pk PRIMARY KEY (customerID),
-	CONSTRAINT EmployeeCustomers_Customers_fk FOREIGN KEY (customerID) REFERENCES Customers (customerID)
+   CONSTRAINT EmployeeCustomers_Customers_fk FOREIGN KEY (customerID) REFERENCES Customers (customerID)
     );
-/*
-    Discount percent is a 3-digit num, but if
-    Available is "no" then percent can be null
-*/
 
 CREATE TABLE PremierCustomers(
     customerID          VARCHAR(3)  NOT NULL,
@@ -88,63 +84,35 @@ CREATE TABLE PremierCustomers(
 CREATE TABLE Referrals(
     customerID   VARCHAR(4)  NOT NULL,
     prospectID   VARCHAR(4)  NOT NULL,
-	  pFirstName               NOT NULL,
-    pLastName                NOT NULL,
+    pFirstName   VARCHAR(40) NOT NULL,
+    pLastName    VARCHAR(40) NOT NULL,
     referralDate VARCHAR(10) NOT NULL,
-    rewardType               NOT NULL,
+    rewardType   VARCHAR(20) NOT NULL,
     CONSTRAINT Referrals_pk PRIMARY KEY (prospectID),
-	  CONSTRAINT Referrals_Customers_fk FOREIGN KEY (customerID) REFERENCES Customers (customerID)
-    ); -- names can be many characters so no var char
+    CONSTRAINT Referrals_Customers_fk FOREIGN KEY (customerID) REFERENCES Customers (customerID)
+    );
 
 CREATE TABLE ContactTypes(
     prospectID  VARCHAR(4)  NOT NULL,
     contactType VARCHAR(5)  NOT NULL,
-    contact,
+    contact     VARCHAR(30),
     CONSTRAINT ContactType_pk PRIMARY KEY (prospectID, contactType),
-	CONSTRAINT ContactType_Referrals_fk FOREIGN KEY (prospectID) REFERENCES Referrals (prospectID)
+    CONSTRAINT ContactType_Referrals_fk FOREIGN KEY (prospectID) REFERENCES Referrals (prospectID)
     );
 
 CREATE TABLE ProspectiveMembers(
     prospectID      VARCHAR(4)  NOT NULL,
     deadProspect    VARCHAR(3)  NOT NULL,
     CONSTRAINT ProspectiveMembers_pk PRIMARY KEY (prospectID),
-	  CONSTRAINT ProspectiveMembers_Referrals_fk FOREIGN KEY (prospectID) REFERENCES Referrals (prospectID)
+    CONSTRAINT ProspectiveMembers_Referrals_fk FOREIGN KEY (prospectID) REFERENCES Referrals (prospectID)
     );
 
 CREATE TABLE ProspectAlerts(
     prospectID  VARCHAR(4)  NOT NULL,
-    aDate       DATE 		    NOT NULL,
+    aDate       DATE 	    NOT NULL,
     contactType VARCHAR(5)  NOT NULL,
-    CONSTRAINT ProspectAlerts_pk PRIMARY KEY (prospectID, date),
-	CONSTRAINT ProspectAlerts_ProspectiveMembers_fk FOREIGN KEY (prospectID) REFERENCES ProspectiveMembers (prospectID)
-    );
-
-CREATE TABLE Profits(
-    customerID      VARCHAR(4)     NOT NULL,
-    incomeEarned    DECIMAL(12,2)  NOT NULL,
-    CONSTRAINT Profits_pk PRIMARY KEY (customerID),
-	CONSTRAINT Profits_Customers_fk FOREIGN KEY (customerID) REFERENCES Customers (customerID)
-    ); --maybe something costs 6 figures? haha
-
-CREATE TABLE Invoices(
-    invoiceID   VARCHAR(4)  NOT NULL,
-    customerID  VARCHAR(4)  NOT NULL,
-    vehicleID   VARCHAR(7)  NOT NULL,
-    visitDate   DATE        NOT NULL,
-    total       VARCHAR(5)  NOT NULL,
-    CONSTRAINT Invoices_pk PRIMARY KEY (invoiceID),
-	  CONSTRAINT Invoices_Profits_fk FOREIGN KEY (customerID) REFERENCES Profits (customerID),
-	  CONSTRAINT Invoices_MaintenanceVisits_fk FOREIGN KEY (vehicleID, visitDate) REFERENCES MaintenanceVisits (vehicleID, visitDate)
-    );
-
-CREATE TABLE MaintenanceVisits(
-    employeeID      VARCHAR(4)  NOT NULL,
-    visitDate       DATE        NOT NULL,
-    vehicleID       VARCHAR(7)  NOT NULL,
-    currentMile     VARCHAR(7)  NOT NULL,
-    packageSelect   VARCHAR(10) NOT NULL,
-    CONSTRAINT MaintenanceVisits_pk PRIMARY KEY (vehicleID, visitDate),
-	  CONSTRAINT MaintenanceVisits_CustomerVehicles_fk FOREIGN KEY (vehicleID) REFERENCES CustomerVehicles (vehicleID)
+    CONSTRAINT ProspectAlerts_pk PRIMARY KEY (prospectID, aDate),
+    CONSTRAINT ProspectAlerts_ProspectiveMembers_fk FOREIGN KEY (prospectID) REFERENCES ProspectiveMembers (prospectID)
     );
 
 CREATE TABLE CustomerVehicles(
@@ -160,42 +128,82 @@ CREATE TABLE CustomerVehicles(
     scheduleFriendly    VARCHAR(3)  NOT NULL,
     lastVisitDate       VARCHAR(10) NOT NULL,
     CONSTRAINT CustomerVehicles_pk PRIMARY KEY (vehicleID),
-	  CONSTRAINT CustomerVehicles_Customers_fk FOREIGN KEY (customerID) REFERENCES Customers (customerID)
+    CONSTRAINT CustomerVehicles_Customers_fk FOREIGN KEY (customerID) REFERENCES Customers (customerID)
     );
 
 CREATE TABLE  CustomerAlerts(
     vehicleID   VARCHAR(7) NOT NULL,
-    appointment DATETIME NOT NULL,
+    appointment TIMESTAMP  NOT NULL,
     alertType   VARCHAR(5) NOT NULL,
-    CONSTRAINT CustomerAlerts_pk PRIMARY KEY (vehicleID, aDate),
-	CONSTRAINT CustomerAlerts_CustomerVehicles_fk FOREIGN KEY (vehicleID) REFERENCES CustomerVehicles (vehicleID)
+    CONSTRAINT CustomerAlerts_pk PRIMARY KEY (vehicleID, appointment),
+    CONSTRAINT CustomerAlerts_CustomerVehicles_fk FOREIGN KEY (vehicleID) REFERENCES CustomerVehicles (vehicleID)
     );
 
 CREATE TABLE Employees (
     employeeID  VARCHAR(4)  NOT NULL,
-    eFirstName  NOT NULL,
-    eLastName   NOT NULL,
+    eFirstName  VARCHAR(40) NOT NULL,
+    eLastName   VARCHAR(40) NOT NULL,
     jobTitle    VARCHAR(10) NOT NULL,
     startDate   DATE        NOT NULL,
     eDOB        DATE        NOT NULL,
     zipCode     VARCHAR(7)  NOT NULL,
     CONSTRAINT Employees_pk PRIMARY KEY (employeeID),
-	  CONSTRAINT Employees_ZipLocations_fk FOREIGN KEY (zipCode) REFERENCES ZipLocations (zipCode)
+    CONSTRAINT Employees_ZipLocations_fk FOREIGN KEY (zipCode) REFERENCES ZipLocations (zipCode)
     );
 
 CREATE TABLE Technicians(
-    employeeID  VARCHAR(4) NOT NULL,
+    employeeID  VARCHAR(4)   NOT NULL,
     tLanguage	VARCHAR(20),
-    workStation 		   NOT NULL,
+    workStation VARCHAR(30)  NOT NULL,
     CONSTRAINT Technicians_pk PRIMARY KEY (employeeID),
-	  CONSTRAINT Technicians_Employees_fk FOREIGN KEY (employeeID) REFERENCES Employees (employeeID)
+    CONSTRAINT Technicians_Employees_fk FOREIGN KEY (employeeID) REFERENCES Employees (employeeID)
     );
 
 CREATE TABLE Mechanics(
-  	employeeID	VARCHAR(4) NOT NULL,
-  	CONSTRAINT Mechanic_pk PRIMARY KEY (employeeID),
-  	CONSTRAINT Mechanic_Employees_fk FOREIGN KEY (employeeID) REFERENCES Employees (employeeID)
-     );
+    employeeID	VARCHAR(4) NOT NULL,
+    CONSTRAINT Mechanic_pk PRIMARY KEY (employeeID),
+    CONSTRAINT Mechanic_Employees_fk FOREIGN KEY (employeeID) REFERENCES Employees (employeeID)
+    );
+
+CREATE TABLE SkillProficiencies(
+    skillProficiency VARCHAR(1) NOT NULL,
+    CONSTRAINT SkillProficiencies_pk PRIMARY KEY (skillProficiency)
+    );
+
+CREATE TABLE SkillNames(
+    skillName  VARCHAR(30) NOT NULL,
+    CONSTRAINT SkillNames_pk PRIMARY KEY (skillName)
+    );
+
+CREATE TABLE Skills(
+    employeeID  VARCHAR(4)      NOT NULL,
+    skillName   VARCHAR(30)     NOT NULL,
+    skillProficiency VARCHAR(1) NOT NULL,
+    CONSTRAINT Skills_pk PRIMARY KEY (employeeID, skillName),
+    CONSTRAINT Skills_SkillNames_fk FOREIGN KEY (skillName) REFERENCES SkillNames (skillName),
+    CONSTRAINT Skills_SkillProficiencies_fk FOREIGN KEY (skillProficiency) REFERENCES SkillProficiencies (skillProficiency)
+    );
+
+CREATE TABLE Apprenticeships(
+    mentorID    VARCHAR(4)             NOT NULL,
+    menteeID    VARCHAR(4)             NOT NULL,
+    startDate   DATE                   NOT NULL,
+    active      BOOLEAN                NOT NULL,
+    mentoredSkill VARCHAR(20)          NOT NULL,
+    CONSTRAINT Apprenticeship_pk PRIMARY KEY (mentorID, menteeID, startDate),
+    CONSTRAINT Apprenticeship_Mentor_fk FOREIGN KEY (mentorID) REFERENCES Mechanics (employeeID),
+    CONSTRAINT Apprenticeship_Mentee_fk FOREIGN KEY (menteeID) REFERENCES Mechanics (employeeID)
+    );
+
+CREATE TABLE MaintenanceVisits(
+    employeeID      VARCHAR(4)  NOT NULL,
+    visitDate       DATE        NOT NULL,
+    vehicleID       VARCHAR(7)  NOT NULL,
+    currentMile     VARCHAR(7)  NOT NULL,
+    packageSelect   VARCHAR(10) NOT NULL,
+    CONSTRAINT MaintenanceVisits_pk PRIMARY KEY (vehicleID, visitDate),
+    CONSTRAINT MaintenanceVisits_CustomerVehicles_fk FOREIGN KEY (vehicleID) REFERENCES CustomerVehicles (vehicleID)
+    );
 
 CREATE TABLE MaintenancePackages(
     packageID   VARCHAR(4)  NOT NULL,
@@ -203,7 +211,7 @@ CREATE TABLE MaintenancePackages(
     packagePrice DECIMAL(8,2) NOT NULL,
     vehicleID   VARCHAR(7)  NOT NULL,
     CONSTRAINT MaintenancePackages_pk PRIMARY KEY (packageID),
-	  CONSTRAINT MaintenancePackages_CustomerVehicles_fk FOREIGN KEY (vehicleID) REFERENCES CustomerVehicles (vehicleID)
+    CONSTRAINT MaintenancePackages_CustomerVehicles_fk FOREIGN KEY (vehicleID) REFERENCES CustomerVehicles (vehicleID)
     );
 
 CREATE TABLE MaintenanceItems(
@@ -214,46 +222,34 @@ CREATE TABLE MaintenanceItems(
     requiredSkill  VARCHAR(20)   NOT NULL,
     packageID      VARCHAR(4)   NOT NULL,
     CONSTRAINT MaintenanceItem_pk PRIMARY KEY (itemID),
-	  CONSTRAINT MaintenanceItem_MaintenancePackages_fk FOREIGN KEY (packageID) REFERENCES MaintenancePackages (packageID)
+    CONSTRAINT MaintenanceItem_MaintenancePackages_fk FOREIGN KEY (packageID) REFERENCES MaintenancePackages (packageID)
     );
 
 CREATE TABLE VisitItem(
     employeeID  VARCHAR(4) NOT NULL,
     vehicleID   VARCHAR(7) NOT NULL,
-    visitDate   date       NOT NULL,
+    visitDate   DATE       NOT NULL,
     itemID      VARCHAR(4) NOT NULL,
     CONSTRAINT VisitItem_pk PRIMARY KEY (employeeID, vehicleID, visitDate, itemID),
-	  CONSTRAINT VisitItem_Mechanics_fk FOREIGN KEY (employeeID) REFERENCES Mechanic (employeeID),
-  	CONSTRAINT VisitItem_MaintenanceVisit_fk FOREIGN KEY (vehicleID, visitDate) REFERENCES MaintenanceVisits (vehicleID, visitDate),
-	  CONSTRAINT VisitItem_MaintenanceItem_fk FOREIGN KEY (itemID) REFERENCES MaintenanceItem (itemID)
+    CONSTRAINT VisitItem_Mechanics_fk FOREIGN KEY (employeeID) REFERENCES Mechanics (employeeID),
+    CONSTRAINT VisitItem_MaintenanceVisit_fk FOREIGN KEY (vehicleID, visitDate) REFERENCES MaintenanceVisits (vehicleID, visitDate),
+    CONSTRAINT VisitItem_MaintenanceItem_fk FOREIGN KEY (itemID) REFERENCES MaintenanceItems (itemID)
     );
 
-CREATE TABLE Skills(
-    employeeID  VARCHAR(4)      NOT NULL,
-    skillName   VARCHAR(20)     NOT NULL,
-    skillProficiency VARCHAR(1) NOT NULL,
-    CONSTRAINT Skills_pk PRIMARY KEY (employeeID, skillName),
-	  CONSTRAINT Skills_SkillNames_fk FOREIGN KEY (skillName) REFERENCES SkillNames (skillName),
-	  CONSTRAINT Skills_SkillProficiencies_fk FOREIGN KEY (skillProficiency) REFERENCES SkillProficiencies (skillProficiency)
+CREATE TABLE Profits(
+    customerID      VARCHAR(4)     NOT NULL,
+    incomeEarned    DECIMAL(12,2)  NOT NULL,
+    CONSTRAINT Profits_pk PRIMARY KEY (customerID),
+    CONSTRAINT Profits_Customers_fk FOREIGN KEY (customerID) REFERENCES Customers (customerID)
     );
 
-CREATE TABLE SkillProficiencies(
-    skillProficiency VARCHAR(1) NOT NULL,
-    CONSTRAINT SkillProficiencies_pk PRIMARY KEY (skillProficiency)
+CREATE TABLE Invoices(
+    invoiceID   VARCHAR(4)  NOT NULL,
+    customerID  VARCHAR(4)  NOT NULL,
+    vehicleID   VARCHAR(7)  NOT NULL,
+    visitDate   DATE        NOT NULL,
+    total       VARCHAR(5)  NOT NULL,
+    CONSTRAINT Invoices_pk PRIMARY KEY (invoiceID),
+    CONSTRAINT Invoices_Profits_fk FOREIGN KEY (customerID) REFERENCES Profits (customerID),
+    CONSTRAINT Invoices_MaintenanceVisits_fk FOREIGN KEY (vehicleID, visitDate) REFERENCES MaintenanceVisits (vehicleID, visitDate)
     );
-
-CREATE TABLE SkillNames(
-    skillName   NOT NULL,
-    CONSTRAINT SkillNames_pk PRIMARY KEY (skillName)
-    );
-
-CREATE TABLE Apprenticeships(
-    mentorID    VARCHAR(4)  NOT NULL,
-    menteeID    VARCHAR(4)  NOT NULL,
-    startDate   DATE		    NOT NULL,
-    active      BOOLEAN     NOT NULL,
-    mentoredSkill           NOT NULL,
-    CONSTRAINT Apprenticeship_pk PRIMARY KEY (mentorID, menteeID, startDate),
-	  CONSTRAINT Apprenticeship_Mentor_fk FOREIGN KEY (mentorID) REFERENCES Mechanic (employeeID),
-	  CONSTRAINT Apprenticeship_Mentee_fk FOREIGN KEY (menteeID) REFERENCES Mechanic (employeeID)
-	  );
