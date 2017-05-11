@@ -92,50 +92,50 @@ INSERT INTO ProspectAlerts(prospectID,aDate,contactType) VALUES
 
 --/*Data for the table Addresses */
 INSERT INTO Addresses(customerID,addressType,zipCode) VALUES
-    ('001P', 'Mailing Address','90815'),
-    ('002P', 'Mailing Address','07424'),
-    ('003P', 'Mailing Address','32765'),
-    ('004P', 'Mailing Address','52001'),
-    ('005P', 'Mailing Address','46123'),
-    ('006P', 'Mailing Address','21030'),
-    ('007P', 'Mailing Address','13760'),
-    ('008P', 'Mailing Address','30518'),
-    ('009P', 'Mailing Address','02026'),
-    ('010P', 'Mailing Address','30096'),
-    ('011P', 'Mailing Address','60435'),
-    ('012P', 'Mailing Address','60462'),
-    ('013P', 'Mailing Address','90815'),
-    ('014P', 'Mailing Address','01887'),
-    ('015P', 'Mailing Address','11710'),
-    ('006P', 'Billing Address','38632'),
-    ('006P', 'Pickup Address','35007'),
-    ('006P', 'Delivery Address','70806'),
-    ('007P', 'Billing Address','70605'),
-    ('007P', 'Pickup Address','11691'),
-    ('007P', 'Delivery Address','29577');
+    ('001P', 'Mailing Address','Laurel Street','90815'),
+    ('002P', 'Mailing Address','Oxford Road','07424'),
+    ('003P', 'Mailing Address','Lexington Court','32765'),
+    ('004P', 'Mailing Address','Lexington Court','52001'),
+    ('005P', 'Mailing Address','Linden Street','46123'),
+    ('006P', 'Mailing Address','Highland Avenue','21030'),
+    ('007P', 'Mailing Address','Victoria Court','13760'),
+    ('008P', 'Mailing Address','Summit Street','30518'),
+    ('009P', 'Mailing Address','Forest Avenue','02026'),
+    ('010P', 'Mailing Address','Bank Street','30096'),
+    ('011P', 'Mailing Address','Country Lane','60435'),
+    ('012P', 'Mailing Address','Cambridge Drive','60462'),
+    ('013P', 'Mailing Address','Orland Park','90815'),
+    ('014P', 'Mailing Address','York Street','01887'),
+    ('015P', 'Mailing Address','Lake Avenue','11710'),
+    ('006P', 'Billing Address','Valley View Road','38632'),
+    ('006P', 'Pickup Address','Valley Road','35007'),
+    ('006P', 'Delivery Address','Maple Street','70806'),
+    ('007P', 'Billing Address','Monroe Drive','70605'),
+    ('007P', 'Pickup Address','1st Drive','11691'),
+    ('007P', 'Delivery Address','Route 6','29577');
 
 --/*Data for the table ZipLocations */
-INSERT INTO ZipLocations(zipCode,streetName,city,state) VALUES
-    ('90815','Laurel Street','Long Beach','California'),
-    ('07424','Oxford Road','Little Falls','New Jersey'),
-    ('32765','Lexington Court','Oviedo','Florida'),
-    ('52001','Lexington Court','Dubuque','Iowa'),
-    ('46123','Linden Street','Avon','Indiana'),
-    ('21030','Highland Avenue','Cockeysvilla','Maryland'),
-    ('13760','Victoria Court','Endicott','New York'),
-    ('30518','Summit Street','Buford','Georgia'),
-    ('02026','Forest Avenue','Dedham','Massachusetts'),
-    ('30096','Bank Street','Duluth','Georgia'),
-    ('60435','Country Lane','Joliet','Illinois'),
-    ('60462','Cambridge Drive','Orland Park','Illinois'),
-    ('01887','York Street','Wilmington','Massachusetts'),
-    ('11710','Lake Avenue','Bellmore','New York'),
-    ('38632','Route 6','Hernando','Mississipi'),
-    ('35007','Valley View Road','Alabaster','Alabama'),
-    ('70806','Valley Road','Baton Rouge','Louisiana'),
-    ('70605','Maple Street','Lake Charles','LA'),
-    ('11691','Monroe Drive','Far Rockaway','New York'),
-    ('29577','1st Drive','Myrtle Beach','South Carolina'),
+INSERT INTO ZipLocations(zipCode,city,state) VALUES
+    ('90815','Long Beach','California'),
+    ('07424','Little Falls','New Jersey'),
+    ('32765','Oviedo','Florida'),
+    ('52001','Dubuque','Iowa'),
+    ('46123','Avon','Indiana'),
+    ('21030','Cockeysvilla','Maryland'),
+    ('13760','Endicott','New York'),
+    ('30518','Buford','Georgia'),
+    ('02026','Dedham','Massachusetts'),
+    ('30096','Duluth','Georgia'),
+    ('60435','Joliet','Illinois'),
+    ('60462','Illinois'),
+    ('01887','Wilmington','Massachusetts'),
+    ('11710','Bellmore','New York'),
+    ('38632','Hernando','Mississipi'),
+    ('35007','Alabaster','Alabama'),
+    ('70806','Baton Rouge','Louisiana'),
+    ('70605','Lake Charles','LA'),
+    ('11691','Far Rockaway','New York'),
+    ('29577','Myrtle Beach','South Carolina'),
 
 
 --/*Data for the table AddressType */
@@ -218,17 +218,17 @@ INSERT INTO CustomerVehicles(customerID, vehicleID, make, model, vYear, maintena
   ('015C','7NES326','Honda','Pilot','2012',7000,16000,38955,'NO','YES','2016-11-24',(16000.00 / (7000*12)*70), '003P');
 
   --/*Data for the table Employees */
-  INSERT INTO Employees(employeeID, eFirstName, eLastName, jobTitle, startDate, eDOB, zipCode ) VALUES
-  	('001E', 'Jack', 'Black', 'Cashier', '2014-03-13', '1990-02-12', '90815'),
-  	('002E', 'Dan', 'Bart', 'Technician', '2015-05-25', '1989-03-25', '38632'),
-  	('003E', 'Paul', 'Thawn', 'Mechanic', '2014-03-19', '1988-10-13', '29577'),
-  	('004E', 'Linda', 'Jackson', 'Cashier', '2012-12-16', '1965-12-20', '60435'),
-  	('005E', 'Oliver', 'Queen', 'Mechanic', '2013-05-01', '1977-09-22', '01887'),
-  	('006E', 'Barry', 'Allen', 'Mechanic', '2008-06-08', '1986-07-10', '520001'),
-  	('007E', 'Clark', 'Kent', 'Technician', '2010-08-22', '1989-04-01', '02026'),
-  	('008E', 'Kara', 'Denver', 'Technician', '2012-11-15', '1990-05-14', '70806'),
-  	('009E', 'Thomas', 'Wayne', 'Cashier', '2011-01-17', '1969-04-17', '11691'),
-  	('010E', 'Ash', 'Ketchum', 'Mechanic', '2009-07-28', '1966-11-11', '70605');
+  INSERT INTO Employees(employeeID, eFirstName, eLastName, jobTitle, startDate, eDOB, streetName,zipCode ) VALUES
+  	('001E', 'Jack', 'Black', 'Cashier', '2014-03-13', '1990-02-12','Street 1', '90815'),
+  	('002E', 'Dan', 'Bart', 'Technician', '2015-05-25', '1989-03-25','Street 2', '38632'),
+  	('003E', 'Paul', 'Thawn', 'Mechanic', '2014-03-19', '1988-10-13','Street 3', '29577'),
+  	('004E', 'Linda', 'Jackson', 'Cashier', '2012-12-16', '1965-12-20','Street 4', '60435'),
+  	('005E', 'Oliver', 'Queen', 'Mechanic', '2013-05-01', '1977-09-22','Street 5', '01887'),
+  	('006E', 'Barry', 'Allen', 'Mechanic', '2008-06-08', '1986-07-10','Street 6', '520001'),
+  	('007E', 'Clark', 'Kent', 'Technician', '2010-08-22', '1989-04-01','Street 7', '02026'),
+  	('008E', 'Kara', 'Denver', 'Technician', '2012-11-15', '1990-05-14','Street 8', '70806'),
+  	('009E', 'Thomas', 'Wayne', 'Cashier', '2011-01-17', '1969-04-17','Street 9', '11691'),
+  	('010E', 'Ash', 'Ketchum', 'Mechanic', '2009-07-28', '1966-11-11','Street 10', '70605');
 
   --/*Data for the table Technicians */
   INSERT INTO Technicians(employeeID, tLanguage, workStation) VALUES
