@@ -196,6 +196,7 @@ INSERT INTO States(state) VALUES
   ('Wisconsin'),
   ('Wyoming');
 
+
 --/*Data for the table CustomerVehicles
 INSERT INTO CustomerVehicles(customerID, vehicleID, make, model, vYear, maintenanceInterval, milePerYear, currentMile, accident, scheduleFriendly, lastVisitDate,carInsurance) VALUES
   ('001C','4SAM123','Ford','Mustang','2010',7500,16000,75247,'YES','NO','2016-01-10',(16000/(7500*12)*100));
