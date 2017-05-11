@@ -22,7 +22,6 @@ CREATE TABLE ZipLocations(
     zipCode VARCHAR(7)  NOT NULL,
     city    VARCHAR(30) NOT NULL,
     state   VARCHAR(30) NOT NULL,
-    streetName VARCHAR(40) NOT NULL,
     CONSTRAINT ZipLocations_pk PRIMARY KEY (zipCode),
     CONSTRAINT ZipLocations_States_fk FOREIGN KEY (state) REFERENCES States (state)
     );
@@ -147,6 +146,7 @@ CREATE TABLE Employees (
     jobTitle    VARCHAR(10) NOT NULL,
     startDate   DATE        NOT NULL,
     eDOB        DATE        NOT NULL,
+    streetName VARCHAR(40)  NOT NULL,
     zipCode     VARCHAR(7)  NOT NULL,
     CONSTRAINT Employees_pk PRIMARY KEY (employeeID),
     CONSTRAINT Employees_ZipLocations_fk FOREIGN KEY (zipCode) REFERENCES ZipLocations (zipCode)
