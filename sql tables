@@ -123,7 +123,7 @@ CREATE TABLE CustomerVehicles(
     vYear               DATE        NOT NULL,
     maintenanceInterval VARCHAR(6)  NOT NULL,
     milePerYear         VARCHAR(6)  NOT NULL,
-    currentMile         VARCHAR(6)  NOT NULL,
+    currentMile         VARCHAR(5)  NOT NULL,
     accident            VARCHAR(3)  NOT NULL,
     scheduleFriendly    VARCHAR(3)  NOT NULL,
     lastVisitDate       VARCHAR(10) NOT NULL,
