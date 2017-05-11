@@ -71,10 +71,9 @@ CREATE TABLE EmployeeCustomers(
     );
 
 CREATE TABLE PremierCustomers(
-    customerID          VARCHAR(3)  NOT NULL,
-    paymentPerMonth     VARCHAR(3)  NOT NULL,
-    fiveYearEstimate                NOT NULL,
-    paymentDueDate      VARCHAR(10) NOT NULL,
+    customerID          VARCHAR(4)  NOT NULL,
+    paymentPerMonth     DECIMAL(20,2)  NOT NULL,
+    paymentDueDate      DATE NOT NULL,
     CONSTRAINT PremierCustomers_pk PRIMARY KEY (customerID),
 	CONSTRAINT PremierCustomers_Customers_fk FOREIGN KEY (customerID) REFERENCES Customers (customerID)
     );
@@ -114,7 +113,7 @@ CREATE TABLE ProspectAlerts(
     CONSTRAINT ProspectAlerts_ProspectiveMembers_fk FOREIGN KEY (prospectID) REFERENCES ProspectiveMembers (prospectID)
     );
 
-    CREATE TABLE CustomerVehicles(
+CREATE TABLE CustomerVehicles(
         customerID          VARCHAR(4)  NOT NULL,
         vehicleID           VARCHAR(7)  NOT NULL,
         make                VARCHAR(20) NOT NULL,
@@ -126,7 +125,7 @@ CREATE TABLE ProspectAlerts(
         accident            VARCHAR(3)  NOT NULL,
         scheduleFriendly    VARCHAR(3)  NOT NULL,
         lastVisitDate       VARCHAR(10) NOT NULL,
-        carInsurance	DECIMAL(20,10) NOT NULL,
+        carInsurance	DECIMAL(20,2)   NOT NULL,
         CONSTRAINT CustomerVehicles_pk PRIMARY KEY (vehicleID),
         CONSTRAINT CustomerVehicles_Customers_fk FOREIGN KEY (customerID) REFERENCES Customers (customerID)
         );
