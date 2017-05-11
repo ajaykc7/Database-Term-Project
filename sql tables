@@ -252,7 +252,7 @@ CREATE TABLE Invoices(
 
 CREATE TABLE Profits(
     customerID      VARCHAR(4)     NOT NULL,
-    incomeEarned    DECIMAL(12,2)  NOT NULL,
+    incomeEarned    DECIMAL(20,2)  ,
     CONSTRAINT Profits_pk PRIMARY KEY (customerID),
     CONSTRAINT Profits_Customers_fk FOREIGN KEY (customerID) REFERENCES Customers (customerID)
     );
