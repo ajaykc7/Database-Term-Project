@@ -1,4 +1,4 @@
---/*Data for the table Customers*/
+﻿--/*Data for the table Customers*/
 INSERT INTO Customers(customerID, subscriptionType,customerType,phone,email,startDate) VALUES
     ('001C','Steady','Individual','2133234444','steadyCustomer1@gmail.com','2010-01-23'),
     ('002C','Steady','Corporation','5623232454','steadyCustomer2@gmail.com','2000-05-30'),
@@ -355,7 +355,8 @@ INSERT INTO Apprenticeships(mentorID, menteeID, startDate, active, mentoredSkill
     ('005E', '006E', '2014-08-25', True, 'Diagnostic'),
     ('006E', '005E', '2014-08-26', True, 'Leadership'),
     ('003E', '010E', '2015-05-15', False, 'Leadership'),
-    ('010E', '006E', '2013-10-02', True, 'Tire Maintenance');
+    ('010E', '006E', '2013-10-02', True, 'Tire Maintenance'),
+    ('005E', '003E', '2014-09-11', True, 'Diagonstic');
 
 
 
