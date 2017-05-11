@@ -127,7 +127,7 @@ INSERT INTO ZipLocations(zipCode,city,state) VALUES
     ('02026','Dedham','Massachusetts'),
     ('30096','Duluth','Georgia'),
     ('60435','Joliet','Illinois'),
-    ('60462','Illinois'),
+    ('60462','NarniaLand','Illinois'),
     ('01887','Wilmington','Massachusetts'),
     ('11710','Bellmore','New York'),
     ('38632','Hernando','Mississipi'),
