@@ -113,24 +113,42 @@ CREATE TABLE ProspectAlerts(
     CONSTRAINT ProspectAlerts_ProspectiveMembers_fk FOREIGN KEY (prospectID) REFERENCES ProspectiveMembers (prospectID)
     );
 
-    CREATE TABLE CustomerVehicles(
-        customerID          VARCHAR(4)  NOT NULL,
-        vehicleID           VARCHAR(7)  NOT NULL,
-        make                VARCHAR(20) NOT NULL,
-        model               VARCHAR(20) NOT NULL,
-        vYear               VARCHAR(4)  NOT NULL,
-        maintenanceInterval INT  NOT NULL,
-        milePerYear         INT  NOT NULL,
-        currentMile         INT  NOT NULL,
-        accident            VARCHAR(3)  NOT NULL,
-        scheduleFriendly    VARCHAR(3)  NOT NULL,
-        lastVisitDate       VARCHAR(10) NOT NULL,
-        carInsurance	DECIMAL(20,2) NOT NULL,
-        packageID     VARCHAR(4) NOT NULL,
-        CONSTRAINT CustomerVehicles_pk PRIMARY KEY (vehicleID),
-        CONSTRAINT CustomerVehicles_Customers_fk FOREIGN KEY (customerID) REFERENCES Customers (customerID),
-        CONSTRAINT CustomerVehicles_Package_fk FOREIGN KEY (packageID) REFERENCES MaintenancePackages(packageID)
-        );
+CREATE TABLE MaintenancePackages(
+    packageID   VARCHAR(4)  NOT NULL,
+    packageName VARCHAR(20) NOT NULL,
+    packagePrice DECIMAL(8,2) NOT NULL,
+    CONSTRAINT MaintenancePackages_pk PRIMARY KEY (packageID),
+    );
+
+CREATE TABLE MaintenanceItems(
+    itemID         VARCHAR(4)    NOT NULL,
+    itemName       VARCHAR(20)   NOT NULL,
+    itemPrice      DECIMAL(8,2)  NOT NULL,
+    loyaltyPayable VARCHAR(3)    NOT NULL,
+    requiredSkill  VARCHAR(20)   NOT NULL,
+    packageID      VARCHAR(4)   NOT NULL,
+    CONSTRAINT MaintenanceItem_pk PRIMARY KEY (itemID),
+    CONSTRAINT MaintenanceItem_MaintenancePackages_fk FOREIGN KEY (packageID) REFERENCES MaintenancePackages (packageID)
+    );
+
+CREATE TABLE CustomerVehicles(
+    customerID          VARCHAR(4)  NOT NULL,
+    vehicleID           VARCHAR(7)  NOT NULL,
+    make                VARCHAR(20) NOT NULL,
+    model               VARCHAR(20) NOT NULL,
+    vYear               VARCHAR(4)  NOT NULL,
+    maintenanceInterval INT  NOT NULL,
+    milePerYear         INT  NOT NULL,
+    currentMile         INT  NOT NULL,
+    accident            VARCHAR(3)  NOT NULL,
+    scheduleFriendly    VARCHAR(3)  NOT NULL,
+    lastVisitDate       VARCHAR(10) NOT NULL,
+    carInsurance	DECIMAL(20,2) NOT NULL,
+    packageID     VARCHAR(4) NOT NULL,
+    CONSTRAINT CustomerVehicles_pk PRIMARY KEY (vehicleID),
+    CONSTRAINT CustomerVehicles_Customers_fk FOREIGN KEY (customerID) REFERENCES Customers (customerID),
+    CONSTRAINT CustomerVehicles_Package_fk FOREIGN KEY (packageID) REFERENCES MaintenancePackages(packageID)
+    );
 
 CREATE TABLE  CustomerAlerts(
     vehicleID   VARCHAR(7) NOT NULL,
@@ -205,24 +223,6 @@ CREATE TABLE MaintenanceVisits(
     packageSelect   VARCHAR(10) NOT NULL,
     CONSTRAINT MaintenanceVisits_pk PRIMARY KEY (vehicleID, visitDate),
     CONSTRAINT MaintenanceVisits_CustomerVehicles_fk FOREIGN KEY (vehicleID) REFERENCES CustomerVehicles (vehicleID)
-    );
-
-CREATE TABLE MaintenancePackages(
-    packageID   VARCHAR(4)  NOT NULL,
-    packageName VARCHAR(20) NOT NULL,
-    packagePrice DECIMAL(8,2) NOT NULL,
-    CONSTRAINT MaintenancePackages_pk PRIMARY KEY (packageID),
-    );
-
-CREATE TABLE MaintenanceItems(
-    itemID         VARCHAR(4)    NOT NULL,
-    itemName       VARCHAR(20)   NOT NULL,
-    itemPrice      DECIMAL(8,2)  NOT NULL,
-    loyaltyPayable VARCHAR(3)    NOT NULL,
-    requiredSkill  VARCHAR(20)   NOT NULL,
-    packageID      VARCHAR(4)   NOT NULL,
-    CONSTRAINT MaintenanceItem_pk PRIMARY KEY (itemID),
-    CONSTRAINT MaintenanceItem_MaintenancePackages_fk FOREIGN KEY (packageID) REFERENCES MaintenancePackages (packageID)
     );
 
 CREATE TABLE VisitItem(
