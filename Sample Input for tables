@@ -217,29 +217,6 @@ INSERT INTO CustomerVehicles(customerID, vehicleID, make, model, vYear, maintena
   ('014C','AAHHYES','Ford','Mustang','2011',7500,6000,66895,'YES','YES','2016-11-24',(6000.00 / (7500*12)*100), '002P'),
   ('015C','7NES326','Honda','Pilot','2012',7000,16000,38955,'NO','YES','2016-11-24',(16000.00 / (7000*12)*70), '003P');
 
---/*Data for the table MaintenanceVisits
-INSERT INTO MaintenanceVisits(vehicleID,visitDate,employeeID,currentMile,packageSelect) VALUES
-  ('4SAM123',2017-05-01,'002E',77000,YES),
-  ('6LIK274',2017-05-02,'002E',121500,NO),
-  ('1032247',2017-05-02,'007E',8000,YES),
-  ('5AOJ230',2017-05-03,'007E',48000,YES),
-  ('6TRJ244',2017-05-03,'008E',150000,NO),
-  ('2AAA000',2017-05-08,'002E',80000,YES),
-  ('2FQZ303',2017-05-12,'008E',150000,NO),
-  ('6YMX832',2017-05-03,'002E',127000,YES),
-  ('SP27091',2017-05-10,'007E',90000,NO),
-  ('CAHIKER',2017-05-10,'007E',5000,NO);
-
---/*Data for the table MaintenancePackages */
-
-—-/*Data for the table MaintenanceItems */
-
-
-
---/*Data for the table VisitItems */
-INSERT INTO VisitItems(employeeID,vehicleID,visitDate,itemID) VALUES
-  ('');
-
   --/*Data for the table Employees */
   INSERT INTO Employees(employeeID, eFirstName, eLastName, jobTitle, startDate, eDOB, zipCode ) VALUES
   	('001E', 'Jack', 'Black', 'Cashier', '2014-03-13', '1990-02-12', '90815'),
