@@ -375,6 +375,7 @@ INSERT INTO MaintenanceVisits(employeeID, visitDate, vehicleID, currentMile, pac
     ('007E','2017-05-10','SP27091',92681,'NO'),
     ('007E','2017-05-10','CAHIKER',5000,'NO'),
     ('007E','2000-05-10','CAHIKER',10,'NO'),
+    ('007E','2001-05-10','CAHIKER',10,'NO'),
     ('007E','1994-05-10','4SAM123',40,'NO');
 
 
