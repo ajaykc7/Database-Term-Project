@@ -344,7 +344,7 @@ INSERT INTO CustomerVehicles(customerID, vehicleID, make, model, vYear, maintena
     	('005P','Package5',420.50);
 
     --/*Data for the table MaintenanceItems */
-    INSERT INTO MaintenanceItems(itemID,itemName,itemPrice,loyaltyPayable,requiredSkill,packageID) VALUES
+    INSERT INTO MaintenanceItems(itemID, itemName, itemPrice, loyaltyPayable, requiredSkill, packageID) VALUES
     	('001I','Engine Repair',100.10,'NO','Communication','001P'),
     	('002I','Tire Services',70.50,'YES','Customer Service',NULL),
     	('003I','Charging Systems',50.00,'NO','Diagnostic',NULL),
@@ -362,8 +362,8 @@ INSERT INTO CustomerVehicles(customerID, vehicleID, make, model, vYear, maintena
     	('015I','Fleet Services',100.00,'NO','Communcation',NULL);
 
     --/*Data for the table VisitItems */
-    INSERT INTO VisitItems(employeeID, vehicleID, visitDate,itemID,priority) VALUES
-    	('002E','4SAM123','2017-05-01','001I','5'),
+    INSERT INTO VisitItems(employeeID, vehicleID, visitDate, itemID, priority) VALUES
+      ('002E','4SAM123','2017-05-01','001I','5'),
       ('002E','6LIK274','2017-05-02','002I','3'),
       ('007E','1032247','2017-05-02','009I','6'),
       ('007E','5AOJ230','2017-05-03','010I','4'),
@@ -381,9 +381,24 @@ INSERT INTO CustomerVehicles(customerID, vehicleID, make, model, vYear, maintena
       ('007E','SP27091','2017-05-10','014I','9'),
       ('007E','CAHIKER','2017-05-10','015I','7');
 
-      --/*Data for the table Profits */
-      INSERT INTO Profits(customerID,incomeEarned) VALUES
-        ('001C',(SELECT SUM(total) FROM Invoices NATURAL JOIN CustomerVehicles WHERE customerID='001C' AND CustomerVehicles.vehicleID=Invoices.vehicleID)),
+
+--/*Data for the table Invoices */
+INSERT INTO Invoices(invoiceID, customerID, vehicleID, visitDate, premium, total) VALUES
+	('001I', '001C', '4SAM123', '2017-05-01', 1.1, 200.00 * 1.1),
+	('002I', '002C', '6LIK274', '2017-05-02', 1.1, 150.00 * 1.1),
+	('003I', '003C', '1032247', '2017-05-02', 1.1, 150.00 * 1.1),
+	('004I', '004C', '5AOJ230', '2017-05-03', 0.0, 300.00),
+	('005I', '006C', '6TRJ244', '2017-05-03', 1.1, 150.00 * 1.1),
+	('006I', '007C', '2AAA000', '2017-05-08', 1.1, 450.00 * 1.1),
+	('007I', '009C', '2FQZ303', '2017-05-12', 1.1, 150.00 * 1.1),
+	('008I', '006C', '6YMX832', '2017-05-03', 1.1, 450.00 * 1.1),
+	('009I', '011C', 'SP27091', '2017-05-10', 1.1, 150.00 * 1.1),
+	('010I', '013C', 'CAHIKER', '2017-05-10', 1.1, 150.00 * 1.1);
+
+--/*Data for the table Profits */
+INSERT INTO Profits(customerID,incomeEarned) VALUES
+        ('001C',(SELECT SUM(total) FROM Invoices NATURAL JOIN CustomerVehicles WHERE customerID
+        '001C' AND CustomerVehicles.vehicleID=Invoices.vehicleID)),
         ('002C',SELECT SUM(total) FROM Invoices NATURAL JOIN CustomerVehicles WHERE customerID='002C' AND CustomerVehicles.vehicleID=Invoices.vehicleID)),
         ('003C',SELECT SUM(total) FROM Invoices NATURAL JOIN CustomerVehicles WHERE customerID='003C' AND CustomerVehicles.vehicleID=Invoices.vehicleID)),
         ('004C',SELECT SUM(total) FROM Invoices NATURAL JOIN CustomerVehicles WHERE customerID='004C' AND CustomerVehicles.vehicleID=Invoices.vehicleID)),
