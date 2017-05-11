@@ -225,7 +225,7 @@ CREATE TABLE MaintenanceVisits(
     CONSTRAINT MaintenanceVisits_CustomerVehicles_fk FOREIGN KEY (vehicleID) REFERENCES CustomerVehicles (vehicleID)
     );
 
-CREATE TABLE VisitItem(
+CREATE TABLE VisitItems(
     employeeID  VARCHAR(4) NOT NULL,
     vehicleID   VARCHAR(7) NOT NULL,
     visitDate   DATE       NOT NULL,
