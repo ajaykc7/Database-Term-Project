@@ -249,7 +249,8 @@ CREATE TABLE Invoices(
     customerID  VARCHAR(4)  NOT NULL,
     vehicleID   VARCHAR(7)  NOT NULL,
     visitDate   DATE        NOT NULL,
-    total       VARCHAR(5)  NOT NULL,
+    premium     DECIMAL(20,2),
+    total       DECIMAL(20,2)  NOT NULL,
     CONSTRAINT Invoices_pk PRIMARY KEY (invoiceID),
     CONSTRAINT Invoices_Profits_fk FOREIGN KEY (customerID) REFERENCES Profits (customerID),
     CONSTRAINT Invoices_MaintenanceVisits_fk FOREIGN KEY (vehicleID, visitDate) REFERENCES MaintenanceVisits (vehicleID, visitDate)
