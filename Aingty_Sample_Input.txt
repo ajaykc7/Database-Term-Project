@@ -1,0 +1,17 @@
+--/*Data for the table MaintenanceVisits */
+INSERT INTO MaintenanceVisits(employeeID, visitDate, vehicleID, currentMile, packageSelect) VALUES
+	('4SAM123',2017-05-01,'002E',77120,YES),
+  	('6LIK274',2017-05-02,'002E',70502,NO),
+  	('1032247',2017-05-02,'007E',8231,YES),
+  	('5AOJ230',2017-05-03,'007E',48345,YES),
+ 	('6TRJ244',2017-05-03,'008E',97324,NO),
+ 	('2AAA000',2017-05-08,'002E',83637,YES),
+  	('2FQZ303',2017-05-12,'008E',86558,NO),
+  	('6YMX832',2017-05-03,'002E',66666,YES),
+  	('SP27091',2017-05-10,'007E',92681,NO),
+  	('CAHIKER',2017-05-10,'007E',5000,NO);
+
+--/*Data for the table MaintenancePackages */
+INSERT INTO MaintenancePackages(packageID, packageName, packagePrice, vehicleID) VALUES
+
+
