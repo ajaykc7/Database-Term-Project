@@ -122,11 +122,11 @@ CREATE TABLE MaintenancePackages(
 
 CREATE TABLE MaintenanceItems(
     itemID         VARCHAR(4)    NOT NULL,
-    itemName       VARCHAR(20)   NOT NULL,
+    itemName       VARCHAR(40)   NOT NULL,
     itemPrice      DECIMAL(8,2)  NOT NULL,
     loyaltyPayable VARCHAR(3)    NOT NULL,
     requiredSkill  VARCHAR(20)   NOT NULL,
-    packageID      VARCHAR(4)   NOT NULL,
+    packageID      VARCHAR(4)   ,
     CONSTRAINT MaintenanceItem_pk PRIMARY KEY (itemID),
     CONSTRAINT MaintenanceItem_MaintenancePackages_fk FOREIGN KEY (packageID) REFERENCES MaintenancePackages (packageID)
     );
@@ -149,7 +149,6 @@ CREATE TABLE CustomerVehicles(
     CONSTRAINT CustomerVehicles_Customers_fk FOREIGN KEY (customerID) REFERENCES Customers (customerID),
     CONSTRAINT CustomerVehicles_Package_fk FOREIGN KEY (packageID) REFERENCES MaintenancePackages(packageID)
     );
-
 SET sql_mode = '';
 
 CREATE TABLE  CustomerAlerts(
@@ -239,13 +238,6 @@ CREATE TABLE VisitItems(
     CONSTRAINT VisitItem_MaintenanceItem_fk FOREIGN KEY (itemID) REFERENCES MaintenanceItems (itemID)
     );
 
-CREATE TABLE Profits(
-    customerID      VARCHAR(4)     NOT NULL,
-    incomeEarned    DECIMAL(12,2)  NOT NULL,
-    CONSTRAINT Profits_pk PRIMARY KEY (customerID),
-    CONSTRAINT Profits_Customers_fk FOREIGN KEY (customerID) REFERENCES Customers (customerID)
-    );
-
 CREATE TABLE Invoices(
     invoiceID   VARCHAR(4)  NOT NULL,
     customerID  VARCHAR(4)  NOT NULL,
@@ -254,6 +246,13 @@ CREATE TABLE Invoices(
     premium     DECIMAL(20,2),
     total       DECIMAL(20,2)  NOT NULL,
     CONSTRAINT Invoices_pk PRIMARY KEY (invoiceID),
-    CONSTRAINT Invoices_Profits_fk FOREIGN KEY (customerID) REFERENCES Profits (customerID),
+    CONSTRAINT Invoices_Profits_fk FOREIGN KEY (customerID) REFERENCES CustomerVehicles (customerID),
     CONSTRAINT Invoices_MaintenanceVisits_fk FOREIGN KEY (vehicleID, visitDate) REFERENCES MaintenanceVisits (vehicleID, visitDate)
+    );
+
+CREATE TABLE Profits(
+    customerID      VARCHAR(4)     NOT NULL,
+    incomeEarned    DECIMAL(12,2)  NOT NULL,
+    CONSTRAINT Profits_pk PRIMARY KEY (customerID),
+    CONSTRAINT Profits_Customers_fk FOREIGN KEY (customerID) REFERENCES Customers (customerID)
     );
