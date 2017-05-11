@@ -274,7 +274,7 @@ INSERT INTO CustomerAlerts(vehicleID, appointment, alertType) VALUES
     ('5AOJ230', '2018-04-17 14:15:00', 'Phone');
 
 --/*Data for the table Employees */
-INSERT INTO Employees(employeeID, eFirstName, eLastName, jobTitle, startDate, eDOB, streetName,zipCode ) VALUES
+INSERT INTO Employees(employeeID, eFirstName, eLastName, jobTitle, startDate, eDOB, streetName, zipCode ) VALUES
     ('001E', 'Jack', 'Black', 'Cashier', '2014-03-13', '1990-02-12','Street 1', '90815'),
     ('002E', 'Dan', 'Bart', 'Technician', '2015-05-25', '1989-03-25','Street 2', '38632'),
     ('003E', 'Paul', 'Thawn', 'Mechanic', '2014-03-19', '1988-10-13','Street 3', '29577'),
@@ -284,20 +284,23 @@ INSERT INTO Employees(employeeID, eFirstName, eLastName, jobTitle, startDate, eD
     ('007E', 'Clark', 'Kent', 'Technician', '2010-08-22', '1989-04-01','Street 7', '02026'),
     ('008E', 'Kara', 'Denver', 'Technician', '2012-11-15', '1990-05-14','Street 8', '70806'),
     ('009E', 'Thomas', 'Wayne', 'Cashier', '2011-01-17', '1969-04-17','Street 9', '11691'),
-    ('010E', 'Ash', 'Ketchum', 'Mechanic', '2009-07-28', '1966-11-11','Street 10', '70605');
+    ('010E', 'Ash', 'Ketchum', 'Mechanic', '2009-07-28', '1966-11-11','Street 10', '70605’),
+    (‘011E’, ‘Tony’, ’Stark’, ‘Mechanical Technician’, ’2008-03-29’, ’1976-01-22’, ‘Street 13’, ’92314’);
 
 --/*Data for the table Technicians */
 INSERT INTO Technicians(employeeID, tLanguage, workStation) VALUES
     ('002E', 'Spanish', 'Office 4c'),
     ('007E', 'English', 'Office 2b'),
-    ('008E', 'Khmer', 'Office 3b');
+    ('008E', 'Khmer', 'Office 3b’),
+    (’011E’, ‘English’, ‘Office 3c’);
 
 --/*Data for the table Mechanics */
 INSERT INTO Mechanics(employeeID) VALUES
     ('003E'),
     ('005E'),
     ('006E'),
-    ('010E');
+    ('010E’),
+    (‘011E’);
 
 --/*Data for the table skillProficiencies */
 INSERT INTO SkillProficiencies(skillProficiency) VALUES
