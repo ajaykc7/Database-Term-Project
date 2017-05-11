@@ -225,6 +225,7 @@ INSERT INTO ProspectAlerts(prospectID,aDate,contactType) VALUES
     ('002P','2014-6-15','Phone'),
     ('002P','2014-6-30','Phone'),
     ('002P','2014-7-15','Phone'),
+    ('001P','2017-05-01','Email')
     ('003P','2010-8-15','Email');
 
 --/*Data for the table MaintenanceItems */
