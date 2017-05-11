@@ -254,7 +254,6 @@ CREATE TABLE Apprenticeships(
     active      BOOLEAN     NOT NULL,
     mentoredSkill           NOT NULL,
     CONSTRAINT Apprenticeship_pk PRIMARY KEY (mentorID, menteeID, startDate),
-	--CONSTRAINT Apprenticeship_Mechanic_fk FOREIGN KEY (mentorID) REFERENCES Mechanic (mentorID),
-	--CONSTRAINT Apprenticeship_Mechanic_fk FOREIGN KEY (menteeID) REFERENCES Mechanic (menteeID)
-	/* This shit wack, yo! */
-    );
+	  CONSTRAINT Apprenticeship_Mentor_fk FOREIGN KEY (mentorID) REFERENCES Mechanic (employeeID),
+	  CONSTRAINT Apprenticeship_Mentee_fk FOREIGN KEY (menteeID) REFERENCES Mechanic (employeeID)
+	  );
