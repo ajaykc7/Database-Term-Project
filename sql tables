@@ -127,8 +127,10 @@ CREATE TABLE ProspectAlerts(
         scheduleFriendly    VARCHAR(3)  NOT NULL,
         lastVisitDate       VARCHAR(10) NOT NULL,
         carInsurance	DECIMAL(20,10) NOT NULL,
+        packageID     VARCHAR(4) NOT NULL,
         CONSTRAINT CustomerVehicles_pk PRIMARY KEY (vehicleID),
-        CONSTRAINT CustomerVehicles_Customers_fk FOREIGN KEY (customerID) REFERENCES Customers (customerID)
+        CONSTRAINT CustomerVehicles_Customers_fk FOREIGN KEY (customerID) REFERENCES Customers (customerID),
+        CONSTRAINT CustomerVehicles_Package_fk FOREIGN KEY (packageID) REFERENCES MaintenancePackages(packageID)
         );
 
 CREATE TABLE  CustomerAlerts(
@@ -231,7 +233,7 @@ CREATE TABLE VisitItem(
     vehicleID   VARCHAR(7) NOT NULL,
     visitDate   DATE       NOT NULL,
     itemID      VARCHAR(4) NOT NULL,
-    priority   VARCHAR(2)  NOT NULL,  
+    priority   VARCHAR(2)  NOT NULL,
     CONSTRAINT VisitItem_pk PRIMARY KEY (employeeID, vehicleID, visitDate, itemID),
     CONSTRAINT VisitItem_Mechanics_fk FOREIGN KEY (employeeID) REFERENCES Mechanics (employeeID),
     CONSTRAINT VisitItem_MaintenanceVisit_fk FOREIGN KEY (vehicleID, visitDate) REFERENCES MaintenanceVisits (vehicleID, visitDate),
