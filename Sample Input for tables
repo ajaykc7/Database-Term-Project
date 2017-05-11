@@ -235,8 +235,6 @@ INSERT INTO MaintenancePackages(packageID, packageName, packagePrice) VALUES
     ('004P','Package4',250.50),
     ('005P','Package5',420.50);
 
->>>>>>> origin/master
-
 --/*Data for the table MaintenanceItems */
 INSERT INTO MaintenanceItems(itemID, itemName, itemPrice, loyaltyPayable, requiredSkill, packageID) VALUES
     ('001I','Engine Repair',100.10,'NO','Communication','001P'),
