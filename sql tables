@@ -231,6 +231,7 @@ CREATE TABLE VisitItem(
     vehicleID   VARCHAR(7) NOT NULL,
     visitDate   DATE       NOT NULL,
     itemID      VARCHAR(4) NOT NULL,
+    priority   VARCHAR(2)  NOT NULL,  
     CONSTRAINT VisitItem_pk PRIMARY KEY (employeeID, vehicleID, visitDate, itemID),
     CONSTRAINT VisitItem_Mechanics_fk FOREIGN KEY (employeeID) REFERENCES Mechanics (employeeID),
     CONSTRAINT VisitItem_MaintenanceVisit_fk FOREIGN KEY (vehicleID, visitDate) REFERENCES MaintenanceVisits (vehicleID, visitDate),
