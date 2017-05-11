@@ -133,7 +133,7 @@ INSERT INTO ZipLocations(zipCode,city,state) VALUES
     ('38632','Hernando','Mississipi'),
     ('35007','Alabaster','Alabama'),
     ('70806','Baton Rouge','Louisiana'),
-    ('70605','Lake Charles','LA'),
+    ('70605','Lake Charles','Louisiana'),
     ('11691','Far Rockaway','New York'),
     ('29577','Myrtle Beach','South Carolina'),
 
@@ -159,6 +159,7 @@ INSERT INTO States(state) VALUES
   ('Georgia'),
   ('Hawaii'),
   ('Idaho'),
+  ('Illinois'),
   ('Indiana'),
   ('Iowa'),
   ('Kansas'),
