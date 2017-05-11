@@ -150,6 +150,8 @@ CREATE TABLE CustomerVehicles(
     CONSTRAINT CustomerVehicles_Package_fk FOREIGN KEY (packageID) REFERENCES MaintenancePackages(packageID)
     );
 
+SET sql_mode = '';
+
 CREATE TABLE  CustomerAlerts(
     vehicleID   VARCHAR(7) NOT NULL,
     appointment TIMESTAMP  NOT NULL,
