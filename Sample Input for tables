@@ -129,19 +129,19 @@ INSERT INTO Corporations(customerID, corpName, corpType) VALUES
 
 --/*Data for the table Individuals*/
 INSERT INTO Individuals(customerID,iFirstName,iLastName,iDOB) VALUES
-    ('001C','Carolyn','Chandler',1998-01-23),
-    ('002C','Jordan','Welch',1994-11-23),
-    ('003C','Cassandra','Ward',1978-05-23),
-    ('004C','Calvin','Park',1950-03-15),
-    ('005C','Carrie','Olsen',1979-04-17),
-    ('008C','Estelle','Cain',1987-12-30),
-    ('009C','Jaime','Rivera',1996-10-13),
-    ('010C','Angel','Beck',1998-01-11),
-    ('011C','Jack','Black',1990-02-12),
-    ('012C','Dan','Bark',1989-03-25),
-    ('013C','Paul','Thawn',1988-10-13),
-    ('014C','Linda','Jackson',1965-12-20),
-    ('015C','Oliver','Queen',1977-09-22);
+    ('001C','Carolyn','Chandler','1998-01-23'),
+    ('002C','Jordan','Welch','1994-11-23'),
+    ('003C','Cassandra','Ward','1978-05-23'),
+    ('004C','Calvin','Park','1950-03-15'),
+    ('005C','Carrie','Olsen','1979-04-17'),
+    ('008C','Estelle','Cain','1987-12-30'),
+    ('009C','Jaime','Rivera','1996-10-13'),
+    ('010C','Angel','Beck','1998-01-11'),
+    ('011C','Jack','Black','1990-02-12'),
+    ('012C','Dan','Bark','1989-03-25'),
+    ('013C','Paul','Thawn','1988-10-13'),
+    ('014C','Linda','Jackson','1965-12-20'),
+    ('015C','Oliver','Queen','1977-09-22');
 
 --/*Data for the table steadyCustomers*/
 INSERT INTO SteadyCustomers(customerID,loyaltyPoints,upgradeSubscription) VALUES
@@ -190,12 +190,12 @@ INSERT INTO ProspectiveMembers(prospectID,deadProspect) VALUES
 
 --/*Data for the table ProspectAlert */
 INSERT INTO ProspectAlerts(prospectID,aDate,contactType) VALUES
-    ('001P',2010-4-15),
-    ('001P',2010-4-30),
-    ('002P',2014-6-15),
-    ('002P',2014-6-30),
-    ('002P',2014-7-15),
-    ('003P',2010-8-15);
+    ('001P','2010-4-15'),
+    ('001P','2010-4-30'),
+    ('002P','2014-6-15'),
+    ('002P','2014-6-30'),
+    ('002P','2014-7-15'),
+    ('003P','2010-8-15');
 
 
 --/*Data for the table MaintenancePackages */
