@@ -76,13 +76,13 @@ INSERT INTO ContactTypes(prospectID,contactType,contact) VALUES
   ('002P','Phone','2134567894');
 
 --/*Data for the table ProspectiveMember */
-INSERT INTO ProspectiveMember(prospectID,deadProspect) VALUES
+INSERT INTO ProspectiveMembers(prospectID,deadProspect) VALUES
     ('001P','NO'),
     ('002P','YES'),
     ('003P','NO');
 
 --/*Data for the table ProspectAlert */
-INSERT INTO ProspectAlert(prospectID,aDate,contactType) VALUES
+INSERT INTO ProspectAlerts(prospectID,aDate,contactType) VALUES
     ('001P',2010-4-15),
     ('001P',2010-4-30),
     ('002P',2014-6-15),
@@ -139,7 +139,7 @@ INSERT INTO ZipLocations(zipCode,streetName,city,state) VALUES
 
 
 --/*Data for the table AddressType */
-INSERT INTO AddressType(addressType) VALUES
+INSERT INTO AddressTypes(addressType) VALUES
   ('Mailing Address'),
   ('Billing Address'),
   ('Pickup Address'),
@@ -287,7 +287,7 @@ INSERT INTO CustomerVehicles(customerID, vehicleID, make, model, vYear, maintena
   	('Tire Maintenance');
 
   --/*Data for the table Apprenticeship */
-  INSERT INTO Apprenticeship(mentorID, menteeID, startDate, active, mentoredSkill) VALUES
+  INSERT INTO Apprenticeships(mentorID, menteeID, startDate, active, mentoredSkill) VALUES
   	('005E', '006E', '2014-08-25', 'True', 'Diagnostic'),
   	('006E', '005E', '2014-08-26', 'True', 'Leadership'),
   	('003E', '010E', '2015-05-15', 'False', 'Leadership'),
