@@ -126,7 +126,7 @@ CREATE TABLE ProspectAlerts(
         accident            VARCHAR(3)  NOT NULL,
         scheduleFriendly    VARCHAR(3)  NOT NULL,
         lastVisitDate       VARCHAR(10) NOT NULL,
-        carInsurance	DECIMAL(20,10) NOT NULL,
+        carInsurance	DECIMAL(20,2) NOT NULL,
         packageID     VARCHAR(4) NOT NULL,
         CONSTRAINT CustomerVehicles_pk PRIMARY KEY (vehicleID),
         CONSTRAINT CustomerVehicles_Customers_fk FOREIGN KEY (customerID) REFERENCES Customers (customerID),
@@ -212,9 +212,7 @@ CREATE TABLE MaintenancePackages(
     packageID   VARCHAR(4)  NOT NULL,
     packageName VARCHAR(20) NOT NULL,
     packagePrice DECIMAL(8,2) NOT NULL,
-    vehicleID   VARCHAR(7)  NOT NULL,
     CONSTRAINT MaintenancePackages_pk PRIMARY KEY (packageID),
-    CONSTRAINT MaintenancePackages_CustomerVehicles_fk FOREIGN KEY (vehicleID) REFERENCES CustomerVehicles (vehicleID)
     );
 
 CREATE TABLE MaintenanceItems(
