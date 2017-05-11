@@ -376,8 +376,12 @@ INSERT INTO MaintenanceVisits(employeeID, visitDate, vehicleID, currentMile, pac
     ('007E','2017-05-10','CAHIKER',5000,'NO'),
     ('007E','2000-05-10','CAHIKER',10,'NO'),
     ('007E','2001-05-10','CAHIKER',10,'NO'),
-    ('007E','1994-05-10','4SAM123',40,'NO');
-
+    ('007E','1994-05-10','4SAM123',40,'NO'),
+    ('007E','2015-05-02','1032247',5000,'YES'),
+    ('007E','2015-05-10','SP27091',8000,'NO'),
+    ('007E','2015-01-10','SP27091',7000,'NO'),
+    ('007E','2015-01-30','SP27091',7500,'NO'),
+    ('002E','2016-05-03','6YMX832',55555,'YES');
 
 --/*Data for the table VisitItems */
 INSERT INTO VisitItems(employeeID, vehicleID, visitDate, itemID, priority) VALUES
