@@ -1,17 +1,43 @@
 --/*Data for the table MaintenanceVisits */
 INSERT INTO MaintenanceVisits(employeeID, visitDate, vehicleID, currentMile, packageSelect) VALUES
-	('4SAM123',2017-05-01,'002E',77120,YES),
-  	('6LIK274',2017-05-02,'002E',70502,NO),
-  	('1032247',2017-05-02,'007E',8231,YES),
-  	('5AOJ230',2017-05-03,'007E',48345,YES),
- 	('6TRJ244',2017-05-03,'008E',97324,NO),
- 	('2AAA000',2017-05-08,'002E',83637,YES),
-  	('2FQZ303',2017-05-12,'008E',86558,NO),
-  	('6YMX832',2017-05-03,'002E',66666,YES),
-  	('SP27091',2017-05-10,'007E',92681,NO),
-  	('CAHIKER',2017-05-10,'007E',5000,NO);
+	('4SAM123','2017-05-01','002E',77120,'YES'),
+  	('6LIK274','2017-05-02','002E',70502,'NO'),
+  	('1032247','2017-05-02','007E',8231,'YES'),
+  	('5AOJ230','2017-05-03','007E',48345,'YES'),
+ 	('6TRJ244','2017-05-03','008E',97324,'NO'),
+ 	('2AAA000','2017-05-08','002E',83637,'YES'),
+  	('2FQZ303','2017-05-12','008E',86558,'NO'),
+  	('6YMX832','2017-05-03','002E',66666,'YES'),
+  	('SP27091','2017-05-10','007E',92681,'NO'),
+  	('CAHIKER','2017-05-10','007E',5000,'NO');
 
 --/*Data for the table MaintenancePackages */
-INSERT INTO MaintenancePackages(packageID, packageName, packagePrice, vehicleID) VALUES
-
+INSERT INTO MaintenancePackages(packageID, packageName, packagePrice) VALUES
+	('001P','Package1',450.50),
+	('002P','Package2',300.50),
+	('003P','Package3',550.50),
+	('004P','Package4',250.50),
+	('005P','Package5',420.50);
+	
+--/*Data for the table MaintenanceItems */
+INSERT INTO MaintenanceItems(itemID,itemName,itemPrice,loyaltyPayable,requiredSkill,packageID) VALUES
+	('001I','Engine Repair',100.10,'NO','Communication','001P'),
+	('002I','Tire Services',70.50,'YES','Customer Service',NULL),
+	('003I','Charging Systems',50.00,'NO','Diagnostic',NULL),
+	('004I','Coolant Systems',100.00,'NO','Leadership','002P'),
+	('005I','A/C Repair',150.00,'NO','Mathematics','002P'),
+	('006I','Diesel Repair',100.00,'YES','Oil Change','002P),
+	('007I','Electrical Repair',150.00,'NO','Tire Maintenance','002P'),
+	('008I','Check Engine Light',75.00,'NO','Communcation',NULL),
+	('009I','Smog Services',120.00,'YES','Customer Service','003P'),
+	('010I','Factory Scheduled Maintenance',300.00,'NO','Engine Repair','004P'),
+	('011I','Brake Services',78.00,'YES','Leadership','004P'),
+	('012I','Transmission Repair',90.00,'NO','Mathematics','005P'),
+	('013I','Hybrid Services',100.00,'NO','Oil Change','005P'),
+	('014I','Suspension',85.00,'YES','Tire Maintenance',NULL),
+	('015I','Fleet Services',100.00,'NO','Communcation',NULL);
+	
+--/*Data for the table VisitItems */
+INSERT INTO VisitItems(employeeID, vehicleID, visitDate,itemID,priority) VALUES
+	(
 
