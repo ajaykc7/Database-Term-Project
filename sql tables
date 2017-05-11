@@ -22,7 +22,6 @@ CREATE TABLE ZipLocations(
     zipCode VARCHAR(7)  NOT NULL,
     city    VARCHAR(30) NOT NULL,
     state   VARCHAR(30) NOT NULL,
-    streetName VARCHAR(40) NOT NULL,
     CONSTRAINT ZipLocations_pk PRIMARY KEY (zipCode),
     CONSTRAINT ZipLocations_States_fk FOREIGN KEY (state) REFERENCES States (state)
     );
@@ -115,22 +114,22 @@ CREATE TABLE ProspectAlerts(
     CONSTRAINT ProspectAlerts_ProspectiveMembers_fk FOREIGN KEY (prospectID) REFERENCES ProspectiveMembers (prospectID)
     );
 
-CREATE TABLE CustomerVehicles(
-    customerID          VARCHAR(4)  NOT NULL,
-    vehicleID           VARCHAR(7)  NOT NULL,
-    make                VARCHAR(20) NOT NULL,
-    model               VARCHAR(20) NOT NULL,
-    vYear               DATE        NOT NULL,
-    maintenanceInterval VARCHAR(6)  NOT NULL,
-    milePerYear         VARCHAR(6)  NOT NULL,
-    currentMile         VARCHAR(5)  NOT NULL,
-    accident            VARCHAR(3)  NOT NULL,
-    scheduleFriendly    VARCHAR(3)  NOT NULL,
-    lastVisitDate       VARCHAR(10) NOT NULL,
-    carInsurance	DECIMAL(8,2) NOT NULL,
-    CONSTRAINT CustomerVehicles_pk PRIMARY KEY (vehicleID),
-    CONSTRAINT CustomerVehicles_Customers_fk FOREIGN KEY (customerID) REFERENCES Customers (customerID)
-    );
+    CREATE TABLE CustomerVehicles(
+        customerID          VARCHAR(4)  NOT NULL,
+        vehicleID           VARCHAR(7)  NOT NULL,
+        make                VARCHAR(20) NOT NULL,
+        model               VARCHAR(20) NOT NULL,
+        vYear               VARCHAR(4)  NOT NULL,
+        maintenanceInterval INT  NOT NULL,
+        milePerYear         INT  NOT NULL,
+        currentMile         INT  NOT NULL,
+        accident            VARCHAR(3)  NOT NULL,
+        scheduleFriendly    VARCHAR(3)  NOT NULL,
+        lastVisitDate       VARCHAR(10) NOT NULL,
+        carInsurance	DECIMAL(20,10) NOT NULL,
+        CONSTRAINT CustomerVehicles_pk PRIMARY KEY (vehicleID),
+        CONSTRAINT CustomerVehicles_Customers_fk FOREIGN KEY (customerID) REFERENCES Customers (customerID)
+        );
 
 CREATE TABLE  CustomerAlerts(
     vehicleID   VARCHAR(7) NOT NULL,
@@ -147,6 +146,7 @@ CREATE TABLE Employees (
     jobTitle    VARCHAR(10) NOT NULL,
     startDate   DATE        NOT NULL,
     eDOB        DATE        NOT NULL,
+    streetName VARCHAR(40)  NOT NULL,
     zipCode     VARCHAR(7)  NOT NULL,
     CONSTRAINT Employees_pk PRIMARY KEY (employeeID),
     CONSTRAINT Employees_ZipLocations_fk FOREIGN KEY (zipCode) REFERENCES ZipLocations (zipCode)

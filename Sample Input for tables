@@ -1,24 +1,28 @@
 --/*Data for the table Customers*/
 INSERT INTO Customers(customerID, subscriptionType,customerType,phone,email,startDate) VALUES
-    ('001C','Steady','Individual','2133234444','steadyCustomer1@gmail.com',2010-01-23),
-    ('002C','Steady','Corporation','5623232454','steadyCustomer2@gmail.com',2000-05-30),
-    ('003C','Steady','Individual','7145539088','steadyCustomer3@gmail.com',2016-05-15),
-    ('004C','Steady','Individual','3276587764','steadyCustomer4@gmail.com',2010-05-23),
-    ('005C','Steady','Individual','9843801192','steadyCustomer5@gmail.com',2013-02-23),
-    ('006C','Premier','Corporation','46783920177','premierCustomer1@gmail.com',2010-01-23),
-    ('007C','Premier','Corporation','5473908975','premierCustomer2@gmail.com',2009-11-23),
-    ('008C','Premier','Individual','2109467587','premierCustomer3@gmail.com',2009-03-13),
-    ('009C','Premier','Individual','3894439764','premierCustomer4@gmail.com',2014-05-24),
-    ('010C','Premier','Individual','8929887355','premierCustomer5@gmail.com',2016-07-28),
-    ('011C','Employee','Individual','2374890567','employeeCustomer1@gmail.com',2016-05-23),
-    ('012C','Employee','Individual','5467332876','employeeCustomer2@gmail.com',2016-05-23),
-    ('013C','Employee','Individual','8761287435','employeeCustomer3@gmail.com',2016-06-26),
-    ('014C','Employee','Individual','8761245577','employeeCustomer4@gmail.com',2016-07-14),
-    ('015C','Employee','Individual','8143526477','employeeCustomer5@gmail.com',2017-01-23);
+    ('001C','Steady','Individual','2133234444','steadyCustomer1@gmail.com','2010-01-23'),
+    ('002C','Steady','Corporation','5623232454','steadyCustomer2@gmail.com','2000-05-30'),
+    ('003C','Steady','Individual','7145539088','steadyCustomer3@gmail.com','2016-05-15'),
+    ('004C','Steady','Individual','3276587764','steadyCustomer4@gmail.com','2010-05-23'),
+    ('005C','Steady','Individual','9843801192','steadyCustomer5@gmail.com','2013-02-23'),
+    ('006C','Premier','Corporation','46783920177','premierCustomer1@gmail.com','2010-01-23'),
+    ('007C','Premier','Corporation','5473908975','premierCustomer2@gmail.com','2009-11-23'),
+    ('008C','Premier','Individual','2109467587','premierCustomer3@gmail.com','2009-03-13'),
+    ('009C','Premier','Individual','3894439764','premierCustomer4@gmail.com','2014-05-24'),
+    ('010C','Premier','Individual','8929887355','premierCustomer5@gmail.com','2016-07-28'),
+    ('011C','Employee','Individual','2374890567','employeeCustomer1@gmail.com','2016-05-23'),
+    ('012C','Employee','Individual','5467332876','employeeCustomer2@gmail.com','2016-05-23'),
+    ('013C','Employee','Individual','8761287435','employeeCustomer3@gmail.com','2016-06-26'),
+    ('014C','Employee','Individual','8761245577','employeeCustomer4@gmail.com','2016-07-14'),
+    ('015C','Employee','Individual','8143526477','employeeCustomer5@gmail.com','2017-01-23');
 
 --/*Data for the table PremierCustomers*/
 INSERT INTO PremierCustomers(customerID,paymentPerMonth,paymentDueDate) VALUES
-    ();
+    ('006C',(SELECT SUM(carInsurance) FROM CustomerVehicles WHERE customerID='006C'),2017-05-23),
+    ('007C',);
+    ('008C',);
+    ('009C',);
+    ('010C',);
 
 --/*Data for the table steadyCustomers*/
 INSERT INTO SteadyCustomers(customerID,loyaltyPoints,upgradeSubscription) VALUES
@@ -42,7 +46,7 @@ INSERT INTO Corporations(customerID, corpName, corpType) VALUES
     ('007C','Brothers Private Co.','NPO');
 
 --/*Data for the table Individuals*/
-INSERT INTO Individuals(customerID,iFirstName,iLastName,DOB) VALUES
+INSERT INTO Individuals(customerID,iFirstName,iLastName,iDOB) VALUES
     ('001C','Carolyn','Chandler',1998-01-23),
     ('002C','Jordan','Welch',1994-11-23),
     ('003C','Cassandra','Ward',1978-05-23),
@@ -193,24 +197,24 @@ INSERT INTO States(state) VALUES
   ('Wyoming');
 
 --/*Data for the table CustomerVehicles
-INSERT INTO CustomerVehicle(customerID, vehicleID, make, model, vYear, maintenanceInterval, milePerYear, currentMile, accident, scheduleFriendly, lastVisitDate) VALUES
-  ('001C','4SAM123','Ford','Mustang',2010,7500,16000,75247,'YES','NO',2016-01-10),
-  ('002C','6LIK274','Honda','Civic',2009,5000,10000,60022,'YES','YES',2016-08-05),
-  ('003C','1032247','Lexus','LX',2017,1500,5000,5001,'NO','YES',2017-03-10),
-  ('004C','5AOJ230','Honda','Accord',2012,2000,20000,45000,'NO','NO',2016-10-12),
-  ('005C','5BBM299','Chevrolet','Camaro',2010,5000,14000,20554,'YES','NO',2016-08-20),
-  ('006C','6TRJ244','Ford','Fiesta',2009,5000,5000,12001,'NO','YES',2016-07-21),
-  ('006C','6YMX832','Honda','Accord',2004,1200,7500,58088,'NO','YES',2017-05-10),
-  ('007C','2AAA000','Toyota','Highlander',2013,5000,90000,74586,'YES','YES',2016-08-07),
-  ('007C','6MBV006','Toyota','Tahoe',2014,80000,10000,25689,'YES','NO',2016-11-11),
-  ('008C','7TCE006','Volkswagen','Beetle',2000,1500,4500,20145,'YES','YES',2016-12-12),
-  ('009C','2FQZ303','Honda','Civic',2000,4500,10000,74755,'NO','YES',2016-10-10),
-  ('010C','3GDG552','Hyundai','Accent',2009,5000,12000,87418,'NO','NO',2016-07-15),
-  ('011C','SP27091','Ford','Fiesta',2004,3000,18000,85230,'YES','YES',2016-08-30),
-  ('012C','2WAQ233','Scion','XD',2001,2000,20000,99999,'NO','YES',2016-02-08),
-  ('013C','CAHIKER','Subaru','Legacy',2017,1000,4500,2000,'YES','YES',2016-10-22),
-  ('014C','AAHHYES','Ford','Mustang',2011,7500,6000,66895,'YES','YES',2016-11-24),
-  ('015C','7NES326','Honda','Pilot',2012,7000,16000,38955,'NO','YES',2016-11-24);
+INSERT INTO CustomerVehicles(customerID, vehicleID, make, model, vYear, maintenanceInterval, milePerYear, currentMile, accident, scheduleFriendly, lastVisitDate,carInsurance) VALUES
+  ('001C','4SAM123','Ford','Mustang','2010',7500,16000,75247,'YES','NO','2016-01-10',(16000/(7500*12)*100));
+  ('002C','6LIK274','Honda','Civic','2009',5000,10000,60022,'YES','YES','2016-08-05',SELECT ROUND(10000/(5000*12)*100)),
+  ('003C','1032247','Lexus','LX','2017',1500,5000,5001,'NO','YES','2017-03-10',(5000/(1500*12)*90)),
+  ('004C','5AOJ230','Honda','Accord','2012',2000,20000,45000,'NO','NO','2016-10-12',(20000/(2000*12)*90)),
+  ('005C','5BBM299','Chevrolet','Camaro','2010',5000,14000,20554,'YES','NO','2016-08-20',(14000/(5000*12)*50)),
+  ('006C','6TRJ244','Ford','Fiesta','2009',5000,5000,12001,'NO','YES','2016-07-21',(5000/(5000*12)*30)),
+  ('006C','6YMX832','Honda','Accord','2004',1200,7500,58088,'NO','YES','2017-05-10',(7500/(1200*12)*100)),
+  ('007C','2AAA000','Toyota','Highlander','2013',5000,90000,74586,'YES','YES','2016-08-07',(90000/(5000*12)*100)),
+  ('007C','6MBV006','Toyota','Tahoe','2014',8000,10000,25689,'YES','NO','2016-11-11',(10000/(8000*12)*50)),
+  ('008C','7TCE006','Volkswagen','Beetle','2000',1500,4500,20145,'YES','YES','2016-12-12',(4500/(1500*12)*50)),
+  ('009C','2FQZ303','Honda','Civic','2000',4500,10000,74755,'NO','YES','2016-10-10',(10000/(4500*12)*100)),
+  ('010C','3GDG552','Hyundai','Accent','2009',5000,12000,87418,'NO','NO','2016-07-15',(12000/(5000*12)*100)),
+  ('011C','SP27091','Ford','Fiesta','2004',3000,18000,85230,'YES','YES','2016-08-30',(18000/(3000*12)*100)),
+  ('012C','2WAQ233','Scion','XD','2001',2000,20000,99999,'NO','YES','2016-02-08',(20000/(2000*12)*100)),
+  ('013C','CAHIKER','Subaru','Legacy','2017',1000,4500,2000,'YES','YES','2016-10-22',(4500/(1000*12)*30)),
+  ('014C','AAHHYES','Ford','Mustang','2011',7500,6000,66895,'YES','YES','2016-11-24',(6000/(7500*12)*100)),
+  ('015C','7NES326','Honda','Pilot','2012',7000,16000,38955,'NO','YES','2016-11-24',(16000/(7000*12)*70));
 
 --/*Data for the table MaintenanceVisits
 INSERT INTO MaintenanceVisits(vehicleID,visitDate,employeeID,currentMile,packageSelect) VALUES
