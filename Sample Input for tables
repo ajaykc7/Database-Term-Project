@@ -195,22 +195,22 @@ INSERT INTO States(state) VALUES
 --/*Data for the table CustomerVehicles
 INSERT INTO CustomerVehicle(customerID, vehicleID, make, model, vYear, maintenanceInterval, milePerYear, currentMile, accident, scheduleFriendly, lastVisitDate) VALUES
   ('001C','4SAM123','Ford','Mustang',2010,7500,16000,75247,'YES','NO',2016-01-10),
-  ('002C','6LIK274','Honda','Civic',2009,5000,10000,121222,'YES','YES',2016-08-05),
+  ('002C','6LIK274','Honda','Civic',2009,5000,10000,60022,'YES','YES',2016-08-05),
   ('003C','1032247','Lexus','LX',2017,1500,5000,5001,'NO','YES',2017-03-10),
   ('004C','5AOJ230','Honda','Accord',2012,2000,20000,45000,'NO','NO',2016-10-12),
-  ('005C','5BBM299','Chevrolet','Camaro',2010,5000,14000,200554,'YES','NO',2016-08-20),
-  ('006C','6TRJ244','Ford','Fiesta',2009,5000,5000,121001,'NO','YES',2016-07-21),
-  ('006C','6YMX832','Honda','Accord',2004,1200,7500,125888,'NO','YES',2017-05-10),
-  ('007C','2AAA000','Toyota','Highlander',2013,5000,10000,74586,'YES','YES',2016-08-07),
+  ('005C','5BBM299','Chevrolet','Camaro',2010,5000,14000,20554,'YES','NO',2016-08-20),
+  ('006C','6TRJ244','Ford','Fiesta',2009,5000,5000,12001,'NO','YES',2016-07-21),
+  ('006C','6YMX832','Honda','Accord',2004,1200,7500,58088,'NO','YES',2017-05-10),
+  ('007C','2AAA000','Toyota','Highlander',2013,5000,90000,74586,'YES','YES',2016-08-07),
   ('007C','6MBV006','Toyota','Tahoe',2014,80000,10000,25689,'YES','NO',2016-11-11),
-  ('008C','7TCE006','Volkswagen','Beetle',2000,1500,4500,200145,'YES','YES',2016-12-12),
-  ('009C','2FQZ303','Honda','Civic',2000,4500,10000,147555,'NO','YES',2016-10-10),
+  ('008C','7TCE006','Volkswagen','Beetle',2000,1500,4500,20145,'YES','YES',2016-12-12),
+  ('009C','2FQZ303','Honda','Civic',2000,4500,10000,74755,'NO','YES',2016-10-10),
   ('010C','3GDG552','Hyundai','Accent',2009,5000,12000,87418,'NO','NO',2016-07-15),
   ('011C','SP27091','Ford','Fiesta',2004,3000,18000,85230,'YES','YES',2016-08-30),
-  ('012C','2WAQ233','Scion','XD',2001,2000,20000,100100,'NO','YES',2016-02-08),
+  ('012C','2WAQ233','Scion','XD',2001,2000,20000,99999,'NO','YES',2016-02-08),
   ('013C','CAHIKER','Subaru','Legacy',2017,1000,4500,2000,'YES','YES',2016-10-22),
   ('014C','AAHHYES','Ford','Mustang',2011,7500,6000,66895,'YES','YES',2016-11-24),
-  ('015C','7NES326','Honda','Pilot',2012,7000,16000,68955,'NO','YES',2016-11-24);
+  ('015C','7NES326','Honda','Pilot',2012,7000,16000,38955,'NO','YES',2016-11-24);
 
 --/*Data for the table MaintenanceVisits
 INSERT INTO MaintenanceVisits(vehicleID,visitDate,employeeID,currentMile,packageSelect) VALUES
