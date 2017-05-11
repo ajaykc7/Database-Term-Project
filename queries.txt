@@ -1,0 +1,43 @@
+/*View 1*/
+CREATE OR REPLACE VIEW Customer_v AS
+    SELECT customerID,'N/A' AS 'CorpName', iLastName AS 'LastName', iFirstName AS 'FirstName',subscriptionType,YEAR(CURDATE())-YEAR(startDate) AS 'YEARS' FROM Individuals NATURAL JOIN Customers
+    UNION
+    SELECT customerID,corpName AS 'CorpName', 'N/A' AS 'LastName', 'N/A' AS 'FirstName',subscriptionType,YEAR(CURDATE())-YEAR(startDate) AS 'YEARS' FROM Corporations NATURAL JOIN Customers;
+
+/*View 2*/
+CREATE OR REPLACE VIEW Customer_addresses_v AS
+ SELECT 'N/A' AS 'Corp Name',iLastName AS 'Last Name', iFirstName as 'First Name', 'Individual' AS customerType, 'Mailing' AS addressType,
+    streetName AS 'Street', city AS 'City Name', state as 'State', zipCode
+    FROM Individuals natural join  ZipLocations natural join Addresses
+    UNION
+    SELECT corpName AS 'Corp Name', 'N/A' AS firstName, 'N/A' AS lastName,'Corporate' AS customerType, addressType as 'Address Type',streetName AS 'Street', city AS 'City Name',  state as 'State', zipCode
+    FROM Corporations natural join Addresses natural join ZipLocations ORDER BY customerType DESC;
+
+/*View 3*/
+CREATE OR REPLACE VIEW Mechanic_mentor_v AS
+SELECT a.eFirstName AS 'Mentor', b.eFirstName AS 'Mentee' FROM Employees a RIGHT OUTER JOIN (Apprenticeships Ap INNER JOIN Employees b ON Ap.menteeID=b.employeeID) ON a.employeeID = Ap.mentorID ORDER BY a.eFirstName, b.eFirstName;
+
+/*View 4*/
+
+/*View 5*/
+Create OR REPLACE VIEW AlertCount_v AS
+SELECT prospectID, COUNT(ProspectAlerts.prospectID) AS 'AlertCount' FROM ProspectiveMembers NATURAL JOIN ProspectAlerts GROUP BY prospectID;
+
+CREATE OR REPLACE VIEW RecentDate_v AS
+SELECT prospectID AS 'ProspectID', MAX(aDate) AS 'RecentDate' FROM ProspectAlerts GROUP BY prospectID;
+
+CREATE OR REPLACE VIEW DateMoreThanAYear_v AS
+SELECT prospectID, RecentDate FROM RecentDate_v WHERE DATEDIFF(CURDATE(),RecentDate)>365;
+
+CREATE OR REPLACE VIEW Prospective_resurrection_Id_v AS
+    SELECT prospectID FROM AlertCount_v NATURAL JOIN DateMoreThanAYear_v WHERE AlertCount>=3;
+
+    CREATE OR REPLACE VIEW Prospective_resurrection_v AS
+        SELECT pFirstName, pLastName FROM Referrals NATURAL JOIN Prospective_resurrection_Id_v;
+
+
+/*Query 1*/
+SELECT 'NULL' AS FirstName, 'NULL' AS LastName,corpName AS CorporationName, phone, subscriptionType AS SubscriptionType, customerType AS CustomerType  FROM Corporations NATURAL JOIN Customers UNION
+SELECT iFirstName AS FirstName, iLastName AS LastName, 'NULL' AS CorporationName,phone,subscriptionType AS SubscriptionType, customerType AS CustomerType FROM Individuals NATURAL JOIN Customers;
+
+/*Query 2*/
