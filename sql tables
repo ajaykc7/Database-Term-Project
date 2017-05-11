@@ -117,7 +117,7 @@ CREATE TABLE MaintenancePackages(
     packageID   VARCHAR(4)  NOT NULL,
     packageName VARCHAR(20) NOT NULL,
     packagePrice DECIMAL(8,2) NOT NULL,
-    CONSTRAINT MaintenancePackages_pk PRIMARY KEY (packageID),
+    CONSTRAINT MaintenancePackages_pk PRIMARY KEY (packageID)
     );
 
 CREATE TABLE MaintenanceItems(
