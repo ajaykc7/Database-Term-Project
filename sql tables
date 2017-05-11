@@ -71,9 +71,8 @@ CREATE TABLE EmployeeCustomers(
     );
 
 CREATE TABLE PremierCustomers(
-    customerID          VARCHAR(3)  NOT NULL,
-    paymentPerMonth     VARCHAR(3)  NOT NULL,
-    fiveYearEstimate                NOT NULL,
+    customerID          VARCHAR(4)  NOT NULL,
+    paymentPerMonth     DECIMAL(20,2)  NOT NULL,
     paymentDueDate      VARCHAR(10) NOT NULL,
     CONSTRAINT PremierCustomers_pk PRIMARY KEY (customerID),
 	CONSTRAINT PremierCustomers_Customers_fk FOREIGN KEY (customerID) REFERENCES Customers (customerID)
