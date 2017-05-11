@@ -225,8 +225,13 @@ INSERT INTO MaintenanceVisits(vehicleID,visitDate,employeeID,currentMile,package
   ('SP27091',2017-05-10,'007E',90000,NO),
   ('CAHIKER',2017-05-10,'007E',5000,NO);
 
---/*Data for the table Maintenance
---/*Data for the table VisitItems
+--/*Data for the table MaintenancePackages */
+
+—-/*Data for the table MaintenanceItems */
+
+
+
+--/*Data for the table VisitItems */
 INSERT INTO VisitItems(employeeID,vehicleID,visitDate,itemID) VALUES
   ('');
 
