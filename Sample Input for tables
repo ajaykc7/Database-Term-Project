@@ -16,127 +16,6 @@ INSERT INTO Customers(customerID, subscriptionType,customerType,phone,email,star
     ('014C','Employee','Individual','8761245577','employeeCustomer4@gmail.com','2016-07-14'),
     ('015C','Employee','Individual','8143526477','employeeCustomer5@gmail.com','2017-01-23');
 
---/*Data for the table PremierCustomers*/
-INSERT INTO PremierCustomers(customerID,paymentPerMonth,paymentDueDate) VALUES
-    ('006C',(SELECT SUM(carInsurance) FROM CustomerVehicles WHERE customerID='006C'), '2017-05-23'),
-    ('007C',(SELECT SUM(carInsurance) FROM CustomerVehicles WHERE customerID='007C'), '2017-06-10'),
-    ('008C',(SELECT SUM(carInsurance) FROM CustomerVehicles WHERE customerID='008C'), '2018-02-23'),
-    ('009C',(SELECT SUM(carInsurance) FROM CustomerVehicles WHERE customerID='009C'), '2017-11-05'),
-    ('010C',(SELECT SUM(carInsurance) FROM CustomerVehicles WHERE customerID='010C'), '2017-08-29');
-
---/*Data for the table steadyCustomers*/
-INSERT INTO SteadyCustomers(customerID,loyaltyPoints,upgradeSubscription) VALUES
-    ('001C',100,100.50),
-    ('002C',0,150.00),
-    ('003C',450,200.00),
-    ('004C',300,450.50),
-    ('005C',50,500.00);
-
---/*Data for the table EmployeeCustomers*/
-INSERT INTO EmployeeCustomers(customerID, discountPercent,discountAvailable) VALUES
-    ('011C',10,'YES'),
-    ('012C',20,'YES'),
-    ('013C',5,'NO'),
-    ('014C',15,'NO'),
-    ('015C',15,'YES');
-
---/*Data for the table Corporations*/
-INSERT INTO Corporations(customerID, corpName, corpType) VALUES
-    ('006C','Lex Luthor Corporations','Joint Division'),
-    ('007C','Brothers Private Co.','NPO');
-
---/*Data for the table Individuals*/
-INSERT INTO Individuals(customerID,iFirstName,iLastName,iDOB) VALUES
-    ('001C','Carolyn','Chandler',1998-01-23),
-    ('002C','Jordan','Welch',1994-11-23),
-    ('003C','Cassandra','Ward',1978-05-23),
-    ('004C','Calvin','Park',1950-03-15),
-    ('005C','Carrie','Olsen',1979-04-17),
-    ('008C','Estelle','Cain',1987-12-30),
-    ('009C','Jaime','Rivera',1996-10-13),
-    ('010C','Angel','Beck',1998-01-11),
-    ('011C','Jack','Black',1990-02-12),
-    ('012C','Dan','Bark',1989-03-25),
-    ('013C','Paul','Thawn',1988-10-13),
-    ('014C','Linda','Jackson',1965-12-20),
-    ('015C','Oliver','Queen',1977-09-22);
-
---/*Data for the table Referrals */
-INSERT INTO Referrals(customerID,prospectID,pFirstName,pLastName,referralDate,rewardType) VALUES
-    ('001C','001P','Harry','Potter',2010-4-12,'Oil Change'),
-    ('008C','002P','Mark','Twain',2014-6-12,'$50 off'),
-    ('011C','003P','Bruce','Wayne',2010-8-12,'Oil Change');
-
---/*Data for the table ContactTypes */
-INSERT INTO ContactTypes(prospectID,contactType,contact) VALUES
-  ('001P','Email','harrypotter@gmail.com'),
-  ('001P','Phone','7148987415'),
-  ('003P','Email','brucewayne@gmail.com'),
-  ('003P','Phone','7895626666'),
-  ('002P','Phone','2134567894');
-
---/*Data for the table ProspectiveMember */
-INSERT INTO ProspectiveMembers(prospectID,deadProspect) VALUES
-    ('001P','NO'),
-    ('002P','YES'),
-    ('003P','NO');
-
---/*Data for the table ProspectAlert */
-INSERT INTO ProspectAlerts(prospectID,aDate,contactType) VALUES
-    ('001P',2010-4-15),
-    ('001P',2010-4-30),
-    ('002P',2014-6-15),
-    ('002P',2014-6-30),
-    ('002P',2014-7-15),
-    ('003P',2010-8-15);
-
---/*Data for the table Addresses */
-INSERT INTO Addresses(customerID,addressType,zipCode) VALUES
-    ('001P', 'Mailing Address','Laurel Street','90815'),
-    ('002P', 'Mailing Address','Oxford Road','07424'),
-    ('003P', 'Mailing Address','Lexington Court','32765'),
-    ('004P', 'Mailing Address','Lexington Court','52001'),
-    ('005P', 'Mailing Address','Linden Street','46123'),
-    ('006P', 'Mailing Address','Highland Avenue','21030'),
-    ('007P', 'Mailing Address','Victoria Court','13760'),
-    ('008P', 'Mailing Address','Summit Street','30518'),
-    ('009P', 'Mailing Address','Forest Avenue','02026'),
-    ('010P', 'Mailing Address','Bank Street','30096'),
-    ('011P', 'Mailing Address','Country Lane','60435'),
-    ('012P', 'Mailing Address','Cambridge Drive','60462'),
-    ('013P', 'Mailing Address','Orland Park','90815'),
-    ('014P', 'Mailing Address','York Street','01887'),
-    ('015P', 'Mailing Address','Lake Avenue','11710'),
-    ('006P', 'Billing Address','Valley View Road','38632'),
-    ('006P', 'Pickup Address','Valley Road','35007'),
-    ('006P', 'Delivery Address','Maple Street','70806'),
-    ('007P', 'Billing Address','Monroe Drive','70605'),
-    ('007P', 'Pickup Address','1st Drive','11691'),
-    ('007P', 'Delivery Address','Route 6','29577');
-
---/*Data for the table ZipLocations */
-INSERT INTO ZipLocations(zipCode,city,state) VALUES
-    ('90815','Long Beach','California'),
-    ('07424','Little Falls','New Jersey'),
-    ('32765','Oviedo','Florida'),
-    ('52001','Dubuque','Iowa'),
-    ('46123','Avon','Indiana'),
-    ('21030','Cockeysvilla','Maryland'),
-    ('13760','Endicott','New York'),
-    ('30518','Buford','Georgia'),
-    ('02026','Dedham','Massachusetts'),
-    ('30096','Duluth','Georgia'),
-    ('60435','Joliet','Illinois'),
-    ('60462','NarniaLand','Illinois'),
-    ('01887','Wilmington','Massachusetts'),
-    ('11710','Bellmore','New York'),
-    ('38632','Hernando','Mississipi'),
-    ('35007','Alabaster','Alabama'),
-    ('70806','Baton Rouge','Louisiana'),
-    ('70605','Lake Charles','Louisiana'),
-    ('11691','Far Rockaway','New York'),
-    ('29577','Myrtle Beach','South Carolina'),
-
 
 --/*Data for the table AddressType */
 INSERT INTO AddressTypes(addressType) VALUES
@@ -159,7 +38,6 @@ INSERT INTO States(state) VALUES
   ('Georgia'),
   ('Hawaii'),
   ('Idaho'),
-  ('Illinois'),
   ('Indiana'),
   ('Iowa'),
   ('Kansas'),
@@ -197,6 +75,156 @@ INSERT INTO States(state) VALUES
   ('Wisconsin'),
   ('Wyoming');
 
+--/*Data for the table ZipLocations */
+INSERT INTO ZipLocations(zipCode,city,state) VALUES
+    ('90815','Long Beach','California'),
+    ('07424','Little Falls','New Jersey'),
+    ('32765','Oviedo','Florida'),
+    ('52001','Dubuque','Iowa'),
+    ('46123','Avon','Indiana'),
+    ('21030','Cockeysvilla','Maryland'),
+    ('13760','Endicott','New York'),
+    ('30518','Buford','Georgia'),
+    ('02026','Dedham','Massachusetts'),
+    ('30096','Duluth','Georgia'),
+    ('60435','Joliet','Illinois'),
+    ('60462','Cook County', 'Illinois'),
+    ('01887','Wilmington','Massachusetts'),
+    ('11710','Bellmore','New York'),
+    ('38632','Hernando','Mississipi'),
+    ('35007','Alabaster','Alabama'),
+    ('70806','Baton Rouge','Louisiana'),
+    ('70605','Lake Charles','LA'),
+    ('11691','Far Rockaway','New York'),
+    ('29577','Myrtle Beach','South Carolina');
+
+--/*Data for the table Addresses */
+INSERT INTO Addresses(customerID,addressType,streetName,zipCode) VALUES
+    ('001P', 'Mailing Address','Laurel Street','90815'),
+    ('002P', 'Mailing Address','Oxford Road','07424'),
+    ('003P', 'Mailing Address','Lexington Court','32765'),
+    ('004P', 'Mailing Address','Lexington Court','52001'),
+    ('005P', 'Mailing Address','Linden Street','46123'),
+    ('006P', 'Mailing Address','Highland Avenue','21030'),
+    ('007P', 'Mailing Address','Victoria Court','13760'),
+    ('008P', 'Mailing Address','Summit Street','30518'),
+    ('009P', 'Mailing Address','Forest Avenue','02026'),
+    ('010P', 'Mailing Address','Bank Street','30096'),
+    ('011P', 'Mailing Address','Country Lane','60435'),
+    ('012P', 'Mailing Address','Cambridge Drive','60462'),
+    ('013P', 'Mailing Address','Orland Park','90815'),
+    ('014P', 'Mailing Address','York Street','01887'),
+    ('015P', 'Mailing Address','Lake Avenue','11710'),
+    ('006P', 'Billing Address','Valley View Road','38632'),
+    ('006P', 'Pickup Address','Valley Road','35007'),
+    ('006P', 'Delivery Address','Maple Street','70806'),
+    ('007P', 'Billing Address','Monroe Drive','70605'),
+    ('007P', 'Pickup Address','1st Drive','11691'),
+    ('007P', 'Delivery Address','Route 6','29577');
+
+--/*Data for the table Corporations*/
+INSERT INTO Corporations(customerID, corpName, corpType) VALUES
+    ('006C','Lex Luthor Corporations','Joint Division'),
+    ('007C','Brothers Private Co.','NPO');
+
+--/*Data for the table Individuals*/
+INSERT INTO Individuals(customerID,iFirstName,iLastName,iDOB) VALUES
+    ('001C','Carolyn','Chandler',1998-01-23),
+    ('002C','Jordan','Welch',1994-11-23),
+    ('003C','Cassandra','Ward',1978-05-23),
+    ('004C','Calvin','Park',1950-03-15),
+    ('005C','Carrie','Olsen',1979-04-17),
+    ('008C','Estelle','Cain',1987-12-30),
+    ('009C','Jaime','Rivera',1996-10-13),
+    ('010C','Angel','Beck',1998-01-11),
+    ('011C','Jack','Black',1990-02-12),
+    ('012C','Dan','Bark',1989-03-25),
+    ('013C','Paul','Thawn',1988-10-13),
+    ('014C','Linda','Jackson',1965-12-20),
+    ('015C','Oliver','Queen',1977-09-22);
+
+--/*Data for the table steadyCustomers*/
+INSERT INTO SteadyCustomers(customerID,loyaltyPoints,upgradeSubscription) VALUES
+    ('001C',100,100.50),
+    ('002C',0,150.00),
+    ('003C',450,200.00),
+    ('004C',300,450.50),
+    ('005C',50,500.00);
+
+--/*Data for the table EmployeeCustomers*/
+INSERT INTO EmployeeCustomers(customerID, discountPercent,discountAvailable) VALUES
+    ('011C',10,'YES'),
+    ('012C',20,'YES'),
+    ('013C',5,'NO'),
+    ('014C',15,'NO'),
+    ('015C',15,'YES');
+
+--/*Data for the table PremierCustomers*/
+INSERT INTO PremierCustomers(customerID,paymentPerMonth,paymentDueDate) VALUES
+    ('006C',(SELECT SUM(carInsurance) FROM CustomerVehicles WHERE customerID='006C'), '2017-05-23'),
+    ('007C',(SELECT SUM(carInsurance) FROM CustomerVehicles WHERE customerID='007C'), '2017-06-10'),
+    ('008C',(SELECT SUM(carInsurance) FROM CustomerVehicles WHERE customerID='008C'), '2018-02-23'),
+    ('009C',(SELECT SUM(carInsurance) FROM CustomerVehicles WHERE customerID='009C'), '2017-11-05'),
+    ('010C',(SELECT SUM(carInsurance) FROM CustomerVehicles WHERE customerID='010C'), '2017-08-29');
+
+
+--/*Data for the table Referrals */
+INSERT INTO Referrals(customerID,prospectID,pFirstName,pLastName,referralDate,rewardType) VALUES
+    ('001C','001P','Harry','Potter',2010-4-12,'Oil Change'),
+    ('008C','002P','Mark','Twain',2014-6-12,'$50 off'),
+    ('011C','003P','Bruce','Wayne',2010-8-12,'Oil Change');
+
+--/*Data for the table ContactTypes */
+INSERT INTO ContactTypes(prospectID,contactType,contact) VALUES
+  ('001P','Email','harrypotter@gmail.com'),
+  ('001P','Phone','7148987415'),
+  ('003P','Email','brucewayne@gmail.com'),
+  ('003P','Phone','7895626666'),
+  ('002P','Phone','2134567894');
+
+--/*Data for the table ProspectiveMember */
+INSERT INTO ProspectiveMembers(prospectID,deadProspect) VALUES
+    ('001P','NO'),
+    ('002P','YES'),
+    ('003P','NO');
+
+--/*Data for the table ProspectAlert */
+INSERT INTO ProspectAlerts(prospectID,aDate,contactType) VALUES
+    ('001P',2010-4-15),
+    ('001P',2010-4-30),
+    ('002P',2014-6-15),
+    ('002P',2014-6-30),
+    ('002P',2014-7-15),
+    ('003P',2010-8-15);
+
+
+--/*Data for the table MaintenancePackages */
+INSERT INTO MaintenancePackages(packageID, packageName, packagePrice) VALUES
+    ('001P','Package1',450.50),
+    ('002P','Package2',300.50),
+    ('003P','Package3',550.50),
+    ('004P','Package4',250.50),
+    ('005P','Package5',420.50);
+
+
+--/*Data for the table MaintenanceItems */
+INSERT INTO MaintenanceItems(itemID, itemName, itemPrice, loyaltyPayable, requiredSkill, packageID) VALUES
+    ('001I','Engine Repair',100.10,'NO','Communication','001P'),
+    ('002I','Tire Services',70.50,'YES','Customer Service',NULL),
+    ('003I','Charging Systems',50.00,'NO','Diagnostic',NULL),
+    ('004I','Coolant Systems',100.00,'NO','Leadership','002P'),
+    ('005I','A/C Repair',150.00,'NO','Mathematics','002P'),
+    ('006I','Diesel Repair',100.00,'YES','Oil Change','002P),
+    ('007I','Electrical Repair',150.00,'NO','Tire Maintenance','002P'),
+    ('008I','Check Engine Light',75.00,'NO','Communcation',NULL),
+    ('009I','Smog Services',120.00,'YES','Customer Service','003P'),
+    ('010I','Factory Scheduled Maintenance',300.00,'NO','Engine Repair','004P'),
+    ('011I','Brake Services',78.00,'YES','Leadership','004P'),
+    ('012I','Transmission Repair',90.00,'NO','Mathematics','005P'),
+    ('013I','Hybrid Services',100.00,'NO','Oil Change','005P'),
+    ('014I','Suspension',85.00,'YES','Tire Maintenance',NULL),
+    ('015I','Fleet Services',100.00,'NO','Communcation',NULL);
+
 
 --/*Data for the table CustomerVehicles
 INSERT INTO CustomerVehicles(customerID, vehicleID, make, model, vYear, maintenanceInterval, milePerYear, currentMile, accident, scheduleFriendly, lastVisitDate, carInsurance, packageID) VALUES
@@ -218,170 +246,170 @@ INSERT INTO CustomerVehicles(customerID, vehicleID, make, model, vYear, maintena
   ('014C','AAHHYES','Ford','Mustang','2011',7500,6000,66895,'YES','YES','2016-11-24',(6000.00 / (7500*12)*100), '002P'),
   ('015C','7NES326','Honda','Pilot','2012',7000,16000,38955,'NO','YES','2016-11-24',(16000.00 / (7000*12)*70), '003P');
 
-  --/*Data for the table Employees */
-  INSERT INTO Employees(employeeID, eFirstName, eLastName, jobTitle, startDate, eDOB, streetName,zipCode ) VALUES
-  	('001E', 'Jack', 'Black', 'Cashier', '2014-03-13', '1990-02-12','Street 1', '90815'),
-  	('002E', 'Dan', 'Bart', 'Technician', '2015-05-25', '1989-03-25','Street 2', '38632'),
-  	('003E', 'Paul', 'Thawn', 'Mechanic', '2014-03-19', '1988-10-13','Street 3', '29577'),
-  	('004E', 'Linda', 'Jackson', 'Cashier', '2012-12-16', '1965-12-20','Street 4', '60435'),
-  	('005E', 'Oliver', 'Queen', 'Mechanic', '2013-05-01', '1977-09-22','Street 5', '01887'),
-  	('006E', 'Barry', 'Allen', 'Mechanic', '2008-06-08', '1986-07-10','Street 6', '520001'),
-  	('007E', 'Clark', 'Kent', 'Technician', '2010-08-22', '1989-04-01','Street 7', '02026'),
-  	('008E', 'Kara', 'Denver', 'Technician', '2012-11-15', '1990-05-14','Street 8', '70806'),
-  	('009E', 'Thomas', 'Wayne', 'Cashier', '2011-01-17', '1969-04-17','Street 9', '11691'),
-  	('010E', 'Ash', 'Ketchum', 'Mechanic', '2009-07-28', '1966-11-11','Street 10', '70605');
-
-  --/*Data for the table Technicians */
-  INSERT INTO Technicians(employeeID, tLanguage, workStation) VALUES
-  	('002E', 'Spanish', 'Office 4c'),
-  	('007E', 'English', 'Office 2b'),
-  	('008E', 'Khmer', 'Office 3b');
-
-  --/*Data for the table Mechanics */
-  INSERT INTO Mechanics(employeeID) VALUES
-  	('003E'),
-  	('005E'),
-  	('006E'),
-  	('010E');
-
-  --/*Data for the table Skills */
-  INSERT INTO Skills(employeeID, skillName, skillProficiency) VALUES
-  	('001E', 'Communication', '3'),
-  	('001E', 'Customer Service', '4'),
-  	('001E', 'Mathematics', '1'),
-  	('002E', 'Oil Change', '4'),
-  	('002E', 'Tire Maintenance', '4'),
-  	('002E', 'Diagnostic', '2'),
-  	('003E', 'Diagnostic', '3'),
-  	('003E', 'Leadership', '3'),
-  	('004E', 'Communication', '4'),
-  	('004E', 'Customer Service', '2'),
-  	('004E', 'Mathematics', '5'),
-  	('005E', 'Diagnostic', '5'),
-  	('006E', 'Leadership', '5'),
-  	('007E', 'Oil Change', '3'),
-  	('007E', 'Engine Repair', '5'),
-  	('007E', 'Tire Maintenance', '2'),
-  	('008E', 'Engine Repair', '2'),
-  	('009E', 'Communication', '4'),
-  	('009E', 'Mathematics', '3'),
-  	('010E', 'Tire Maintenance', '5'),
-  	('010E', 'Engine Repair', '1');
-
-  --/*Data for the table skillProficiencies */
-  INSERT INTO skillProficiencies(skillProficiency) VALUES
-  	('1'),
-  	('2'),
-  	('3'),
-  	('4'),
-  	('5');
-
-  --/*Data for the table skillNames */
-  INSERT INTO skillNames(skillName) VALUES
-  	('Communication'),
-  	('Customer Service'),
-  	('Diagnostic'),
-  	('Engine Repair'),
-  	('Leadership'),
-  	('Mathematics'),
-  	('Oil Change'),
-  	('Tire Maintenance');
-
-  --/*Data for the table Apprenticeship */
-  INSERT INTO Apprenticeships(mentorID, menteeID, startDate, active, mentoredSkill) VALUES
-  	('005E', '006E', '2014-08-25', 'True', 'Diagnostic'),
-  	('006E', '005E', '2014-08-26', 'True', 'Leadership'),
-  	('003E', '010E', '2015-05-15', 'False', 'Leadership'),
-  	('010E', '006E', '2013-10-02', 'True', 'Tire Maintenance');
-
 
   --/*Data for the table CustomerAlerts */
-  INSERT INTO CustomerAlerts(vehicleID, appointment, alertType) VALUES
-  	('4SAM123', '2017-05-29 13:22:00', 'Email'),
-  	('4SAM123', '2017-06-29 13:22:00', 'Email'),
-  	('6LIK274', '2017-06-29 10:00:00', 'Phone'),
-  	('1032247', '2017-08-01 09:00:00', 'Email'),
+INSERT INTO CustomerAlerts(vehicleID, appointment, alertType) VALUES
+    ('4SAM123', '2017-05-29 13:22:00', 'Email'),
+    ('4SAM123', '2017-06-29 13:22:00', 'Email'),
+    ('6LIK274', '2017-06-29 10:00:00', 'Phone'),
+    ('1032247', '2017-08-01 09:00:00', 'Email'),
     ('2FQZ303', '2017-09-29 13:22:00', 'Email'),
-  	('6TRJ244', '2018-11-12 15:00:00', 'Phone'),
-  	('5BBM299', '2017-05-19 08:00:00', 'Phone'),
-  	('5BBM299', '2017-08-11 14:10:00', 'Email'),
+    ('6TRJ244', '2018-11-12 15:00:00', 'Phone'),
+    ('5BBM299', '2017-05-19 08:00:00', 'Phone'),
+    ('5BBM299', '2017-08-11 14:10:00', 'Email'),
     ('6YMX833', '2019-12-29 16:00:00', 'Email'),
-  	('5AOJ230', '2017-06-01 13:22:00', 'Phone'),
-  	('2AAA000', '2017-06-02 10:00:00', 'Phone'),
-  	('7TCE006', '2017-03-21 09:00:00', 'Email'),
+    ('5AOJ230', '2017-06-01 13:22:00', 'Phone'),
+    ('2AAA000', '2017-06-02 10:00:00', 'Phone'),
+    ('7TCE006', '2017-03-21 09:00:00', 'Email'),
     ('3GDG552', '2018-02-19 13:22:00', 'Phone'),
-  	('3GDG552', '2017-05-23 13:22:00', 'Email'),
-  	('SP27091', '2017-01-29 10:00:00', 'Phone'),
-  	('2WAQ233', '2017-04-01 09:00:00', 'Email'),
-  	('6MBV006', '2017-05-29 18:30:00', 'Phone'),
-  	('7TCE006', '2019-03-19 07:45:00', 'Phone'),
-  	('AAHHYES', '2018-03-25 10:50:00', 'Phone'),
-  	('CAHIKER', '2017-11-01 09:05:00', 'Email'),
+    ('3GDG552', '2017-05-23 13:22:00', 'Email'),
+    ('SP27091', '2017-01-29 10:00:00', 'Phone'),
+    ('2WAQ233', '2017-04-01 09:00:00', 'Email'),
+    ('6MBV006', '2017-05-29 18:30:00', 'Phone'),
+    ('7TCE006', '2019-03-19 07:45:00', 'Phone'),
+    ('AAHHYES', '2018-03-25 10:50:00', 'Phone'),
+    ('CAHIKER', '2017-11-01 09:05:00', 'Email'),
     ('4SAM123', '2017-05-29 08:00:00', 'Email'),
-  	('3GDG552', '2018-02-09 12:25:00', 'Email'),
-  	('2FQZ303', '2017-12-30 10:50:00', 'Email'),
-  	('7NES326', '2017-10-11 16:30:00', 'Email'),
+    ('3GDG552', '2018-02-09 12:25:00', 'Email'),
+    ('2FQZ303', '2017-12-30 10:50:00', 'Email'),
+    ('7NES326', '2017-10-11 16:30:00', 'Email'),
     ('5AOJ230', '2018-04-17 14:15:00', 'Phone);
 
+--/*Data for the table Employees */
+INSERT INTO Employees(employeeID, eFirstName, eLastName, jobTitle, startDate, eDOB, streetName,zipCode ) VALUES
+    ('001E', 'Jack', 'Black', 'Cashier', '2014-03-13', '1990-02-12','Street 1', '90815'),
+    ('002E', 'Dan', 'Bart', 'Technician', '2015-05-25', '1989-03-25','Street 2', '38632'),
+    ('003E', 'Paul', 'Thawn', 'Mechanic', '2014-03-19', '1988-10-13','Street 3', '29577'),
+    ('004E', 'Linda', 'Jackson', 'Cashier', '2012-12-16', '1965-12-20','Street 4', '60435'),
+    ('005E', 'Oliver', 'Queen', 'Mechanic', '2013-05-01', '1977-09-22','Street 5', '01887'),
+    ('006E', 'Barry', 'Allen', 'Mechanic', '2008-06-08', '1986-07-10','Street 6', '520001'),
+    ('007E', 'Clark', 'Kent', 'Technician', '2010-08-22', '1989-04-01','Street 7', '02026'),
+    ('008E', 'Kara', 'Denver', 'Technician', '2012-11-15', '1990-05-14','Street 8', '70806'),
+    ('009E', 'Thomas', 'Wayne', 'Cashier', '2011-01-17', '1969-04-17','Street 9', '11691'),
+    ('010E', 'Ash', 'Ketchum', 'Mechanic', '2009-07-28', '1966-11-11','Street 10', '70605');
+
+--/*Data for the table Technicians */
+INSERT INTO Technicians(employeeID, tLanguage, workStation) VALUES
+    ('002E', 'Spanish', 'Office 4c'),
+    ('007E', 'English', 'Office 2b'),
+    ('008E', 'Khmer', 'Office 3b');
+
+--/*Data for the table Mechanics */
+INSERT INTO Mechanics(employeeID) VALUES
+    ('003E'),
+    ('005E'),
+    ('006E'),
+    ('010E');
+
+--/*Data for the table skillProficiencies */
+INSERT INTO skillProficiencies(skillProficiency) VALUES
+    ('1'),
+    ('2'),
+    ('3'),
+    ('4'),
+    ('5');
+
+--/*Data for the table skillNames */
+INSERT INTO skillNames(skillName) VALUES
+    ('Communication'),
+    ('Customer Service'),
+    ('Diagnostic'),
+    ('Engine Repair'),
+    ('Leadership'),
+    ('Mathematics'),
+    ('Oil Change'),
+    ('Tire Maintenance');
+
+  --/*Data for the table Skills */
+INSERT INTO Skills(employeeID, skillName, skillProficiency) VALUES
+    ('001E', 'Communication', '3'),
+    ('001E', 'Customer Service', '4'),
+    ('001E', 'Mathematics', '1'),
+    ('002E', 'Oil Change', '4'),
+    ('002E', 'Tire Maintenance', '4'),
+    ('002E', 'Diagnostic', '2'),
+    ('003E', 'Diagnostic', '3'),
+    ('003E', 'Leadership', '3'),
+    ('004E', 'Communication', '4'),
+    ('004E', 'Customer Service', '2'),
+    ('004E', 'Mathematics', '5'),
+    ('005E', 'Diagnostic', '5'),
+    ('006E', 'Leadership', '5'),
+    ('007E', 'Oil Change', '3'),
+    ('007E', 'Engine Repair', '5'),
+    ('007E', 'Tire Maintenance', '2'),
+    ('008E', 'Engine Repair', '2'),
+    ('009E', 'Communication', '4'),
+    ('009E', 'Mathematics', '3'),
+    ('010E', 'Tire Maintenance', '5'),
+    ('010E', 'Engine Repair', '1');
+
+
+
+
+
+  --/*Data for the table Apprenticeship */
+INSERT INTO Apprenticeships(mentorID, menteeID, startDate, active, mentoredSkill) VALUES
+    ('005E', '006E', '2014-08-25', 'True', 'Diagnostic'),
+    ('006E', '005E', '2014-08-26', 'True', 'Leadership'),
+    ('003E', '010E', '2015-05-15', 'False', 'Leadership'),
+    ('010E', '006E', '2013-10-02', 'True', 'Tire Maintenance');
+
+
+
+
     --/*Data for the table MaintenanceVisits */
-    INSERT INTO MaintenanceVisits(employeeID, visitDate, vehicleID, currentMile, packageSelect) VALUES
-      ('002E','2017-05-01','4SAM123',77120,'YES'),
-      ('002E','2017-05-02','6LIK274',70502,'NO'),
-      ('007E','2017-05-02','1032247',8231,'YES'),
-      ('007E','2017-05-03','5AOJ230',48345,'YES'),
-      ('008E','2017-05-03','6TRJ244',97324,'NO'),
-      ('002E','2017-05-08','2AAA000',83637,'YES'),
-      ('008E','2017-05-12','2FQZ303',86558,'NO'),
-      ('002E','2017-05-03','6YMX832',66666,'YES'),
-      ('007E','2017-05-10','SP27091',92681,'NO'),
-      ('007E','2017-05-10','CAHIKER',5000,'NO');
+INSERT INTO MaintenanceVisits(employeeID, visitDate, vehicleID, currentMile, packageSelect) VALUES
+    ('002E','2017-05-01','4SAM123',77120,'YES'),
+    ('002E','2017-05-02','6LIK274',70502,'NO'),
+    ('007E','2017-05-02','1032247',8231,'YES'),
+    ('007E','2017-05-03','5AOJ230',48345,'YES'),
+    ('008E','2017-05-03','6TRJ244',97324,'NO'),
+    ('002E','2017-05-08','2AAA000',83637,'YES'),
+    ('008E','2017-05-12','2FQZ303',86558,'NO'),
+    ('002E','2017-05-03','6YMX832',66666,'YES'),
+    ('007E','2017-05-10','SP27091',92681,'NO'),
+    ('007E','2017-05-10','CAHIKER',5000,'NO');
 
-    --/*Data for the table MaintenancePackages */
-    INSERT INTO MaintenancePackages(packageID, packageName, packagePrice) VALUES
-    	('001P','Package1',450.50),
-    	('002P','Package2',300.50),
-    	('003P','Package3',550.50),
-    	('004P','Package4',250.50),
-    	('005P','Package5',420.50);
 
-    --/*Data for the table MaintenanceItems */
-    INSERT INTO MaintenanceItems(itemID, itemName, itemPrice, loyaltyPayable, requiredSkill, packageID) VALUES
-    	('001I','Engine Repair',100.10,'NO','Communication','001P'),
-    	('002I','Tire Services',70.50,'YES','Customer Service',NULL),
-    	('003I','Charging Systems',50.00,'NO','Diagnostic',NULL),
-    	('004I','Coolant Systems',100.00,'NO','Leadership','002P'),
-    	('005I','A/C Repair',150.00,'NO','Mathematics','002P'),
-    	('006I','Diesel Repair',100.00,'YES','Oil Change','002P),
-    	('007I','Electrical Repair',150.00,'NO','Tire Maintenance','002P'),
-    	('008I','Check Engine Light',75.00,'NO','Communcation',NULL),
-    	('009I','Smog Services',120.00,'YES','Customer Service','003P'),
-    	('010I','Factory Scheduled Maintenance',300.00,'NO','Engine Repair','004P'),
-    	('011I','Brake Services',78.00,'YES','Leadership','004P'),
-    	('012I','Transmission Repair',90.00,'NO','Mathematics','005P'),
-    	('013I','Hybrid Services',100.00,'NO','Oil Change','005P'),
-    	('014I','Suspension',85.00,'YES','Tire Maintenance',NULL),
-    	('015I','Fleet Services',100.00,'NO','Communcation',NULL);
+--/*Data for the table VisitItems */
+INSERT INTO VisitItems(employeeID, vehicleID, visitDate, itemID, priority) VALUES
+    ('002E','4SAM123','2017-05-01','001I','5'),
+    ('002E','6LIK274','2017-05-02','002I','3'),
+    ('007E','1032247','2017-05-02','009I','6'),
+    ('007E','5AOJ230','2017-05-03','010I','4'),
+    ('007E','5AOJ230','2017-05-03','011I','5'),
+    ('008E','6TRJ244','2017-05-03','003I','4'),
+    ('002E','2AAA000','2017-05-08','004I','8'),
+    ('002E','2AAA000','2017-05-08','005I','3'),
+    ('002E','2AAA000','2017-05-08','006I','7'),
+    ('002E','2AAA000','2017-05-08','007I','4'),
+    ('008E','2FQZ303','2017-05-12','008I','5'),
+    ('002E','6YMX832','2017-05-03','004I','2'),
+    ('002E','6YMX832','2017-05-03','005I','3'),
+    ('002E','6YMX832','2017-05-03','006I','4'),
+    ('002E','6YMX832','2017-05-03','007I','5'),
+    ('007E','SP27091','2017-05-10','014I','9'),
+    ('007E','CAHIKER','2017-05-10','015I','7');
 
-    --/*Data for the table VisitItems */
-    INSERT INTO VisitItems(employeeID, vehicleID, visitDate, itemID, priority) VALUES
-      ('002E','4SAM123','2017-05-01','001I','5'),
-      ('002E','6LIK274','2017-05-02','002I','3'),
-      ('007E','1032247','2017-05-02','009I','6'),
-      ('007E','5AOJ230','2017-05-03','010I','4'),
-      ('007E','5AOJ230','2017-05-03','011I','5'),
-      ('008E','6TRJ244','2017-05-03','003I','4'),
-      ('002E','2AAA000','2017-05-08','004I','8'),
-      ('002E','2AAA000','2017-05-08','005I','3'),
-      ('002E','2AAA000','2017-05-08','006I','7'),
-      ('002E','2AAA000','2017-05-08','007I','4'),
-      ('008E','2FQZ303','2017-05-12','008I','5'),
-      ('002E','6YMX832','2017-05-03','004I','2'),
-      ('002E','6YMX832','2017-05-03','005I','3'),
-      ('002E','6YMX832','2017-05-03','006I','4'),
-      ('002E','6YMX832','2017-05-03','007I','5'),
-      ('007E','SP27091','2017-05-10','014I','9'),
-      ('007E','CAHIKER','2017-05-10','015I','7');
-
+--/*Data for the table Profits */
+INSERT INTO Profits(customerID,incomeEarned) VALUES
+    ('001C',(SELECT SUM(total) FROM Invoices NATURAL JOIN CustomerVehicles WHERE customerID
+    '001C' AND CustomerVehicles.vehicleID=Invoices.vehicleID)),
+    ('002C',SELECT SUM(total) FROM Invoices NATURAL JOIN CustomerVehicles WHERE customerID='002C' AND CustomerVehicles.vehicleID=Invoices.vehicleID)),
+    ('003C',SELECT SUM(total) FROM Invoices NATURAL JOIN CustomerVehicles WHERE customerID='003C' AND CustomerVehicles.vehicleID=Invoices.vehicleID)),
+    ('004C',SELECT SUM(total) FROM Invoices NATURAL JOIN CustomerVehicles WHERE customerID='004C' AND CustomerVehicles.vehicleID=Invoices.vehicleID)),
+    ('005C',SELECT SUM(total) FROM Invoices NATURAL JOIN CustomerVehicles WHERE customerID='005C' AND CustomerVehicles.vehicleID=Invoices.vehicleID)),
+    ('006C',SELECT SUM(total) FROM Invoices NATURAL JOIN CustomerVehicles WHERE customerID='006C' AND CustomerVehicles.vehicleID=Invoices.vehicleID)),
+    ('007C',SELECT SUM(total) FROM Invoices NATURAL JOIN CustomerVehicles WHERE customerID='007C' AND CustomerVehicles.vehicleID=Invoices.vehicleID)),
+    ('008C',SELECT SUM(total) FROM Invoices NATURAL JOIN CustomerVehicles WHERE customerID='008C' AND CustomerVehicles.vehicleID=Invoices.vehicleID)),
+    ('009C',SELECT SUM(total) FROM Invoices NATURAL JOIN CustomerVehicles WHERE customerID='009C' AND CustomerVehicles.vehicleID=Invoices.vehicleID)),
+    ('010C',SELECT SUM(total) FROM Invoices NATURAL JOIN CustomerVehicles WHERE customerID='010C' AND CustomerVehicles.vehicleID=Invoices.vehicleID)),
+    ('011C',SELECT SUM(total) FROM Invoices NATURAL JOIN CustomerVehicles WHERE customerID='011C' AND CustomerVehicles.vehicleID=Invoices.vehicleID)),
+    ('012C',SELECT SUM(total) FROM Invoices NATURAL JOIN CustomerVehicles WHERE customerID='012C' AND CustomerVehicles.vehicleID=Invoices.vehicleID)),
+    ('013C',SELECT SUM(total) FROM Invoices NATURAL JOIN CustomerVehicles WHERE customerID='013C' AND CustomerVehicles.vehicleID=Invoices.vehicleID)),
+    ('014C',SELECT SUM(total) FROM Invoices NATURAL JOIN CustomerVehicles WHERE customerID='014C' AND CustomerVehicles.vehicleID=Invoices.vehicleID)),
+    ('015C',SELECT SUM(total) FROM Invoices NATURAL JOIN CustomerVehicles WHERE customerID='015C' AND CustomerVehicles.vehicleID=Invoices.vehicleID));
 
 --/*Data for the table Invoices */
 INSERT INTO Invoices(invoiceID, customerID, vehicleID, visitDate, premium, total) VALUES
@@ -395,22 +423,3 @@ INSERT INTO Invoices(invoiceID, customerID, vehicleID, visitDate, premium, total
 	('008I', '006C', '6YMX832', '2017-05-03', 1.1, 450.00 * 1.1),
 	('009I', '011C', 'SP27091', '2017-05-10', 1.1, 150.00 * 1.1),
 	('010I', '013C', 'CAHIKER', '2017-05-10', 1.1, 150.00 * 1.1);
-
---/*Data for the table Profits */
-INSERT INTO Profits(customerID,incomeEarned) VALUES
-        ('001C',(SELECT SUM(total) FROM Invoices NATURAL JOIN CustomerVehicles WHERE customerID
-        '001C' AND CustomerVehicles.vehicleID=Invoices.vehicleID)),
-        ('002C',SELECT SUM(total) FROM Invoices NATURAL JOIN CustomerVehicles WHERE customerID='002C' AND CustomerVehicles.vehicleID=Invoices.vehicleID)),
-        ('003C',SELECT SUM(total) FROM Invoices NATURAL JOIN CustomerVehicles WHERE customerID='003C' AND CustomerVehicles.vehicleID=Invoices.vehicleID)),
-        ('004C',SELECT SUM(total) FROM Invoices NATURAL JOIN CustomerVehicles WHERE customerID='004C' AND CustomerVehicles.vehicleID=Invoices.vehicleID)),
-        ('005C',SELECT SUM(total) FROM Invoices NATURAL JOIN CustomerVehicles WHERE customerID='005C' AND CustomerVehicles.vehicleID=Invoices.vehicleID)),
-        ('006C',SELECT SUM(total) FROM Invoices NATURAL JOIN CustomerVehicles WHERE customerID='006C' AND CustomerVehicles.vehicleID=Invoices.vehicleID)),
-        ('007C',SELECT SUM(total) FROM Invoices NATURAL JOIN CustomerVehicles WHERE customerID='007C' AND CustomerVehicles.vehicleID=Invoices.vehicleID)),
-        ('008C',SELECT SUM(total) FROM Invoices NATURAL JOIN CustomerVehicles WHERE customerID='008C' AND CustomerVehicles.vehicleID=Invoices.vehicleID)),
-        ('009C',SELECT SUM(total) FROM Invoices NATURAL JOIN CustomerVehicles WHERE customerID='009C' AND CustomerVehicles.vehicleID=Invoices.vehicleID)),
-        ('010C',SELECT SUM(total) FROM Invoices NATURAL JOIN CustomerVehicles WHERE customerID='010C' AND CustomerVehicles.vehicleID=Invoices.vehicleID)),
-        ('011C',SELECT SUM(total) FROM Invoices NATURAL JOIN CustomerVehicles WHERE customerID='011C' AND CustomerVehicles.vehicleID=Invoices.vehicleID)),
-        ('012C',SELECT SUM(total) FROM Invoices NATURAL JOIN CustomerVehicles WHERE customerID='012C' AND CustomerVehicles.vehicleID=Invoices.vehicleID)),
-        ('013C',SELECT SUM(total) FROM Invoices NATURAL JOIN CustomerVehicles WHERE customerID='013C' AND CustomerVehicles.vehicleID=Invoices.vehicleID)),
-        ('014C',SELECT SUM(total) FROM Invoices NATURAL JOIN CustomerVehicles WHERE customerID='014C' AND CustomerVehicles.vehicleID=Invoices.vehicleID)),
-        ('015C',SELECT SUM(total) FROM Invoices NATURAL JOIN CustomerVehicles WHERE customerID='015C' AND CustomerVehicles.vehicleID=Invoices.vehicleID));
